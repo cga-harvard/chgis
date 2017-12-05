@@ -1,0 +1,575 @@
+From - Tue Feb 10 18:14:55 1998
+Return-Path: <crissman@asian.gu.edu.au>
+Received: from sol.ucdavis.edu (root@sol.ucdavis.edu [128.120.8.188])
+	by igc7.igc.org (8.8.8/8.8.8) with ESMTP id RAA26931
+	for <henderson@igc.org>; Tue, 10 Feb 1998 17:56:38 -0800 (PST)
+Received: from schilling.ucdavis.edu (root@schilling.ucdavis.edu [128.120.8.1])
+	by sol.ucdavis.edu (8.8.8/UCD3.11.25) with ESMTP id RAA28634;
+	Tue, 10 Feb 1998 17:52:46 -0800 (PST)
+Received: from qilin.asian.gu.edu.au (qilin.asian.gu.edu.au [132.234.6.1])
+	by schilling.ucdavis.edu (8.8.8/UCD3.11.25) with ESMTP id RAA29535;
+	Tue, 10 Feb 1998 17:52:24 -0800 (PST)
+Received: (from crissman@localhost)
+	by qilin.asian.gu.edu.au (8.8.5/8.8.5) id LAA12738;
+	Wed, 11 Feb 1998 11:51:01 +1000 (EST)
+Date: Wed, 11 Feb 1998 11:51:01 +1000 (EST)
+X-UIDL: 887163286.000
+From: Lawrence Crissman <crissman@asian.gu.edu.au>
+Message-Id: <199802110151.LAA12738@qilin.asian.gu.edu.au>
+To: mhenderson@ucdavis.edu
+Subject: Hydrology Codes
+Cc: gwskinner@ucdavis.edu
+Status: U
+X-Mozilla-Status: 0001
+Content-Length: 30141
+
+
+
+                             CHINA GIS PROJECT
+
+                  LAND-USE MAP OF CHINA SPATIAL DATA BASE
+
+       DRAINAGE BASIN AND STREAM REACH CODING SYSTEMS AND PROCEDURES
+
+
+The following codes and proceedures have been used by the Australian Centre
+of the Asian Spatial Information and Analysis Network (ACASIAN), Griffith
+University, to identify and characterise the hydrology it has vectorised
+from the 1:1,000,000 Land-use Map of China (the LUMC Spatial Data Bases),
+produced by the Institute of Geography, CAS, and published by the Science
+Press, Beijing.
+
+'Streams' is an all-inclusive term that includes lakes and large reservoirs
+that are connected to drainage systems, as well as large rivers and
+estuaries depicted on the Land-use Map of China (LUMC) as having two
+shorelines (e.g., as open water).  In those cases, each bank or shore is
+coded separately unless the body of 'open' water has no outlet.  The other
+exceptions are limited to the small reservoirs marked with tiny triangular
+symbols on the LUMC, which are marked by the NCODE 4.
+
+
+CODES USED FOR ARCS (LINES) AND NODES (POINTS)
+
+LSOURCE - 'Line Source':  Almost all of the hydrological data in the China
+     GIS Project Spatial Databases are derived from the 1:1m Land-use Map
+     of China (LUMC).  Lines in the HYLP ('hydrology lines & polygons')
+     coverages sourced from the LUMC have the relevant sheet number in
+     LSOURCE, which also identifies alternate sources of hydrological
+     information used for lines not based on the LUMC.  Original LUMC
+     lines judged to be erroneous or that have been changed in some way
+     are contained in the HYCHNG ('hydro change') coverages for each map
+     sheet.
+
+NCODE - 'Node Code':  Some nodes in HYLP have special codes:
+     0 -  continuing node with no special significance for drainage
+          topology, but needed for some reason such as a change in LCODE,
+          etc., as described below.
+
+     1 -  stop: arbitrary divide between drainage basins shown as
+          connected on the LUMC.
+     4 -  reservoir: location of small reservoir represented as a tiny
+          triangular symbol on the LUMC.
+     7 -  viaduct: where crossing streams are actually separate.
+
+LCODE - 'Line Code':  Vectors in HYLP are coded as follows:
+     09 -      connector: underground portions of streams not shown on the
+               LUMC.
+     10 - tiny streams/canals having the lightest lineweight on the LUMC.
+     11 - small rivers/canals having the second lightest lineweight on
+          the LUMC.
+     12 - medium rivers/canals having the next to heaviest lineweight on
+          the LUMC.
+     13 - large rivers/canals having the heaviest lineweight on the LUMC.
+     14 - rivers shown as flowing underground on the LUMC.
+     15 - seasonal streams shown on the LUMC.
+     17 - large canal, as identified on the LUMC.
+     20 - open river, depicted with two shorelines on the LUMC.
+     30 - estuary or bay, cut off from the ocean by a coastline connector
+          (LTYPE 99).
+     40 - lake, slough, or large reservoir.
+     45 -      seasonal lakes.
+     47 -      boundaries of marshes or reed marshes occurring in lakes.
+     50 -      island in a lake or reservoir.
+     60 - island in a river
+     91 -      errors on the LUMC (contained in the HYCHNG coverages, only.
+     96- connector: to close mouth of river with two shores.
+     97 - connector: to close lake or slough connected to river with two
+          shores.
+     98 - connector: to close map sheet boundary, as necessary.
+     99 -  connector: to close coastline across estuaries and deep bays.
+
+BCODE     - 'Basin Code':  Drainage basins, including lake segments, are coded
+          with a six digit system similar to the eight digit Hydrological Unit
+          Codes (HUCs) employed in the United States, except that a fourth,
+          lowest level (Catelog Unit) is not identified.  
+     The first two BCODE digits (initial zeros added) are from the
+     'Drainage system' map on page 4 of 'The Population Atlas of China'
+     (English Edition, 1987, Cambridge U.P.) .
+          01 to 18 - Pacific Ocean drainage basins.
+          19 to 22 - Indian Ocean drainage basins.
+          23 - Arctic Ocean drainage basin.
+          24 to 35 - interior drainage basins
+     The next two BCODE digits, representing subbasins, are based on the
+     'tributary basins' on the same map, with some modifications and
+     additions, such as demarcating subsections of major rivers (Heiling
+     Jiang, Huang He, Yangzi Jiang, and the variously named parts of the
+     'West River System'), designating additional subbasins (particularly
+     on the North China Plain and in Manchuria), and distinguishing Hainan
+     island (1602) as a separate subbasin from the coastal rivers of
+     western Guangdong and Guangxi (1601).  Subbasin and subsection code
+     numbers are arbitrarily assigned from north to south or clockwise
+     along the coast and upstream in major river systems.
+     The third BCODE digit (first subbasin digit) carries the following
+     distinctions:
+          0 - The subbasin or subsection empties directly into the ocean.
+          1, 2, 3, or 4 - These are subsections of large rivers, which
+          usually have complex distributaries where they enter the ocean,
+          which have 00 for subbasin codes, e.g., 1500xx for the Pearl
+          River delta complex.  The 'West River System' is coded as the
+          main river in that system, while the North and East Rivers are
+          coded as its tributaries, as indicated the source cited above.
+          5 - These subbasins have tributary subbasins and empty into the
+          sea.
+          6 and 7 - These subbasins have tributary subbasins of their
+          own, but are themselves tributary to a subsection of a major
+          river, or to another such subbasin.
+          8 - Used for the upper reaches of large rivers that originate
+          in China but enter the sea in other countries (with the
+          exception of the Heilongjiang/Amur complex, which uses the
+          foregoing codes for sections along the boarder with Russia).
+          9 - These subbasins drain internally and are not connected to
+          the sea.
+     The fourth BCODE digit (second subbasin digit) has the following
+     distinctions:
+          0 - The basin, draining directly into the sea, is not divided
+          into subbasins or sections.  Also used as the fourth digit for
+          sections of large rivers, including the terminal
+          distributaries, or for those with subbasins coded with 5.
+          1, 2, 3, and 4 - Discrete subbasins with only one major stream
+          (or perhaps two at the most), ordered from downstream to
+          upstream or, for composite coastal drainage basins, from north
+          to south or clockwise along the coast.
+          5, 6, 7, and 8 - Basins or subbasins along a large river or
+          along the coast that consist of multiple small stream systems
+          that reach the river or the sea separately, ordered from
+          downstream to upstream or, for coastal drainage systems, from
+          north to south or clockwise along the coast.
+          9 - Major Canals or rivers with managed courses (that appear
+          aberrant in terms of normal drainage patterns and cross
+          subbasin boundaries or are major features within them).
+     BCODE digits five and six, for sub-subbasins, are assigned in the
+     same fashion as subbasin codes and designate the same general
+     distinctions.  In general only streams that are named on the LUMC are
+     distinguished as discrete sub-subbasins, except in the cases of sub-
+     subbasins that consist of many small streams which empty directly
+     into the sea or into a river.  
+     The fifth BCODE digit (first sub-subbasin digit) carries the
+     following distictions:
+          1, 2, 3 and 4 - Used for subsections of the main stream in a
+          sub-basin.
+          5 - Used for a tributary or sub-subbasin that directly enters a
+          subbasin mainstream or the sea and that has significant
+          tributaries of its own.
+          6 and 7 - Used for sub-subbasins tributary to other sub-
+          subbasins, but which have significant tributaries of their own.
+     The sixth BCODE digit (second sub-subbasin digit) has the following
+     distinctions:
+          1, 2, 3, and 4 - Discrete sub-subbasins with only one major
+          stream (or perhaps two at the most), ordered from downstream to
+          upstream or, for composite coastal drainage basins, from north
+          to south or clockwise along the coast.
+          5, 6, 7, and 8 - sub-subbasins along a large river or along the
+          coast that consist of multiple small stream systems that reach
+          the river or the sea separately, ordered from downstream to
+          upstream or, for coastal drainage systems, from north to south
+          or clockwise along the coast. 
+     Exceptions to the use of the above codes for sixth BCODE digits occur
+     with respect to canals and managed rivers (that appear aberrant in
+     terms of normal drainage patterns):  XXX901, ..., etc. and  XXX905,
+     ...., etc are important (named on the LUMC) and individually coded
+     canals or rivers with managed courses which cross subbasin boundaries
+     or are major features within them;  XXX909 is reserved for sections
+     of the Grand Canal (Da YingHe).
+     Appendix 1 contains a listing of the major river(s) in each coded
+     basin and subbasin.
+
+BSYMBOL - 'Basin Symbol':  All lines in the same Basin are given an
+     arbitrary colour code for display purposes.
+
+SBSYMBOL - 'Subbasin Symbol': All lines in the same Basin are given an
+     arbitrary colour code for display purposes.
+
+SSBSYMBOL - 'Sub-subbasin Symbol': Lines in the same Sub-subbasin may be
+     given an arbitrary colour code for display purposes.
+
+
+STEPS IN DRAINAGE BASIN CODING
+
+1.  On each LUMC map sheet, or portions thereof, hydrological outlets are
+operator identified.  They can include the sheet edges, as well as
+coastlines, underground or desert 'sinks', and the places where subbasins
+or even sub-subbasins drain into larger rivers.  These outlet vectors are
+'flipped' to point downstream, as necessary, and can be 'frozen' in that
+direction.  NCODEs (stop nodes in particular) and RCODEs may also be
+attached to outlets at this stage if desired, along with BCODEs, as
+appropriate.
+
+     FROZEN - 'Frozen':  Specifies whether the vector can be subsequently
+     flipped to the opposite direction.  This item will be included with
+     CGISP HYLP coverages when they are distributed.
+     0 -  not frozen, can be flipped.
+     1 -  frozen, cannot be flipped
+
+2.  The FLIP program is then run, which uses Arcedit commands and thererore
+avoids moving between Arcedit and Arcplot.  It checks the direction of all
+vectors connected to each outlet, and if necessary changes them to go
+toward it, unless a vector is 'frozen'.  FLIP will continue past frozen
+vectors, if they point in the right direction, to find more connections,
+flipping them as necessary.  FLIP may be run in a batch mode for all
+outlets on a sheet or in a basin/subbasin/sub-subbasin, or interactively
+from one outlet at a time.  When it has processed a vector, FLIP marks it
+as 'done'.  Vectors which do not get 'done' are not connected to an outlet
+for some reason, which must be identified and corrected as necessary. 
+Perhaps some outlets are not identified, or some tributaries do not
+actually connect properly, etc.
+
+     DONE - 'Processed':  Specifies whether or not the FLIP program has
+     processed a vector.  This item will not normally be supplied with
+     CGISP HYLP coverages.
+     0 -  not yet processed.
+     1 -  processed and flipped towards outlet as necessary.
+
+3.  The NODECHK ('node check') program cannot be run until FLIP has been
+run at least once.  It identifies all nodes that have more than one
+outgoing vector (e.g., the same node is the origin of more than one
+vector).  This identifies 'cycles', or sets of vectors that close or would
+form polygons if they were processed.  Some of these are legitimate, as
+when there is a terminal body of open water that has no outlet or where
+there are series of interconnecting canals, in which cases the direction of
+the vectors defining the shoreline or 'flow' are irrelevant.
+
+However, NODECHK allows other anomalies to be identified and corrected. 
+Some examples are non-terminal lake/reservoir shores which cycle, braided
+streams which cycle, two (or more) outlets from the same basin, and
+erroneous interconnections between basins.  Operators can then deal with
+these problems as necessary by appropriately flipping and freezing lake
+shores and distributaries, marking viaduct nodes (which require additional
+outlets to be defined), identifying interconnecting canals and isolating
+those that link basins with stop nodes as needed, and placing other
+required stop nodes, etc.  Also, errors in the LUMC or in vectorizing from
+it, such as spurious interconnections between basins, can also be
+identified and corrected from it or other sources.  At this step,
+identified distributaries are usually given the TDCCODEs/RCODEs 'd' and/or
+'t' when they are frozen in the right direction, while terminal lake shores
+are normally given the RCODE 'T' and irrelevant canals the RCODE/TDCCODE
+'c' as they are identified.  Small menu programs accomplish these tasks.
+
+Steps 2 and 3 can be reiterated, interactively or in batch mode, as
+necessary by first setting DONE to 0 and then re-running FLIP and/or
+NODECHK until an operator is satisfied that no anomalies remain.
+
+4.  The BASIN program is then run.  It is an iterative program that uses
+the Arcedit command 'select connect' until there are no more vectors
+connected to an outlet that can be found.  It will find other outlets, such
+as distributaries in a delta, but it does not change the direction of
+vectors and does not continue past a stop node (NCODE 1).  BASIN
+automatically attaches BCODES, which are operator assigned to outlets at
+this or previous steps, to each vector (including LCODES 20 and 40-60) in a
+basin, subbasin or sub-subbasin, as appropriate, in the BCODE item.
+
+5.  Once a complete basin or subbasin has been given the appropriate BCODE
+by running the BASIN program on the HYLP coverage for each LUMC sheet that
+contains any part of it, the basin can be placed on a separate HYLP
+coverage of its own, named after its BCODE.  Steps 2 (FLIP) and 3 (NODECHK)
+are then run again as a final check on the integrity of the data for the
+whole basin, and any remaining problems are rectified.
+
+6.  There are two current ways of counting stream order.  The most recently
+developed and hydrologically meaningful is the Shreve system, which adds
+together all upstream reaches, from which the number of sources in a basin
+can be readily determined.  The SHSORDER program calculates the Shreve
+stream order value for each reach, and enters it in the SHSORDER item.  The
+STSORDER program puts values into the STSORDER item based on the older
+Strahler system that numbers stream order by increasing the downstream
+value only when the values of both upstream components are the same (two 1s
+make a 2, but two 2s make a 3 and two 3s yield a 4, with all non matching
+upstream values being ignored apart from continuing with the largest). 
+Both of these programs treat the two shores of bodies of open water (LCODEs
+20, 40 and 45) as if they were collapsed into one line, effective after the
+node where they rejoin or are terminated with a connector (LCODE 96 or 99).
+
+     SHSORDER - the Shreve stream order value for each reach.
+
+     STSORDER - the Strahler stream order value for each reach.
+
+7.  If the whole basin has not had LCODEs 9 through 19 set properly, it
+could be done at this time with reference to the LUMC, if the REACODE
+program will not be used subsequently.  Names from the LUMC could also be
+attached to the main streams defining sub-subbasins with NAME and ID could
+be used to identify the principal stream from begining to end.  BASIN could
+also be run from their outlets to change their BCODEs to those indicating
+sub-subbasins, as appropriate.  However, these things may be accomplished
+most economically in conjunction with the REACODE program.
+
+The REACODE ('Reach Code') program codes each reach of a main stream, in
+items RNUMBER and RCODE, according to its position in the typology of the
+whole stream system from its source to where and how it ends, after
+flipping for stream flow direction, as necessary.  (REACODE recognises
+'frozen' vectors and will not change their direction.)  REACODE also
+attaches information to the ending reach of each tributary, distributary,
+or connecting canal, recording the details of its connection to the main
+stream in the item TDCCODE ('Tributary/Distributary/Canal Code').  
+
+REACODE uses the Arcedit 'select path' command to define the mainstream
+between between an operator selected source (or other begining vector) and
+an outlet (or other end point).  Where it is known from source maps that
+the mainstream does not follow the shortest path between a begining and an
+end, for instance in braided stream systems or canal networks, the operator
+can set the IMP (impedence) item to 99 on selected vectors in order to
+force 'trace' to follow the desired route.
+
+If REACODE is run on all of the streams in a basin, the typology of the
+entire basin will be represented in the RNUMBER, RCODE, and TDCCODE items,
+conjointly.  Normally, REACODE will have been run only on the main (named)
+streams in each sub-subbasin in the China GIS Project HYPL coverages. 
+However, anyone running REACODE on uncoded CGISP HYPL coverages should
+obtain the same results if no changes have been made to the original HYLP
+data in the basin.  The most salient aspects of the typology of a basin are
+available when REACODE has been run on the mainstream, only, provided
+SHSORDER has also been run on the basin as a whole.
+
+     IMP - 'Impedence': gives artificial lengths to selected vectors in
+     order to force the 'trace' command to follow the desired path.  IMP
+     values will normally be supplied with CGISP HYPL coverages.
+     1  - no special impedence.
+     99 - ninty-nine times normal impedence.
+
+     RNUMBER - 'Reach Number': The ordinal number of each reach is
+     recorded, beginning with the source of a stream and increasing
+     sequentially downstream to its end.  RNUMBERs for reaches just
+     downstream from open water (such as lakes, reservoirs, and sections
+     with two banks) are calculated according to the following formula:
+     RNUMBER = 1 + #(Lj) + #(Rj) - #(p) [codes as below].  A final value
+     calculated with a similar formula (RNUMBER = 1 + #(Le) + #(Re) - #(p)
+     will be attached to any connecting vectors (LCODEs 96, 97, or 99)
+     that mark the ending of a stream.
+
+     RCODE - 'Reach Code': After vectors are oriented to the downstream
+     direction (by REACODE itself or by previous runs of the FLIP
+     program), stream reaches are coded by the REACODE program according
+     to what occurs at the 'tonode' of their vectors.  Codes for reach
+     'types' as input by operators previously or subsequently are also
+     included.  The following codes are used in combination, in no
+     particular order, in the RCODE item.
+
+     Continuing nodes, with only one outgoing vector:
+     a  - 'aboveground': when a stream reappears on the surface joined by
+          segments with LCODE 9 or 14 to upstream above-ground reaches.
+     k  -      'small reservoirs (shuiku)': as identified with NCODE = 4.
+     n  -      'node': any other kind of continuing node without a third
+               connecting vector, such as one needed for a change in LCODE,
+               LSYMBOL, SNAME, or SNAV (Default value, when NCODE = 0.
+     s  - 'stop node': used to isolate a distributary linking to another
+          basin (NCODE = 1)
+     u  - 'underground': when a stream goes into a sink joined by an
+          LCODE 14 or 94 segment to downstream above-ground reaches.
+     v  -      'viaduct': a connection of four vectors in HYPL that is not a
+               true intersection as one stream bridges another (NCODE = 7).
+
+     Continuing nodes, with more than two connecting vectors:
+     l  - 'left':  upstream reach of the main stream to the left of a
+          tributary/ distributary.
+     r  - 'right':  upstream reach of the main stream is to the right of
+          a tributary/ distributary.
+     ll - 'left, left':  upstream reach of the main stream is to the left
+          of two tributaries/distributaries (OPERATOR ASSIGNED).
+     rr - 'right, right':  upstream reach of the main stream is to the
+          right of two tributaries/distributaries (OPERATOR ASSIGNED).
+     rl, or lr - 'right, left' or 'left, right':  upstream reach of main
+          stream is to both left and right of tributaries/distributaries
+          on either side (OPERATOR ASSIGNED).
+     L -  'Left bank': Left side of a body of open water, such as a
+          lake/reservoir or river/estuary with two shores depicted on the
+          LUMC, possibly with a left tributary/distributary at the tonode
+          (OPERATOR ASSIGNED).
+     R  - 'Right bank':  Right side of a body of open water, such as a
+          lake/reservoir or river/estuary with two shores depicted on the
+          LUMC, possibly with a right tributary/distributary at the
+          tonode (OPERATOR ASSIGNED).
+     LL  -     'Left bank':  left side of a body of open water, such as a
+          lake/reservoir or river/estuary with two shores depicted on the
+          LUMC, with two left tributaries/distributaries at the same
+          tonode (OPERATOR ASSIGNED).
+     RR  -     'Right bank': right side of a body of open water, such as a
+          lake/reservoir or river/estuary with two shores depicted on the
+          LUMC, with two right tributaries/distributaries at the same
+          tonode (OPERATOR ASSIGNED).
+     p  - 'parts':  node at which a single line representing a stream
+          becomes two lines signifying open water with two banks or
+          shores.
+     j  - 'joins':  node at which two lines signifying open water with
+          two banks or shores become a single downstream line.
+     d -  'distributary': the vector is a distributary, with its vector
+          pointing away from the outlet (OPERATOR ASSIGNED).
+     c -  'canal': the vector is a canal so its direction is irrelevant
+          (OPERATOR ASSIGNED).
+
+     Ending nodes:
+     e  - 'enters, empties, ends':  a tributary joins a main stream.
+     o  - 'ocean':  a stream reaches the sea.
+     s  - 'stop':  a reach that connects with a stop node (NCODE = 1)
+          that separates basins (OPERATOR ASSIGNED.
+     t  - 'terminates':  the end reach of a stream or distributary that
+          does not connect with another stream, the sea, or a terminal
+          body of inland water ('terminal' nodes are usually irrigation
+          distributaries or desert sinks, and are normally operator
+          identified and frozen at some early stage in Basin Coding
+          proceedures).
+     T  - 'Terminal': vector that forms part or all of the shore of a
+          body of open water that has no outlet.  The direction of such
+          vectors has no significance (OPERATOR ASSIGNED).
+
+     TDCCODE - 'Tributary/Distributary/Canal Codes':  The adjacent reaches
+     of connecting streams are coded by the REACODE program when it is run
+     over a main stream.  The following are used in combination, in any
+     order, in the TDCCODE item:
+     i -  'incoming': the connected vector is a tributary, with its
+          vector pointing toward the main stream (default).
+     d -  'distributary': the connected vector is a distributary, with
+          its vector pointing away from the main stream.
+     c -  'canal': the connected vector is a canal, so the direction of
+          the vector is irrelevant (OPERATOR ASSIGNED).
+     l -  'left': the vector connects with the main stream from/to the
+          left.
+     r -  'right': the vector connects with the main stream from/to the
+          right.  
+     s -  'smallest': In case of multiple left or right tributaries/
+          distributaries at the same node, this has the smallest angle
+          with the downstream vector (OPERATOR ASSIGNED).
+     b -  'biggest': In case of multiple left or right tributaries/
+          distributaries at the same node, this has the biggest angle
+          with the downstream vector (OPERATOR ASSIGNED).
+     # -  'number': the same RNUMBER as the reach of the main stream with
+          the 'tonode' where the tributary/distributary/canal connects.
+
+SUBSIDIARY PROGRAMS activated by menu commands or from prompts in REACODE:
+
+     MSID - 'Main stream identification':  the ID menu command will attach
+     the appropriate Basin, Subbasin, or Sub-Subbasin ID to the MSID item
+     for each reach (including open water reaches with LCODE 20 or 40/45) 
+     of the principal stream in a basin, subbasin, or sub-subbasin when
+     they have been identified with the Arcedit 'selpath' command or in
+     conjunction with the REACODE program.
+
+     LCODE - 'Line code': Possible values are listed above under LCODE.  
+     An LCODE menu command will enter LCODE values for a selection set
+     when they have been identified with the Arcedit 'trace' command or in
+     conjunction with the REACODE program.  LCODE appends new LCODEs to
+     any existing lists, an.
+
+     SNAME - 'Stream name':  The name of a stream or canal taken from the
+     LUMC, in pinyin.  Character names will be in an associated ORACLE
+     database.  An SNAME menu command will enter SNAME values for each
+     appropriate reach when they have been identified with the Arcedit
+     'trace' command or in conjunction with the REACODE program.
+
+     LNAME - 'Lake/Reservoir name':  The name of a lake or reservoir taken
+     from the LUMC in pinyin.  Character names will be in an associated
+     ORACLE database.  An LNAME menu command will attach the LNAME value
+     to a point within the banks of the body of water that will be used to
+     identify the polygon.  REACODE will also prompt for the entry of the
+     LNAME when the second, longer shore is operator identified.
+
+     NAVS - 'Navigable stream':  Reaches of streams, canals, and lakes
+     identified on the official 1:2.5m Transport Map of China as being
+     navigable.  A NAV menu command will enter NAVS values for each
+     appropriate reach when they have been identified with the Arcedit
+     'trace' command or in conjunction with the REACODE program.
+
+     LSYMBOL - 'Line symbol':  Default symbols for displaying lines in
+     HYPL coverages when using Arcedit can be set for each appropriate
+     reach, etc., in the LSYMBOL item using the SYMBOL menu command,
+     either with the Arcedit 'trace' command or in conjunction wth the
+     REACODE program.
+
+
+NEW CODES FOR POLYGONS IN THE CGISP HYLP COVERAGES
+
+     PTYPE - 'Polygon code':  Polygons in the HYLP coverages are coded as
+     follows:
+
+     0 - No significance:  Not recognised as a hydrological feature.
+          Examples are land enclosed by braided streams or canals
+          represented on the LUMC by single lines, which are only
+          technically islands.
+
+     1 - Lake, Slough, Reservoir, or 'Fresh Water Breeding Plot': As  
+     indicated with two shores on the LUMC.
+
+     2 - Open River:  Polygons defined by two banks of a river, often
+          closed downstream by a connector (LTYPE 96 or 99).
+
+     3 - Estuary or Bay: Polygon cut off from the ocean by a connector
+          (LTYPE 99).
+
+     4 - Marsh Land:  Polygon that is usually contained within a Code 1
+          polygon 
+
+     5 - Island in a Lake or Reservoir.
+
+     6 - Island in a River depicted with two shores on the LUMC
+
+
+CHANGES TO ORIGINAL CODES FOR HYLP COVERAGES
+
+Preliminary steps to be taken when an HYLP coverage for a LUMC map sheet is
+first processed, or when a basin is made into a separate coverage, or when
+the relevant programs are first run on coverages.
+
+
+CHANGE - Creates new items and copies old values with some changes,
+     automatically, as follows:
+     1.  IMP:  Retain, with values if present, otherwise create.
+     2.  LSOURCE:  Copy values from LINESRC.
+     3.  LCODE:  Copy values from LINETYPE, with following changes:
+          old 12 (underground river) becomes 14 if shown on LUMC;
+          old 21 (slough) becomes 40;
+          old 42 (marsh) becomes 47.
+     4.  NCODE:  Copy values from ?????, if any.
+     5.  PCODE:  Copy values from POLYTYPE, with following changes:
+          old 10 (Lake/Reservoir) becomes 1;
+          old 20 (Braided channel) becomes 2 (Open River);
+          old 50 (Island - Lake) becomes 5;
+          old 55 (Marsh Land) becomes 4
+          old 60 (Island - Braided Channel) becomes 6 (Island in an open   
+          river)
+
+FLIP - Creates the following:
+     6.  FROZEN:  Retain, with values, if present, otherwise create.
+     7.  DONE:  Retain, with values, if present, otherwise create.
+
+BASIN - Creates the following:
+     8.  BCODE:  Replaces LINEBASIN, which should have no present values.
+     9.  SHSORDER:  Create.
+     10.  STSORDER:  Create.
+
+REACODE - Creates the following:
+     11.  LNAME:  Create
+     12.  LSYMBOL:  Create.
+     13.  MSID:  Create.
+     14.  NAV:  Create.
+     15.  SNAME:  Create.
+     16.  RCODE:  Create.
+     17.  RNUMBER:  Create.
+     18.  TDCCODE:  Create.
+
+REMOVE - Program run when basin coverages are completely processed.
+     1. DONE:  Not supplied with CGISP HYLP Coverages.
+     2.  All original items superceded by the new items, above, including:
+     LINETYPE; LINESRC; LINEID; LINEBASIN; STREAMORDER, AND POLYTYPE. 
+     These items will remain on the separate HYLP coverages for the
+     individual LUMC sheets.
+     3.  All other original items not supplied with CGISP HYLP Coverages, 
+     including: LINESTAT and POLYSTAT.  These items will remain on the
+     separate HYLP coverages for the individual LUMC sheets.
+

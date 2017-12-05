@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>a4074</TITLE>
+<META NAME="Version" CONTENT="8.0.3410">
+<META NAME="Date" CONTENT="10/11/96">
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<H3>Assigning Core-Periphery Zones</H3>
+<FONT SIZE=2><P>This is an overview of the procedure used to assigned counties to Core-Periphery zones, starting with ChinaA raw variables.  This procedure is repeated for each of China's 9 macroregions and, in some cases, subregions. </P>
+<B><P>1. CPZ COMPONENTS</P>
+</B><P>1A. OUTPUT FROM SAS.  Several raw variables are picked from ChinaA.  SAS "deurbanizes" these variables and generates an output file named DRURBANrr.LST (where rr is the macroregion or subsystem number).  .LST files are text files with fixed-width columns; these files include A1 (county ID), A3 (name), and any number of variables.</P>
+<P>1B. CONVERT .LST TO INFO.  You can do this any way you like.  My preferred method is to load the .LST file into Microsoft Excel, use the "text to columns" function to put each variable into a different column, change the format of all data cells (that is, excluding the columns for A1 and A3) to numeric/3 decimals, and save the file as a .DBF file.  I then FTP the .DBF file to the Vis Lab.</P>
+<P>1C. COMPUTE D SCORES.  For each data variable we compute a score (the D score) which measures how well it follows the expected spatial ordering from core to periphery.  Run the program $CAML/run-ta.aml &lt;.dbf file&gt;, which converts the .dbf file to an INFO table (.DAT) generates D scores for every variable and for every county listed.  (The scores appear in a new INFO item for each variable.)</P>
+<P>1D. RETURN D SCORES TO SAS.  Use INFODBASE to convert the DEURBANrr.DAT table (with D scores added by step 1C) back to .DBF file format.  FTP the .DBF file back to Qing.  SAS will then compute the average D scores across all counties for each variable; we will use that figure to weight components for a new index variable, named Arr071.</P>
+<P>&nbsp;</P>
+<B><P>2. TESTING Arr071</P>
+</B><P>2A. OUTPUT FROM SAS.  SAS generates a file named Arr071.LST which lists A1, A3, and the new index variable, Arr071.</P>
+<P>2B. CONVERT .LST TO INFO.  Same as step 1B, to produce Arr071.DAT</P>
+<P>2C. COMPUTE D SCORES.  Same as step 1C, to produce the new INFO item Arr071D.</P>
+<P>2D. RETURN D SCORES TO SAS.  As with step 1D, use INFODBASE to produce Arr071.DBF, which is FTP'ed to Qing.  We will use these scores plus the map (made in step 2E) to assign counties to Core-Periphery Zones (1..7, stored in the variable Arr074).</P>
+<P>2E. GENERATE MAP OF D SCORES.  Use Regmap and the t-class98.aml theme to generate a map which shows the Arr071 values for all counties, plus Arr071D in red for counties which are out of spatial sequence (Arr071D &gt; 0).  For macroregion 4 and (from step 2C) .DAT file $CHINA/wherever/A4071.DAT, do this:</P>
+</FONT><FONT SIZE=1><CODE><P> Arc:    &amp;work $CHINA/trans/july</P>
+<P> Arc:    &amp;r runmacro 4 class98 mc $CHINA/wherever/a4071.dat a4071 0 a4071d</P>
+<P> Arc:    rtlplot 4class98.eps nosave print</P>
+</FONT></CODE><FONT SIZE=2><P>A subsystem (with two digits) requires an 'r' prefix for the first parameter of runmacro, e.g.:</P>
+</FONT><FONT SIZE=1><CODE><P> Arc:    &amp;r runmacro r21 class98 mc $CHINA/trans/a21071.dat  a21071  0 a21071d</P>
+</FONT></CODE><FONT SIZE=2><P>&nbsp;</P>
+<B><P>3. TESTING Arr074</P>
+</B><P>3A. Arr074 ASSIGNED.   Each county in the Arr071.DBF file is assigned a Arr074 (Core-periphery Zone) number.</P>
+<P>3B. CONVERT .DBF TO INFO.  FTP the revised .DBF file to the Vis Lab and use DBASEINFO to create an INFO table named Arr074.DAT.</P>
+<P>3C. GENERATE CHOROPLETH MAP.  Use Regmap and the t-choro98.aml theme to generate a map which shows the Arr071 values for all counties, with brown choropleth shading based on Arr074.  For macroregion 4 and .DAT file A4074.DAT, do this:</P>
+</FONT><FONT SIZE=1><CODE><P> Arc:    &amp;work $CHINA/trans/july</P>
+<P> Arc:    &amp;r runmacro 4 choro98 mc $CHINA/wherever/a4074.dat  a4071  a4074</P>
+<P> Arc:    psfix 4choro98.eps</P>
+<P> Arc:    plotmap f4choro98.eps</P>
+</FONT></CODE><FONT SIZE=2><P>Note: use psfix + plotmap rather than rtlplot, which produces unsatisfactory brown tones.</P>
+<P>3D. If revisions are required, repeat steps 3A..C.</P>
+<P>3E. At some future point, we will trace smoothed core-periphery zone boundaries over these choropleth maps; those will require the usual procedures for scanning and vectorizing.</P>
+</FONT><P ALIGN="CENTER"><HR></P>
+<I><FONT SIZE=1><P>Revised July 27, 1998, Mark Henderson.  http://qing.ucdavis.edu/gis/support/a4074.htm.</P></I></FONT></BODY>
+</HTML>

@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>GIS Data Development Procedures:</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#c0c0c0">
+
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=780>
+<TR><TD VALIGN="TOP" COLSPAN=5 BGCOLOR="#000000">
+<P><FONT SIZE=2 COLOR="#ffffff">U.C. Davis Department of Anthropology<BR>
+G.W. Skinner Research Team <blink>*</blink> Geographic Information Systems </FONT></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP" BGCOLOR="#00ffff">
+<P ALIGN="RIGHT"><A HREF="/gis/index.html">About</A></TD>
+<TD WIDTH="20%" VALIGN="TOP" BGCOLOR="#ffff00">
+<P ALIGN="RIGHT"><A HREF="/gis/china/index.html">China</A></TD>
+<TD WIDTH="20%" VALIGN="TOP" BGCOLOR="#00ffff">
+<P ALIGN="RIGHT"><A HREF="/gis/france/index.html">France</A></TD>
+<TD WIDTH="20%" VALIGN="TOP" BGCOLOR="#ff0000">
+<P ALIGN="RIGHT"> <A HREF="/gis/japan/index.html">Japan</A></TD>
+<TD WIDTH="20%" VALIGN="TOP" BGCOLOR="#c0c0c0">
+<P ALIGN="RIGHT"> <A HREF="/gis/support/index.html">Support</A></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial" SIZE=4><P>GIS Support Materials:</P>
+</B></FONT><H3>GIS Data Development Procedures--</H3>
+<H3>Metadata and Recordkeeping for a multiuser GIS environment</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=397>
+<TR><TD VALIGN="TOP">
+
+<UL>
+<LI>Principles </LI>
+<LI>Scanning and Vectorizing </LI>
+<LI>Documenting Completed Coverages</LI>
+<LI>Map Production </UL>
+</TD>
+</TR>
+</TABLE>
+
+<P><HR></P>
+<H4>Principles</H4>
+<P>1. Data created for this project will be used by many different people over time. You will use data files created long before you joined this project, and others will use files you created long after you have left this project. </P>
+<P>2. In general, GIS projects should budget 5% to 10% of their time to documentation of data and procedures. That means 3-6 minutes per hour, or 24-48 minutes per 8-hour day, or 2-4 hours per 40-hour week. </P>
+<P><HR></P>
+<H4>Recordkeeping when Scanning and Vectorizing</H4>
+<P>1. Mark the source map with the date scanned. Also mark the registration points (tics) along with the TIC-ID numbers used for registration with GIS data. This should be done before scanning so that the scanned image file will also include this information. </P>
+<P>2. Add comments to the LOG file for all Arc/Info coverages and Grids that are created <EM>and</EM> every time they are edited. (Use the command LOG &lt;geodataset&gt; ADD.) Comments should specify <EM>who</EM> edited the file (using initials), <EM>what</EM> the file represents, and <EM>why</EM> the file was created or edited. (Note that Arc/Info automatically records <EM>when</EM> and <EM>how</EM> files are modified.) For example:</P>
+<STRONG><PRE>Enter comment:</STRONG> mgh/Region 4 macroregions scanned from 6/20/97 tracing
+<STRONG>Enter comment:</STRONG> mgh/edited to match with China coastline</PRE>
+<P>3. If a coverage is to be edited, attribute tables for the edited features (e.g., arcs or points) should have a SOURCE  item (field) added so that the lineage and significance of each feature can be determined. Whenever an arc or point is manually edited, a notation should be made in its SOURCE field. If an arc or point is copied from a different coverage, the SOURCE field should indicate the name of the coverage from which the feature is copied. Common abbreviations in the SOURCE field include S (for Scanned or Screen-digitized) and D (for Digitizer) followed by the date, which can be checked against the coverage's LOG file. An example attribute table might include these entries: </P>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=452>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<PRE>COV-ID
+</PRE></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<STRONG><P>TYPE</P>
+</STRONG><P>&nbsp;</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<STRONG><P>SOURCE</P>
+</STRONG><P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P>&nbsp;</P>
+<STRONG><P>1</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>1</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>S970620</P>
+</STRONG><P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P>&nbsp;</P>
+<STRONG><P>2</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>1</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>D970621</P>
+</STRONG><P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P>&nbsp;</P>
+<STRONG><P>3</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>2</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>RIVERS</P>
+</STRONG><P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<P>&nbsp;</P>
+<STRONG><P>4</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>1</P>
+</STRONG><P>&nbsp;</TD>
+<TD VALIGN="TOP">
+<STRONG><P>(blank indicates no</P>
+<P>edit)</STRONG></TD>
+</TR>
+</TABLE>
+
+<STRONG><P>4. If codes are used in feature attribute tables, definitions of the codes should be given in a separate table. Where the example above uses the values 1 and 2 in the TYPE field, another table is required to explain what 1 and 2 represent. The addition of an item named SYMBOL in the table allows it to be used as a Look-Up Table when drawing these features in Arcplot.  This table may be generated with MAKELUT.AML. </P></STRONG>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=452>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<PRE><STRONG>TYPE
+</PRE></STRONG></TD>
+<TD WIDTH="22%" VALIGN="TOP">
+<STRONG><P>SYMBOL</P>
+<P>&nbsp;</STRONG></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<STRONG><P>DEFINITION</P>
+<P>&nbsp;</STRONG></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<STRONG><P>&nbsp;</P>
+<P>1</P>
+<P>&nbsp;</STRONG></TD>
+<TD VALIGN="TOP">
+<STRONG><P>101</P>
+<P>&nbsp;</STRONG></TD>
+<TD VALIGN="TOP">
+<STRONG><P>County Boundary</P>
+<P>&nbsp;</STRONG></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<STRONG><P>&nbsp;</P>
+<P>2</P>
+<P>&nbsp;</STRONG></TD>
+<TD VALIGN="TOP">
+<STRONG><P>402</P>
+<P>&nbsp;</STRONG></TD>
+<TD VALIGN="TOP">
+<STRONG><P>Provincial Boundary</STRONG></TD>
+</TR>
+</TABLE>
+
+<P ALIGN="CENTER"><HR></P>
+<P>&nbsp;</P>
+<FONT FACE="Arial"><P>Metadata for Completed Coverages</P>
+</FONT><P>When development work is complete, the <A HREF="/gis/support/metaform.html">UCD GIS Metadata Form</A> should be completed for each coverage.  Completed forms should then be linked to the GIS web pages.</P>
+<P><HR></P>
+<STRONG><P><BR>
+</P>
+<H3>Map Production</H3>
+<P>1. All maps should be stamped with a date and credit in this format: </P></STRONG>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=553>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<DL>
+<DT><FONT SIZE=2><STRONG>&copy;G. William Skinner</DT>
+<DT>20 June 1997, Mark Henderson</DT>
+<DT>UCD Visualization Lab</DT>
+</DL></FONT></STRONG></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><FONT SIZE=2><EM><DL>
+<DT>Data copyright owner</DT>
+<DT>Date, Map Author</DT>
+<DT>Computer System</DT>
+</DL></B></FONT></EM></TD>
+</TR>
+</TABLE>
+
+<STRONG><P>Maps should also include standard cartographic elements: a title, key legend, and scale bar; map scale should also be expressed as a representative fraction. If a nonstandard map projection is used, map projection information and/or a north arrow should be included. </P>
+<P>2. When sent to a plotter or printer, all maps should be logged in maplog.txt. (This is done automatically by the plotmap command.) </P>
+<P>3. In most cases, maps should be generated by Theme macros. Descriptions of Theme macros, including a list of coverages drawn, should be added to the Support documentation. </P>
+</STRONG><P><HR></P></BODY>
+</HTML>

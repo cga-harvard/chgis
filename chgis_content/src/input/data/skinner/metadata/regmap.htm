@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>regmap</TITLE>
+<META NAME="Version" CONTENT="8.0.3410">
+<META NAME="Date" CONTENT="10/11/96">
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#ffffff">
+
+<H3>Overview of Regmap and Pagemap AML scripts</H3>
+<I><FONT SIZE=1><P>M. Henderson, May 1998</P>
+</I></FONT><P>Regmap and Pagemap are intended to facilitate the mass production of maps of defined geographic areas (called <I>frames</I>) showing map features according to defined cartographic conventions (called <I>themes</I>).  Frames and themes are defined in separate AML scripts and can be added or customized easily.  Together, these scripts could be used to create (for example) 30 maps of 30 different provinces but each showing the same map features and symbols, or 10 maps of the same province but each showing different set of features and symbols.</P>
+<P>Regmap produces poster-sized maps on paper sheets 36" x 30" in size.  Pagemap produces maps for printing on letter-sized (8.5" x 11") paper.  When these macro scripts are run from the Arcplot prompt, they display their output in the graphical display window.  When these macro scripts are run from the Arc prompt, their output is written to an Encapsulated Postscript (.eps) file which can be sent to a printer or converted to other file formats.</P>
+<P>The two AMLs can be used with the same frames and themes and share a common program structure.  In fact, much of the processing controlled by these scripts is performed in subroutine scripts which are called by both Regmap and Pagemap.  The main scripts <I>per se</I> are relatively short and consist of only six sections, which (1) locate the Theme and Key AMLs for the specified theme, (2) define the layout of the page for the specified frame, (3) invoke the Theme AML, (4) draw the map title, (5) invoke the Key AML to draw a map legend, and (6) close the output file.  The following schematic details the program flow through these six sections and the various subroutine scripts.</P>
+<P><IMG SRC="regmap16.gif"></P>
+<P ALIGN="CENTER"><HR></P>
+<B><P>Regmap.aml</P>
+<I><P>Purpose:</B></I>  controls the production of poster-sized maps of macroregional systems and other areas.</P>
+<B><I><P>Arguments:</P>
+</B></I><P>&lt;Region&gt; specifies the name or number of a geographic area, or <I>frame</I>.</P>
+<P>Numeric frames indicate areas within China which are defined as polygons in one of several index coverages stored in $CHINA/carto:</P>
+<P>1 digit  =  a macroregion (0..9) from coverage index-mr</P>
+<P>2 digits = a province (11..72) from coverage index-pr</P>
+<P>4 digits = a hydrography map tile (6949..7752) from coverage index-hy</P>
+<P>6 digits = a county (MQ unit) (110101..720000) from $CHINA/po/china-a</P>
+<P>.... Multiple numeric frames having the same number of digits can be specified, separated by plus (+) signs and without spaces.  The resulting map will include all of the specified polygons.</P>
+<P>Named frames indicate areas which are defined in an AML script of the same name stored in $AML/frames.  Frame AMLs set the map title, projection, and coordinates of the map extent.  Any number of named frames can be created for use with Regmap.aml</P>
+<P>&lt;Theme&gt; specifies the name of a cartographic <I>theme</I>.  An AML script named either Theme-&lt;theme&gt;.aml or T-&lt;theme&gt;.aml must be found in the current working directory.  Theme macros control the appearance of geographic features within the map window.  In addition, an AML script named either Key-&lt;theme&gt;.aml or K-&lt;theme&gt;.aml must also exist in the current working directory.  Key macros control the appearance of the map legend.</P>
+<P>{Theme_parameters}  Optional parameters will be passed to the theme and key macros.</P>
+<B><I><P>Preconditions:</B></I>  May be run from either the Arc or Arcplot prompts.  If run from Arcplot, a graphical display device is required.  Some themes may impose other preconditions (e.g., for drawing text with Chinese language fonts).</P>
+<B><I><P>Global variables set:</P>
+</B></I><P>.quitwhendone is .TRUE. if the macro is started from Arc, .FALSE. if from Arcplot.</P>
+<B><I><P>Postconditions:</B></I>  A map is created on the display screen (if started from Arcplot) or in an Encapsulated Postscript file (if started from Arc).  In the latter case, the output file is named &lt;region&gt;&lt;theme&gt;.eps.</P>
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><HR></P>
+<B><P>RegSetup.aml</P>
+<I><P>Purpose:</B></I> Sets up display output for Regmap.aml</P>
+<B><I><P>Arguments:</P>
+</B></I><P>&lt;Region&gt;  (see Regmap)</P>
+<B><I><P>Preconditions:</B> </I>Starts in Arcplot with display device (e.g. 9999 or 1040 2) already set.</P>
+<B><I><P>Global variables set:</P>
+</B></I><P>.setupokay  indicates whether the macro completed with no errors.</P>
+<P>.defaultmapscale  (scale denominator) is initially set to 1,000,000 but may be reset by frame macros.</P>
+<P>.topoffset (white area below the top of the page) is initially set to 1.0 but may be reset by frame macros.</P>
+<P>.titlebox defines the dimensions of a box in which the map title will be drawn by Regmap.</P>
+<P>.legendbox defines the dimension of a box in which the map keys will be drawn by Regmap.</P>
+<B><I><P>Postconditions:</B> </I> Page layout settings have been executed.  .setupokay is .TRUE.</P>
+<B><I><P>Bugs:</B></I>  Certain page frame settings are made in this macro which would more logically be made in the frame macros (e.g., customized leftoffset, .topoffset, and mapright settings which are changed for certain regions).</P>
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><HR></P>
+<B><P>AP_or_EP.aml</P>
+<I><P>Purpose:</B></I>  Set the display device for an Arcplot session.  If Arcplot is already started, invoke DISP 9999 for an X-Windows graphical display window.  If Arcplot is not already started (that is, the program is invoked from the Arc prompt), start Arcplot and open an Encapsulated Postscript (.eps) file to capture graphical output.</P>
+<B><I><P>Arguments:</P>
+</B></I><P>&lt;Output_filename&gt;.eps will be the name of the output file if this program is started from the Arc prompt.  An existing file of that name will be overwritten.</P>
+<B><I><P>Preconditions:</B> </I> If this program is started from the Arcplot prompt, it must be running on a terminal session which has X-Windows graphical display capabilities.</P>
+<B><I><P>Global variables set:</P>
+</B></I><P>.quitwhendone is .TRUE. if started from Arc, .FALSE. if started from Arcplot.  (If .TRUE., this indicates that output is being written to an .eps file which can be closed by quitting Arcplot.)</P>
+<B><I><P>Postconditions:</B> </I> Arcplot is started, .quitwhendone is set, and display is directed as described here.</P>
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><HR></P>
+<B><P>ChinaRegionSetup.aml</P>
+<I><P>Purpose:</B></I> Sets the map extent, scale, projection, and title for numbered regions of China (macroregions, provinces, 4x6 degree hydrography tiles, or counties).</P>
+<B><I><P>Arguments:</P>
+</B></I><P>&lt;Region&gt;  (see Regmap)</P>
+<B><I><P>Preconditions:</B> </I>Requires Arcplot session.<I> </I> Requires read access to index coverages in $CHINA/carto.</P>
+<B><I><P>Global variables set:</P>
+</B></I><P>.maptitle  will contain the geographic portion of the map title (e.g., Sichuan Province, Beijing Municipality, etc.).  This variable can be modified by a Theme macro, which may add a descriptive portion (e.g., Rivers, Central Places 1990, etc.) separated from the geographic portion by a backslash (\).  Regmap and Pagemap will draw this text on the maps after the Theme macro has completed.</P>
+<B><I><P>Postconditions:</B> </I><B> </B>Map extent, scale, and projection are set.  .maptitle is not null.</P>
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><HR></P>
+<B><P>GetFrame.aml</P>
+<I><P>Purpose:</B></I> Finds and executes a Frame macro (named $AML/frames/&lt;region&gt;.aml), which sets the map extent, scale, projection, and title for any defined geographic area.</P>
+<B><I><P>Arguments:</P>
+</B></I><P>&lt;Region&gt;  (see Regmap)</P>
+<B><I><P>Preconditions:</B> </I><B>  </B>Requires Arcplot session.  Requires read access to Frame macros in $AML/frames.</P>
+<B><I><P>Global variables set:</P>
+</B></I><P>.maptitle (See ChinaRegionSetup.aml)</P>
+<B><I><P>Postconditions:</B> </I><B> </B>Map extent, scale, and projection are set.  .maptitle is not null.</P>
+<hr>
+<a href="http://qing.ucdavis.edu/">qing.ucdavis.edu</a>
+</BODY>
+</HTML>

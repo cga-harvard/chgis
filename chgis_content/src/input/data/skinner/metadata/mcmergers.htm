@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>mcmergers</TITLE>
+<META NAME="Version" CONTENT="8.0.3410">
+<META NAME="Date" CONTENT="10/11/96">
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<H3>China-A County Boundaries Coverage:</H3>
+<H3>Managing Mergers and Splits of MQ, MC, and XT units.</H3>
+<FONT SIZE=2><P>The China-A Datafile (maintained in SAS) contains data for county-level units.  As a solution to the problem of areal aggregation (where, for example, some county boundaries may be tightly drawn around a major city, while other counties extend far into a comparable city's hinterlands), the China-A Datafile includes entries for units which have been aggregated for analytical purposes.  In fact, several orders of mergers and splits are included:  FD units (fully differentiated, as shown in the 1990 census); MQ units (merged <I>qu</I>), MC units (municipal-compatible, used for most analyses), RS units (split along the boundaries of regional systems), and XT units (aggregated for cross-time comparison with 1982 and 1985 data in the ChinaZ Datafile).  The unit-control variable a981 indicates to which of these orders a given unit belongs.  Two additional variables indicate to which MQ-order unit each FD unit is assigned and to which MC-order unit each MQ unit is assigned.</P>
+<P>The </FONT><A HREF="../china/po_chinaa.htm">China-A coverage</A><FONT SIZE=2> (maintained in Arc/Info GIS) contains all lines which form the boundaries of county-level units at the order of MQ, MC, or XT mergers.  Each of these orders is implemented as an Arc/Info Region subclass.  The region subclasses are created by the program <B>RebuildChina-A.aml</B>.  Data for each order is stored in the appropriate subclass PAT; the polygon PAT contains only the ID numbers of the MQ units--the most basic mapped units.  Three separate INFO tables (GISMQMC.DAT, GISMCXT.DAT, and GISAZXT.DAT) are used to indicate to which MC-order unit each MQ unit is assigned, to which XT-order unit each MC unit is assigned, and the ChinaZ equivalent of the ChinaA XT-order unit.</P>
+<P> (We have not attempted to map ChinaA FD units separately, since the metropolitan FD units merged to form MQ units are often too small to be distinguished at our nominal mapping scale of 1:1,000,000.  RS units can be created dynamically by our GIS by overlaying the China-A coverage with the regional systems coverage, RCS.) </P>
+<P>On occasion it is found necessary to create a new MQ or MC merger, or to split an old MQ or MC merger.  The examples here provide methods for accomplishing these mergers or splits while maintaining the integrity of the China-A coverage and its MQ, MC, and XT region subclasses.</P>
+<B><P>Merging MQ units 119901 and 119921 to form MC unit 119951</P>
+<OL>
+
+</B><LI>In INFO, select the table GISMQMC.DAT, then reselect the records for these MQ units which are to be merged (</FONT><CODE>RESEL A1MQ = 119901 OR A1MQ = 119921</CODE><FONT SIZE=2>).  Then reset their MC assignment to the new MC unit number (</FONT><CODE>CALC A1MC = 119951</CODE><FONT SIZE=2>).</LI>
+<LI>Select the table GISMCXT.DAT, then reselect the records for the old MQ units. (</FONT><CODE>RESEL A1MC = 119901 OR A1MC = 119921</CODE><FONT SIZE=2>).  (Since these units were not previously part of an MC merger, their A1MC ID's were the same as their A1MQ ID's.)  Make a note of these units' A1XT assignments (both should have the same A1XT--if not, an XT merger is also required).  Then delete these records (</FONT><CODE>PURGE</CODE><FONT SIZE=2>).</LI>
+<LI>Still in GISMCXT.DAT, add a new record for the new MC unit (</FONT><CODE>ADD</CODE><FONT SIZE=2>).  Set the A1XT value to the A1XT assignment of the just-deleted records.  Finally, sort the new record into the table (</FONT><CODE>ASEL; SORT ON A1MC</CODE><FONT SIZE=2>).</LI>
+<LI>In Arc, run RebuildChina-A.aml.</LI></OL>
+
+<B><P>Splitting MC unit 119951 (undoing the merger which created this MC unit)</P>
+<OL>
+
+</B><LI>In INFO, select the table GISMQMC.DAT, then reselect the records for those MQ units which are no longer to be part of an MC merger (</FONT><CODE>RESEL A1MC = 119951</CODE><FONT SIZE=2>).  Then reset their MC assignment to be the same as their MQ assignments (</FONT><CODE>CALC A1MQ = A1MC</CODE><FONT SIZE=2>).</LI>
+<LI>Select the table GISMQMC.DAT, then reselect the record for the MC unit which is being dissolved (</FONT><CODE>RESEL A1MC = 119951</CODE><FONT SIZE=2>).  Make a note of this unit's A1XT assignment, then delete this record (</FONT><CODE>PURGE</CODE><FONT SIZE=2>).</LI>
+<LI>Still in GISMCXT.DAT, add new records for the MQ units which are no longer to be part of an MC merger (</FONT><CODE>ADD</CODE><FONT SIZE=2>).  Set A1MC to the A1MQ numbers used in GISMQMC.DAT; set A1XT to the value of the A1XT assignment of the just-deleted record.  Finally, sort the new record into the table (</FONT><CODE>ASEL; SORT ON A1MC</CODE><FONT SIZE=2>).</LI>
+<LI>In Arc, run RebuildChina-A.aml. </LI></OL>
+
+<B><P>Merging MC units into XT units</P>
+</B><P>If a single MQ-MC merger affects more than one XT unit, an XT merger will also be required.  XT units are the smallest possible units for which boundaries are the same according to the ChinaZ and ChinaA MC-order mergers.  Making an XT merger requires assigning a new A1XT value to all affected MC units in the GISMCXT.DAT table, and updating the GISAZXT.DAT table accordingly.</P>
+<B><P>Merging or splitting an MQ unit</P>
+</B><P>To create a new MQ unit, either by splitting a single MQ unit or by combining current MQ units into a single MQ unit, requires editing the polygons of the China-A coverage itself.  When combining MQ unit, simply edit the A1MQ values in the polygon attribute table entries of each affected polygon--<I>do not delete any lines from the coverage, as they may be required for other purposes.</I>  When splitting a single MQ unit, it will be necessary to add lines and polygon label points to the coverage.  In both cases, after editing the China-A polygons, add or change entries in the GISMQMC.DAT and GISMCXT.DAT files and then run RebuildChina-A.aml.</P>
+</FONT><P ALIGN="CENTER"><HR></P>
+<I><FONT SIZE=1><P>Revised July 27, 1998, Mark Henderson.  http://qing.ucdavis.edu/gis/support/mcmergers.htm.</P></I></FONT></BODY>
+</HTML>

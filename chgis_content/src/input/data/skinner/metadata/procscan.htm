@@ -1,0 +1,315 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05C-SGI [en] (X11; I; IRIX 6.3 IP32) [Netscape]">
+   <TITLE>GIS Procedures and Support Files</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#C0C0C0" LINK="#0000FF" VLINK="#551A8B" ALINK="#FF0000">
+&nbsp;
+<TABLE WIDTH="100%" >
+<TR>
+<TD VALIGN=TOP COLSPAN="5" WIDTH="20%" BGCOLOR="#000000"><FONT COLOR="#FFFFFF"><FONT SIZE=-1>U.C.
+Davis Department of Anthropology</FONT></FONT>&nbsp;
+
+<P><FONT COLOR="#FFFFFF"><FONT SIZE=-1>G.W. Skinner Research Team <BLINK>*</BLINK>
+Geographic Information Systems&nbsp;</FONT></FONT></TD>
+</TR>
+
+<TR BGCOLOR="#000000">
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH="20%" BGCOLOR="#CCE6FF"><A HREF="index.htm">Index</A></TD>
+
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH="20%" BGCOLOR="#FFE6CC"><A HREF="china.htm">China</A></TD>
+
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH="20%" BGCOLOR="#66B3FF"><A HREF="france.htm">France</A></TD>
+
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH="20%" BGCOLOR="#FFCCCC"><A HREF="japan.htm">Japan</A></TD>
+
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH="20%" BGCOLOR="#C0C0C0"><A HREF="support.htm">Support</A></TD>
+</TR>
+</TABLE>
+&nbsp;
+<H3>
+<A NAME="top"></A>Procedures for Scanning, Georeferencing, and Vectorization</H3>
+
+<HR>
+
+<P>1.&nbsp; <A HREF="#scanning">Scan</A> a&nbsp; manuscript after tracing
+to produce a TIFF image.
+<DL>&nbsp;
+<DT>
+2. Convert TIFF image file to arcs</DT>
+
+<DD>
+Arc: <B>imageline</B></DD>
+
+<DD>
+!Usage: IMAGELINE &lt;image> {1st tile number} {last tile number}</DD>
+
+<DD>
+arc: <B>IMAGELINE tile 3 5</B></DD>
+
+<DD>
+This will convert tile3.tif, tile4.tif, and tile5.tif to vector coverages
+tile3_1,&nbsp; tile4_1, tile5_1. If you exclude the tile numbers, then
+this will convert just one image.</DD>
+
+<DD>
+arc: <B>IMAGELINE singleimage</B> will convert singleimage.tif to a coverage
+named singleimage_1.</DD>
+
+<BR>&nbsp;
+<BR>&nbsp;
+<DT>
+3. Modify tics; Add label points; Clean up dangles, extend and patch holes
+using the <A HREF="#editing">EDITING</A> program</DT>
+
+<DD>
+Arcedit:<B> &amp;station 9999</B></DD>
+
+<DD>
+Arcedit: <B>editing</B></DD>
+
+<DD>
+!!Usage: EDITING &lt;cover> {load step #} {save step #} {1st tile number}
+{last tile number}</DD>
+
+<DD>
+Arcedit: <B>EDITING</B> <B>tile 1 2 3 5</B></DD>
+
+<DD>
+Using the output of step 2, this will edit the three coverages tile3_1,
+tile4_1, and tile5_1 and then save them as tile3_2, tile4_2, tile5_2.</DD>
+
+<DD>
+arc: <B>EDITING singleimage 1 2</B> will edit the coverage singleimage_1
+and save it as singleimage_2</DD>
+
+<DD>
+NOTE: STEP NUMBER represents the processing sequence number, which is preceeded
+by an underscore(_). Normally use a 1 for &lt;load step number> to begin
+editing and add one to this number for the {save step number}.</DD>
+
+<DL>&nbsp;</DL>
+
+<DT>
+4. Obtain&nbsp; or create Tic coverage (&lt;tic_coverage>)</DT>
+
+<DL>
+<DT>
+The tic coverage must the proper projection and contain the tics that are
+marked on the manuscript sheet(s).</DT>
+
+<DT>
+See UGIS chapter 7 for more information.</DT>
+</DL>
+
+<DT>
+</DT>
+
+<DT>
+5. <A HREF="#georeferencing">Georeference</A> to create &lt;cover(#)_3>
+.</DT>
+
+<DT>
+</DT>
+
+<DT>
+6. APPEND, PUT, or GET coverages, if necessary.</DT>
+
+<DL>
+<DT>
+Add your recent updates to previous work on a coverage, or combine seperate
+tiles into one coverage.&nbsp; Note that this may have been completed already
+in step 5.</DT>
+</DL>
+
+<DT>
+</DT>
+
+<DT>
+7. Fix gaps and overlaps where the tiles have been joined together using
+the <A HREF="#editing">EDITING</A> program</DT>
+
+
+<P>
+<HR>
+<BR>
+<HR>
+
+<P><A NAME="scanning"></A><B><FONT SIZE=+1>Scanning</FONT></B>
+<BR>&nbsp;
+<DT>
+Prepare the Manuscript for Scanning</DT>
+
+<DD>
+Write the date on the manuscript</DD>
+
+<DD>
+With a pencil or very thin pen, retrace faint linework</DD>
+
+<DD>
+Identify at least 4 registration points (tics) which also exist in the
+GIS</DD>
+
+<DL>
+<DD>
+(If tics don't already exist in the GIS, create them now)</DD>
+</DL>
+
+<DD>
+Mark the Tic-ID numbers on the manuscript</DD>
+
+<BR>&nbsp;
+<BR>&nbsp;
+<DT>
+Scan the manuscript</DT>
+
+<DD>
+Login on Rodin then move to the appropriate directory</DD>
+
+<DD>
+Start CIS (rodin% <B>cis</B>)</DD>
+
+<DD>
+Double click on FILE to set the path; type the filename.</DD>
+
+<DL>
+<DD>
+If you are scanning multiple tiles, include a sequential tile number in
+the names, i.e.tile1.tif, tile2.tif, tile#.tif etc.(In these instructions,
+(#) indicates the optional tile number).</DD>
+</DL>
+
+<DD>
+Set the Scanwidth</DD>
+
+<DD>
+The scanned image should be in TIFF (.tif) format.</DD>
+
+<DD>
+REVERSE the image by pushing the SPECIAL button then the appropriate toggle.</DD>
+
+<DD>
+Scanning threshold should be approximately 105 - 128 (lower numbers for
+more sensitivity).</DD>
+
+<DD>
+Insert manuscript into scanner and Scan.</DD>
+
+<DD>
+Readjust threshold until the best results are obtained, then re-scan the
+manuscript.</DD>
+</DL>
+<A HREF="#top">return</A>
+<DL>
+<HR><B><FONT SIZE=+1></FONT></B>
+
+<P><A NAME="editing"></A><B><FONT SIZE=+1>Editing</FONT></B>
+<DL>&nbsp;</DL>
+Use the EDITING program to repair the newly created vector coverage.
+<BR>&nbsp;
+<DL>Edit Tics
+<DL>Delete all of the tics that were created by default.&nbsp; Replace
+these with tics that have a coresponding TIC-ID in the Tic Coverage.</DL>
+Edit Arcs
+<DL>Add arc to bridge undesireable gaps.&nbsp; Delete any unwanted arcs.&nbsp;
+There are may tools available in this menu.&nbsp; More documentation to
+be added.</DL>
+Edit Labels
+<DL>If this will be a polygon coverage, add labels with appropriate ID.&nbsp;
+For example _add new item_ and call it COUNTY-ID.&nbsp; Then chose COUNTY-ID&nbsp;item
+any time that you are editing the labels of this coverage.&nbsp; The item
+attributes must match those of the coverages to which the current coverage
+will be added.</DL>
+Arc Attributes
+<DL>Use this to add and edit the ID's for a line coverage.&nbsp; This is
+similar to edit labels, but useful for coverages such as roads and rivers.</DL>
+</DL>
+</DL>
+<A HREF="#top">return</A>
+<BR><A HREF="#top"></A>&nbsp;<A HREF="#top"></A>
+
+<P>
+<HR>
+
+<P><A NAME="georeferencing"></A><B><FONT SIZE=+1>Georeferencing</FONT></B>
+<DL>
+<DT>
+Method 1: TRANSFORM</DT>
+
+<DL>
+<DT>
+<B>create</B> &lt;new coverage> &lt;tic_coverage></DT>
+
+<DT>
+<B>transform</B> &lt;old coverage> &lt;new coverage></DT>
+
+<DT>
+<B>projectcopy cover</B> &lt;tic_coverage> <B>cover</B> &lt;new_coverage></DT>
+
+<DT>
+(see UGIS chapter 7 for details.&nbsp; Especially useful is the diagram
+on page 7-56)</DT>
+
+<DT>
+</DT>
+</DL>
+
+<DT>
+Method 2:</DT>
+
+<DL>
+<DT>
+arc: <B>&amp;r&nbsp; registerchina</B></DT>
+
+<DT>
+!Usage:&nbsp;&nbsp; registerchina &lt;Coverage prefix> &lt;Input version#>
+&lt;Output version#></DT>
+
+<DT>
+!Example: <B>&amp;r registerchina R23&nbsp; 2&nbsp; 3</B>&nbsp;&nbsp; ...looks
+for R23_2, saves as R23_3</DT>
+
+<DT>
+Automatically finds the tic coverage and preforms the transformation for
+any work on G.W. Skinner's China coverages.</DT>
+</DL>
+
+<DT>
+</DT>
+
+<DT>
+Method 3:</DT>
+
+<DL>
+<DT>
+arc: <B>transappend</B></DT>
+
+<DT>
+!Usage TRANSAPPEND &lt;cover> &lt;load step #> &lt;1st tile number></DT>
+
+<DT>
+&lt;last tile number> &lt;transform cover></DT>
+
+<DT>
+&lt;output append coverage name> {logical expression}</DT>
+
+<DT>
+arc: <B>TRANSAPPEND tile 2 3 5 ticcover joined_cover</B></DT>
+
+<DT>
+Tansforms and joins tile3_2, tile4_2, and tile5_2 into a single coverage.&nbsp;
+'ticcover' is used for the transformation and must be in the appropriate
+projection and have TIC-IDs that match the TIC-IDs of the seperate tiles.</DT>
+
+<DT>
+</DT>
+</DL>
+
+<DT>
+<A HREF="#top">return</A></DT>
+</DL>
+
+<HR>
+</BODY>
+</HTML>

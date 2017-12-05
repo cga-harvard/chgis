@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>GIS Procedures and Support Files</title>
+</head>
+<body text="#000000" link="#0000ff" vlink="#551a8b" alink="#ff0000" bgcolor="#c0c0c0">
+
+<p><table width="100%">
+
+<p><tr>
+
+<p><td colspan="5" valign="top" width="20%" bgcolor="#000000">
+
+<p><font size="-1" color="#ffffff">
+
+<p>U.C. Davis Department of Anthropology<br>
+
+<p>G.W. Skinner Research Team <blink>*</blink> Geographic Information Systems
+
+<p></font>
+
+<p></td></tr>
+
+<p><tr bgcolor="#000000">
+
+<p><td align="right" valign="top" width="20%" bgcolor="#cce6ff"><a
+href="index.htm">Index</a></td>
+
+<p><td align="right" valign="top" width="20%" bgcolor="#ffe6cc"><a
+href="china.htm">China</a></td>
+
+<p><td align="right" valign="top" width="20%" bgcolor="#66b3ff"><a
+href="france.htm">France</a></td>
+
+<p><td align="right" valign="top" width="20%" bgcolor="#ffcccc"><a
+href="japan.htm">Japan</a></td>
+
+<p><td align="right" valign="top" width="20%" bgcolor="#c0c0c0"><a
+href="support.htm">Support</a></td></tr>
+
+<p></table>
+
+<br wp="br1"><br wp="br2"><h3>Procedures for Scanning, Georeferencing, and Vectorization</h3>
+
+<p><hr>
+
+<br wp="br1"><br wp="br2">
+<p><font size="+1"><strong>Scanning</strong></font>
+
+<dl>
+  <dt>Prepare the Manuscript for Scanning</dt>
+    <dd>Write the date on the manuscript</dd>
+    <dd>With a pencil or very thin pen, retrace faint linework</dd>
+    <dd>Identify at least 4 registration points (tics) which also exist in the GIS</dd>
+    <dl>
+      <dd>(If tics don't already exist in the GIS, create them now)</dd>
+    </dl>
+    <dd>Mark the Tic-ID numbers on the manuscript</dd>
+
+<br wp="br1"><br wp="br2">  <dt>Scan the manuscript</dt>
+    <dd>Instructions for operating the scanner and Cadcore software are provided in a binder in
+the Visualization Lab</dd>
+    <dd>The scanned image should be in TIFF3 (.tf3) format.</dd>
+    <dd>Scanning threshold should be approximately 100.</dd>
+
+<br wp="br1"><br wp="br2">  <dt>Transfer the scanned image to the GIS workstations</dt>
+    <dd>Change the image file name's extension from .tf3 to .tif</dd>
+    <dd>FTP the file to a workstation</dd>
+    <dd>After verifying the file on the workstation, delete the file from the scanning PC</dd>
+</dl>
+
+<p><hr>
+
+<p><strong><font size="+1">Georeferencing</strong></font>
+
+<p><em>Note: it is best to georeference coverages <strong>after</strong> vectorizing.</em>
+
+<dl>
+  <dt>Method 1: REGISTER</dt>
+    <dd>register &lt;.tif file&gt; &lt;tic_coverage&gt; # # # # # ALL</dd>
+
+<br wp="br1"><br wp="br2">  <dt>Method 2: TRANSFORM</dt>
+    <dd>create &lt;new coverage&gt; &lt;tic_coverage&gt;</dd>
+    <dd>transform &lt;old coverage&gt; &lt;new coverage&gt;</dd>
+    <dd>projectcopy cover &lt;tic_coverage&gt; cover &lt;new_coverage&gt;</dd>
+</dl>
+
+<p><hr>
+
+<p><strong><font size="+1">Vectorizing</font></strong>
+
+<dl>
+  <dt>1. Obtain image file (&lt;image&gt;.tif) and Tic coverage (&lt;tic_coverage&gt;)</dt>
+
+<br wp="br1"><br wp="br2">  <dt>2. Convert image file to GRID</dt>
+    <dd>imagegrid &lt;image&gt;.tif &lt;cover1&gt;</dd>
+
+<br wp="br1"><br wp="br2">  <dt>3. Convert GRID to line coverage</dt>
+    <dd>gridline &lt;cover1&gt; &lt;cover2&gt; # # filter round, # 0.06 0.06</dd>
+    <dd>Arcedit &lt;cover2&gt;</dd>
+    <dl>
+      <dd>Add Tics to match &lt;tic_cover&gt;</dd>
+      <dd>Delete arcs which are used only for tics</dd>
+      <dd>Save as &lt;cover3&gt;</dd>
+
+<br wp="br1"><br wp="br2">    </dl>
+  <dt>4. Clean up dangles, extend and patch holes</dt>
+    <dd>Arcedit &lt;cover3&gt;</dd>
+    <dl>
+      <dd>Use SNAPON.AML settings: intersectarcs all, snapc [show ec], snapf node node,
+snapping closest *</dd>
+      <dd>Sel Dangle; extend</dd>
+      <dd>Sel box; resel dangle; ds; unsel many (valid ends); delete</dd>
+      <dd>Add (between dangles on valid arcs)</dd>
+      <dd>Save often</dd>
+      <dd>Create SOURCE item; set SOURCE value for original arcs</dd>
+
+<br wp="br1"><br wp="br2">    </dl>
+  <dt>5. Georeference to create &lt;cover4&gt; (see TRANSFORM procedure above)</dt>
+
+<br wp="br1"><br wp="br2">  <dt>6. Get boundary lines (e.g., coastlines) from other georeferenced coverages</dt>
+    <dd>Arcedit &lt;other_coverage&gt;</dd>
+    <dl>
+      <dd>Put &lt;cover4&gt;</dd>
+      <dd>Removeedit &lt;other_coverage&gt;</dd>
+    </dl>
+    <dd>Arcedit &lt;cover4&gt;</dd>
+    <dl>
+      <dd>Use SNAPON.AML settings</dd>
+      <dd>Move parallel 0</dd>
+      <dd>Set SOURCE value for arcs from &lt;over_coverage&gt;</dd>
+      <dd>Ensure that all polygons are closed</dd>
+      <dd>Set SOURCE value for arcs digitized on screen</dd>
+
+<br wp="br1"><br wp="br2">    </dl>
+  <dt>7. Generate topology</dt>
+    <dd>Clean &lt;cover4&gt; &lt;cover5&gt;</dd>
+
+<br wp="br1"><br wp="br2">  <dt>8. Generalize and eliminate erroneous polygons</dt>
+    <dd>Arcedit &lt;cover5&gt;</dd>
+    <dl>
+      <dd>reselect (SOURCE not from &lt;other_coverage&gt;</dd>
+      <dd>generalize</dd>
+      <dd>unsplit</dd>
+      <dd>fix any new dangles</dd>
+      <dd>editfeature polygon</dd>
+      <dd>list (look for AREA of smallest valid polygon)</dd>
+      <dd>resel area &gt; 0 and area &lt; (smallest valid polygon)</dd>
+      <dd>delete</dd>
+      <dd>save &lt;cover6&gt;</dd>
+
+<br wp="br1"><br wp="br2">    </dl>
+  <dt>9. Createlabels &lt;cover6&gt;</dt>
+
+<br wp="br1"><br wp="br2">  <dt>10.  Assign values to polygons</dt>
+    <dd>Arcplot</dd>
+    <dl>
+      <dd>&amp;Run Setzones.aml</dd>
+    </dl>
+</dl>
+
+<p><hr>
+
+</body>
+</html>

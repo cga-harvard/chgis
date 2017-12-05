@@ -1,0 +1,144 @@
+<html>
+ <head>
+  <meta charset="utf8">
+    <title>Intro to CHGIS</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Chinese geospatial data, historical GIS, chinese geographic information systems">
+        <meta name="author" content="CHGIS">
+        <!-- core JS -->
+        <script src="../../assets/bootstrap/js/jquery.min.js"></script>
+        <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>    
+        <!-- Bootstrap core CSS -->
+        <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <!-- chgis custom CSS must appear AFTER bootstrap-->
+        <link href="../../assets/css/chgis_2016.css" type="text/css" rel="stylesheet">    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.hover-link').mouseenter(function() {
+          $('img.hover-image').remove();
+          $(this).append('<img class="hover-image" src="' + $(this).attr('data-hover-image') + '"/>')
+        }).mouseleave(function() {
+          $('img.hover-image').remove();
+        })
+      })
+    </script>
+ </head>
+<body>
+   <!-- navbar -->
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-xs" href="../../">China Historical GIS</a>
+            <a class="navbar-brand visible-xs" href="../../">CHGIS</a>
+         </div>
+         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+   
+   
+              <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="../../pages/intro">Intro</a></li>
+                   <li><a href="../../pages/history">Project History</a></li>
+                   <li><a href="../../pages/members">Team Members</a></li>
+                   <li><a href="../../pages/meetings">Meetings and Workshops</a></li>
+                   <li><a href="../../pages/database">Database Design</a></li>
+                   <li><a href="../../pages/howto">How To Use</a></li>
+                 </ul>
+               </li>
+               <li><a href="../../pages/contact">Contact</a></li> 
+               <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="../../data/chgis">CHGIS</a></li>
+                   <li><a href="../../data/hartwell">Hartwell</a></li>
+                   <li><a href="../../data/japan">Japan</a></li>
+                   <li><a href="../../data/russian_maps">Russian Maps</a></li>
+                   <li><a href="../../data/skinner">Skinner</a></li>
+                   <li><a href="../../data/other">Other datasets</a></li>
+                 </ul>
+               </li>
+               <li><a href="../../gazetteer/">Gazetteers</a></li>
+               <li><a href="../../maps/">Maps</a></li>
+               <li><a href="../../papers/">Papers</a></li>
+               <li><a href="../../tools/">Tools</a></li>
+            </ul>
+         </div>
+         <!--/.navbar-collapse -->
+      </div>
+   </div> 
+   <!-- /navbar -->   <div class="main-scroll-top"><img src="../../assets/graf/qinshuiroads_loc_sm.jpg"  title="Qing Map Scroll, src: LOC https://goo.gl/77fGNF" width=100%></div>
+ <div id="wrap">
+    <article>
+    <div class="chunk">
+<strong>The China Historical Geographic Information System, <b>CHGIS</b>, project was launched in January 2001 to establish a database of populated places and historical administrative units for the period of Chinese history between <i>221 BCE</i> and <i>1911 CE</i></strong>.<br>
+CHGIS provides a base <a href="http://gisgeography.com/what-gis-geographic-information-systems/"> GIS</a>  platform for researchers to use in spatial analysis, temporal statistical modeling, and representation of selected historical units as digital maps. 
+
+<p>
+The CHGIS project has received major funding from:
+<ul>
+<li><a href="http://www.hluce.org">Henry Luce Foundation</a></li>
+<li><a href="http://www.neh.gov">National Endowment for the Humanities</a></li>
+</ul>
+and additional assistance from:
+<ul>
+<li><a href="http://fairbank.fas.harvard.edu">Harvard Fairbank Center for Chinese Studies</a></li>
+<li><a href="http://www.harvard-yenching.org/">Harvard Yenching Institute</a></li>
+<li><a href="http://asiacenter.harvard.edu">Harvard Asia Center</a></li>
+</ul>
+
+<p> The participating institutions have joined together to form CHGIS in order to create a new digital product for free distribution to scholars without restriction. The result is a no-cost GIS platform for use in teaching, research, and publications.
+
+<p>CHGIS users may obtain the data from the main project website at <a href="http://yugong.fudan.edu.cn/">Fudan University</a> or from the <a href="https://dataverse.harvard.edu/dataverse/chgis">DataVerse Repository</a> at Harvard University..
+
+<p>There have been six versions of CHGIS data released between (2002 - 2016), providing base coverage of the so-called core provinces of Dynastic China:  Anhui, Fujian, Gansu, Guangdong, Guangxi, Hainan, Hebei, Henan, Heilongjiang, Hubei, Hunan, Jiangsu, Jiangxi, Jilin, Liaoning, Ningxia, Shandong, Shaanxi, Shanxi, Sichuan, Yunnan, Zhejiang.<br>
+<p>The following provinces lie <b>outside the scope of the current project for Time Series data:  Neimeng, Qinghai, Xinjiang, and Xizang</b> (though they can be found in the Time Slice datasets, in particular the 1911 layers).
+
+<p>The CHGIS project has been working backwards from county basemaps for the year 1911, to create a <b>continuous time series</b> of records that track changes in placename, administrative status, and geographic locations.  It should be noted that the data for the year <i>1911 CE</i> is <a href="howto/time_slice.html"> time slice </a> valid for a single year, and the content overlaps the <a href="howto/time_series.html"> time series</a> data.<br>
+<p>The main objective of the CHGIS project is to create a flexible tool, in the form of a documented database of places and adminstrative units, which can be used to investigate any  sort of geographically specific data related to China.  The unique ID numbers for each of the CHGIS temporal instance records can be used as geocodes in relational databases, or to mark up texts, enabling users to import their own datasets into the CHGIS platform.  Users will be able to associate their own data with CHGIS records, and then use the CHGIS database to sort, query, and display their data for different historical periods and at different levels of aggregation.
+
+<p><i>Applications</i><p>
+
+The CHGIS project is designed to provide a GIS platform for scholarly and scientific research.    The advantage of creating the CHGIS, rather than printing paper maps, is that the contents can be modified, improved, or annotated by the user for their own purposes.
+<p>
+Having downloaded the CHGIS datasets, the user can search the database for administrative units and capitals for any given time in Chinese history, can create customized digital maps for particular times and places, or can join their own datasets for spatial analysis, thematic mapping, or other specialized statistical modeling according to their own interests.   Also included in the datasets are layers for historical coastlines, major rivers, and generalized elevations.<br>
+<p>The typical method of using the CHGIS datasets can be described in steps:
+<ul><li>Querying particular data layers for a specific period, area, and features of interest</li>
+<li>export the selection into a new layer for analysis or cartography</li>
+<li>perform spatial analysis, joins, or other editing processes on the new layer</li>
+<li>overlay the results of the analysis or modifications onto CHGIS base layers</li>
+<li>export the results as digital maps, data layers, or geodatabases for further use.</li>
+</ul>
+
+<p>Users of CHGIS are encouraged to share their own specialized datasets with the scholarly community.   One option for data sharing is <a href="http://worldmap.harvard.edu">WorldMap</a>, an open source GIS platform.   Examples of historical research using CHGIS data on WorldMap can be seen in these map projects:
+<ul><li><a href="https://worldmap.harvard.edu/maps/chinaX">ChinaX</a></li>
+<li><a href="https://worldmap.harvard.edu/maps/china-history">China&#39;s History in Maps</a></li>
+<li><a href="https://worldmap.harvard.edu/skinner/">G. W. Skinner Regional Systems</a></li>
+<li><a href="https://worldmap.harvard.edu/maps/tibet">TibetMap</a></li>
+</ul>
+
+<p>
+Suggestions for correction or amendments to the CHGIS historical content can be directed to the <a href="../contact/">CHGIS editors at Fudan University</a>.   If you have questions or requests related to the online gazetteer and machine-readable API system, please contact <a href="../contact/">Harvard CGA</a>.
+
+</div>
+    </article>
+ </div>
+
+        <div class="footer navbar-fixed-bottom">
+           <div class="text-center"><font size=-1>
+             <p>&copy; CHGIS 2001 - <script>document.write(new Date().getFullYear())</script>
+             &nbsp; &nbsp;  design: <a href="https://github.com/vajlex/chgis-fas-website" target="_new">Lex Berman</a></font>
+             </p>
+           </div>
+        </div>
+  </body>
+</html>

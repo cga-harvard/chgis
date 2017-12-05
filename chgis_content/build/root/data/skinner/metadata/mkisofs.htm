@@ -1,0 +1,780 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Manpage of MKISOFS</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<P>The page that follows is copied to this server for the convenience of local users. As UC Davis is not a redistribution point for this software, outside users should seek other sources for the most up-to-date information about this software. </P>
+<B><P>mkisofs</B> executable for Silicon Graphics IRIX 5.3 is <A HREF="mkisofs.zip">here</A> (25kb zipped) </P>
+<P><HR></P>
+<B><P>Sample usage (from UC Davis):</P>
+<PRE>$AML/mkisofs -o <I>output</I>.iso -lTrv <I>$CHINA/directorytobebackedup
+</B></I>
+</PRE>
+<P><HR></P>
+<PRE>
+</PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>MKISOFS</P>
+</FONT><P>&nbsp;</P>
+<P>Section: Maintenance Commands (8)<BR>
+Updated: 9 Apr 1997<BR>
+<A HREF="#index">Index</A></P>
+<P>&nbsp;</P>
+<P><HR></P>
+<P>&nbsp;</P>
+<P><A NAME="lbAB">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>NAME</P>
+</FONT><P>&nbsp;</P>
+<P>mkisofs - create a iso9660 filesystem with optional Rock Ridge attributes.</P>
+<P><A NAME="lbAC">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>SYNOPSIS</P>
+</FONT><P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>[<B>-a</P>
+</B><P>]</P>
+<P>[</P>
+<B><P>-b</P>
+</B><P>&nbsp;</P>
+<I><P>boot_image</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-c</P>
+</B><P>&nbsp;</P>
+<I><P>boot_catalog</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-A</P>
+</B><P>&nbsp;</P>
+<I><P>application_id</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-f</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-d</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-D</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-i</P>
+</B><P>&nbsp;</P>
+<I><P>include-list</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-l</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-L</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-L</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-p</P>
+</B><P>&nbsp;</P>
+<I><P>preparer</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-P</P>
+</B><P>&nbsp;</P>
+<I><P>publisher</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-r</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-R</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-T</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-v</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-V</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-V</P>
+</B><P>&nbsp;</P>
+<I><P>volid</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-x</P>
+</B><P>&nbsp;</P>
+<I><P>path</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-z</P>
+</B><P>&nbsp;</P>
+<P>]</P>
+<P>[</P>
+<B><P>-m</P>
+</B><P>&nbsp;</P>
+<I><P>glob</P>
+</I><P>&nbsp;</P>
+<P>]</P>
+<B><P>-o</P>
+</B><P>&nbsp;</P>
+<I><P>filename</P>
+</I><P>&nbsp;</P>
+<I><P>path</P>
+</I><P>&nbsp;</P>
+<P><A NAME="lbAD">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>DESCRIPTION</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>is effectively a pre-mastering program to generate the iso9660 filesystem - it</P>
+<P>takes a snapshot of a given directory tree, and generates a binary image which</P>
+<P>will correspond to an iso9660 filesystem when written to a block device.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>is also capable of generating the System Use Sharing Protocol records specified</P>
+<P>by the Rock Ridge Interchange Protocol.  This is used to further describe the</P>
+<P>files in the iso9660 filesystem to a unix host, and provides information such</P>
+<P>as longer filenames, uid/gid, posix permissions, and block and character</P>
+<P>devices.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Each file written to the iso9660 filesystem must have a filename in the 8.3</P>
+<P>format (8 characters, period, 3 characters, all upper case), even if Rock Ridge</P>
+<P>is in use.  This filename is used on systems that are not able to make use of</P>
+<P>the Rock Ridge extensions (such as MS-DOS), and each filename in each directory</P>
+<P>must be different from the other filenames in the same directory.</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>generally tries to form correct names by forcing the unix filename to upper</P>
+<P>case and truncating as required, but often times this yields unsatisfactory</P>
+<P>results when there are cases where the</P>
+<P>truncated names are not all unique.</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>assigns weightings to each filename, and if two names that are otherwise the</P>
+<P>same are found the name with the lower priority is renamed to have a 3 digit</P>
+<P>number as an extension (where the number is guaranteed to be unique).  An</P>
+<P>example of this would be the files foo.bar and</P>
+<P>foo.bar.~1~ - the file foo.bar.~1~ would be written as FOO.000;1 and the file</P>
+<P>foo.bar would be written as FOO.BAR;1</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Note that</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>is not designed to communicate with the writer directly.  Most writers</P>
+<P>have proprietary command sets which vary from one manufacturer to</P>
+<P>another, and you need a specialized tool to actually burn the disk.</P>
+<P>The</P>
+<B><P>cdwrite</P>
+</B><P>&nbsp;</P>
+<P>utility is one such tool that runs under Linux and performs this task.</P>
+<P>The latest version of</P>
+<B><P>cdwrite</P>
+</B><P>&nbsp;</P>
+<P>is capable of communicating with Phillips/IMS/Kodak, HP and Yamaha drives.</P>
+<P>Most writers come with some version of DOS software that allows a direct image</P>
+<P>copy of an iso9660 image to the writer.  The current version of</P>
+<B><P>cdwrite</P>
+</B><P>&nbsp;</P>
+<P>is available from sunsite.unc.edu: /utils/disk-management/cdwrite-2.0.tar.gz</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Also you should know that most cd writers are very particular about timing.</P>
+<P>Once you start to burn a disc, you cannot let their buffer empty before you</P>
+<P>are done, or you will end up with a corrupt disc.  Thus it is critical</P>
+<P>that you be able to maintain an uninterrupted data stream to the writer</P>
+<P>for the entire time that the disc is being written.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>path</P>
+</B><P>&nbsp;</P>
+<P>is the path of the directory tree to be copied into the iso9660 filesystem.</P>
+<P><A NAME="lbAE">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>OPTIONS</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-a</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Include all files on the iso9660 filesystem.  Normally files that contain the</P>
+<P>characters '~' or '#' will not be included (these are typically backup files</P>
+<P>for editors under unix).</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-A application_id</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies a text string that will be written into the volume header.</P>
+<P>This should describe the application that will be on the disc.  There</P>
+<P>is space on the disc for 128 characters of information.  This parameter can</P>
+<P>also be set in the file</P>
+<I><P>.mkisofsrc</P>
+</I><P>&nbsp;</P>
+<P>with APPI=id.</P>
+<P>If specified in both places, the command line version is used.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-b boot_image</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies the path and filename of the boot image to be used when making</P>
+<P>an "El Torito" bootable CD. The pathname must be relative to the source</P>
+<P>path specified to</P>
+<B><P>mkisofs.</P>
+</B><P>&nbsp;</P>
+<P>This option is required to make a bootable CD.</P>
+<P>The boot image must be exactly the size of either a 1.2, 1.44, or a 2.88</P>
+<P>meg floppy, and</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>will use this size when creating the output iso9660</P>
+<P>filesystem. It is assumed that the first 512 byte sector should be read</P>
+<P>from the boot image (it is essentially emulating a normal floppy drive).</P>
+<P>This will work, for example, if the boot image is a LILO based boot floppy.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-c boot_catalog</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies the path and filename of the boot catalog to be used when making</P>
+<P>an "El Torito" bootable CD. The pathname must be relative to the source</P>
+<P>path specified to</P>
+<B><P>mkisofs.</P>
+</B><P>&nbsp;</P>
+<P>This option is required to make a bootable CD.</P>
+<P>This file will be created by</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>in the source filesystem, so be</P>
+<P>sure the specified filename does not conflict with an existing file, as</P>
+<P>it will be quietly overwritten! Usually a name like "boot.catalog" is</P>
+<P>chosen.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-d</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Omit trailing period from files that do not have a period.  This violates the</P>
+<P>ISO9660 standard, but it happens to work on many systems.  Use with caution.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-D</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Do not use deep directory relocation, and instead just pack them in the</P>
+<P>way we see them.  This violates the ISO9660 standard, but it works on many</P>
+<P>systems.  Use with caution.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-f</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Follow symbolic links when generating the filesystem.  When this option is not</P>
+<P>in use, symbolic links will be entered using Rock Ridge if enabled, otherwise</P>
+<P>the file will be ignored.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-i include-list</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Use the specified file as a list of files to add to the directory tree.</P>
+<P>This is useful for quickly repacking a CD while adding files to it.</P>
+<P>The format of this file is path1/file=path2 where path1 is the directory</P>
+<P>in the ISO9660 file system where file should appear and path2 is the</P>
+<P>where to find the file.  NOTE: This option doesn't work well, and</P>
+<P>needs to be compltely redone so that integration with the rest of mkisofs</P>
+<P>is handled in a cleaner fashion.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-l</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Allow full 32 character filenames.  Normally the ISO9660 filename will be in an</P>
+<P>8.3 format which is compatible with MS-DOS, even though the ISO9660 standard</P>
+<P>allows filenames of up to 32 characters.  If you use this option, the disc may</P>
+<P>be difficult to use on a MS-DOS system, but this comes in handy on some other</P>
+<P>systems (such as the Amiga).  Use with caution.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-L</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Allow filenames to begin with a period.  Usually, a leading dot is</P>
+<P>replaced with an underscore in order to maintain MS-DOS compatibility.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-m glob</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Exclude</P>
+<I><P>glob</P>
+</I><P>&nbsp;</P>
+<P>from being written to CDROM.</P>
+<I><P>glob</P>
+</I><P>&nbsp;</P>
+<P>is a shell wild-card-style pattern that must match part of the filename (not </P>
+<P>the path as with option</P>
+<B><P>-x</B>).</P>
+<P>&nbsp;</P>
+<P>Technically</P>
+<I><P>glob</P>
+</I><P>&nbsp;</P>
+<P>is matched against the</P>
+<I><P>d-&gt;d_name</P>
+</I><P>&nbsp;</P>
+<P>part of the directory entry.</P>
+<P>Multiple globs may be excluded (up to 1000).</P>
+<P>Example:</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>mkisofs -o rom -m '*.o' -m core -m foobar</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>would exclude all files ending in ".o", called "core" or "foobar" to be</P>
+<P>copied to CDROM. Note that if you had a directory called "foobar" it too (and</P>
+<P>of course all its descendants) would be excluded.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-M path</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies path to existing iso9660 image to be merged.  The output</P>
+<P>of </P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>will be a new session which should get written to the end of the</P>
+<P>image specified in -M.  Typically this requires multi-session capability</P>
+<P>for the recorder and cdrom drive that you are attempting to write this</P>
+<P>image to.  Support for this is not yet 100% complete, because some handshaking</P>
+<P>is required between mkisofs and cdwrite in order to determine the next</P>
+<P>writable address on the cdrom.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-N</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Omit version numbers from ISO9660 file names.  This may violate the ISO9660</P>
+<P>standard, but no one really uses the version numbers anyway.  Use with caution.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-o filename</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>is the name of the file to which the iso9660 filesystem image should be</P>
+<P>written.  This can be a disk file, a tape drive, or it can correspond directly</P>
+<P>to the device name of the optical disc writer.  If not specified, stdout is</P>
+<P>used.  Note that the output can also be a block special device for a regular</P>
+<P>disk drive, in which case the disk partition can be mounted and examined to</P>
+<P>ensure that the premastering was done correctly.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-P publisher_id</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies a text string that will be written into the volume header.</P>
+<P>This should describe the publisher of the CDROM, usually with a</P>
+<P>mailing address and phone number.  There is space on the disc for 128</P>
+<P>characters of information.  This parameter can also be set in the file</P>
+<I><P>.mkisofsrc</P>
+</I><P>&nbsp;</P>
+<P>with PUBL=.</P>
+<P>If specified in both places, the command line version is used.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-p preparer_id</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies a text string that will be written into the volume header.</P>
+<P>This should describe the preparer of the CDROM, usually with a mailing</P>
+<P>address and phone number.  There is space on the disc for 128</P>
+<P>characters of information.  This parameter can also be set in the file</P>
+<I><P>.mkisofsrc</P>
+</I><P>&nbsp;</P>
+<P>with PREP=.</P>
+<P>If specified in both places, the command line version is used.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-R</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Generate SUSP and RR records using the Rock Ridge protocol to further describe</P>
+<P>the files on the iso9660 filesystem.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-r</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>This is like the -R option, but file ownership and modes are set to</P>
+<P>more useful values.  The uid and gid are set to zero, because they are</P>
+<P>usually only useful on the author's system, and not useful to the</P>
+<P>client.  All the file read bits are set true, so that files and</P>
+<P>directories are globally readable on the client.  If any execute bit is</P>
+<P>set for a file, set all of the execute bits, so that executables are</P>
+<P>globally executable on the client.  If any search bit is set for a</P>
+<P>directory, set all of the search bits, so that directories are globally</P>
+<P>searchable on the client.  All write bits are cleared, because the</P>
+<P>CD-Rom will be mounted read-only in any case.  If any of the special</P>
+<P>mode bits are set, clear them, because file locks are not useful on a</P>
+<P>read-only file system, and set-id bits are not desirable for uid 0 or</P>
+<P>gid 0.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-T</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Generate a file TRANS.TBL in each directory on the CDROM, which can be used</P>
+<P>on non-Rock Ridge capable systems to help establish the correct file names.</P>
+<P>There is also information present in the file that indicates the major and</P>
+<P>minor numbers for block and character devices, and each symlink has the name of</P>
+<P>the link file given.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-V volid</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Specifies the volume ID to be written into the master block.  This</P>
+<P>parameter can also be set in the file</P>
+<I><P>.mkisofsrc</P>
+</I><P>&nbsp;</P>
+<P>with VOLI=id.</P>
+<P>If specified in both places, the command line version is used.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-v</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Verbose execution.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-x path</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Exclude</P>
+<I><P>path</P>
+</I><P>&nbsp;</P>
+<P>from being written to CDROM.</P>
+<I><P>path</P>
+</I><P>&nbsp;</P>
+<P>must be the complete pathname that results from concatenating the pathname</P>
+<P>given as command line argument and the path relative to this directory.</P>
+<P>Multiple paths may be excluded (up to 1000).</P>
+<P>Example: </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>mkisofs -o cd -x /local/dir1 -x /local/dir2 /local</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<I><FONT FACE="Courier New" SIZE=2><P>-z</P>
+</I><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Generate special SUSP records for transparently compressed files.  This is</P>
+<P>only of use and interest for hosts that support transparent decompression.</P>
+<P>This is an experimental feature, and no hosts yet support this, but there</P>
+<P>are ALPHA patches for Linux that can make use of this feature.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A NAME="lbAF">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>CONFIGURATION</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>looks for the</P>
+<I><P>.mkisofsrc</P>
+</I><P>&nbsp;</P>
+<P>file,</P>
+<P>first in the current working directory,</P>
+<P>then in the user's home directory,</P>
+<P>and then in the directory in which the</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>binary is stored.  This file is assumed to contain a series of lines</P>
+<P>of the form "TAG=value", and in this way you can specify certain</P>
+<P>options.</P>
+<P>The case of the tag is not significant.</P>
+<P>Some fields in the volume header</P>
+<P>are not settable on the command line, but can be altered through this</P>
+<P>facility.</P>
+<P>Comments may be placed in this file,</P>
+<P>using lines which start with a hash (#) character.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>APPI</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The application identifier</P>
+<P>should describe the application that will be on the disc.</P>
+<P>There is space on the disc for 128 characters of information.</P>
+<P>May be overridden using the -A command line option.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>COPY</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The copyright information,</P>
+<P>often the name of a file on the disc containing the copyright notice.</P>
+<P>There is space in the disc for 37 characters of information.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>ABST</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The abstract information,</P>
+<P>often the name of a file on the disc containing an abstract.</P>
+<P>There is space in the disc for 37 characters of information.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>BIBL</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The bibliographic information,</P>
+<P>often the name of a file on the disc containing a bibliography.</P>
+<P>There is space in the disc for 37 characters of information.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>PREP</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>This should describe the preparer of the CDROM,</P>
+<P>usually with a mailing address and phone number.</P>
+<P>There is space on the disc for 128 characters of information.</P>
+<P>May be overridden using the -p command line option.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>PUBL</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>This should describe the publisher of the CDROM,</P>
+<P>usually with a mailing address and phone number.</P>
+<P>There is space on the disc for 128 characters of information.</P>
+<P>May be overridden using the -P command line option.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>SYSI</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The System Identifier.</P>
+<P>There is space on the disc for 32 characters of information.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>VOLI</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The Volume Identifier.</P>
+<P>There is space on the disc for 32 characters of information.</P>
+<P>May be overridden using the -V command line option.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>VOLS</P>
+</FONT><P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>The Volume Set Name.</P>
+<P>There is space on the disc for 278 characters of information.</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>can also be configured at compile time with defaults for many of these fields.</P>
+<P>See the file defaults.h.</P>
+<P><A NAME="lbAG">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>AUTHOR</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>is not based on the standard mk*fs tools for unix, because we must generate</P>
+<P>a complete  copy of an existing filesystem on a disk in the  iso9660</P>
+<P>filesystem.  The name mkisofs is probably a bit of a misnomer, since it</P>
+<P>not only creates the filesystem, but it also populates it as well.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Eric Youngdale &lt;<A HREF="mailto:ericy@gnu.ai.mit.edu">ericy@gnu.ai.mit.edu</A>&gt; or &lt;<A HREF="mailto:eric@andante.jic.com">eric@andante.jic.com</A>&gt; wrote both the</P>
+<P>Linux isofs9660 filesystem and the mkisofs utility, and is currently</P>
+<P>maintaining them.  The copyright for the mkisofs utility is held by</P>
+<P>Yggdrasil Computing, Incorporated.</P>
+<P><A NAME="lbAH">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>BUGS</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Any files that have hard links to files not in the tree being copied to the</P>
+<P>iso9660 filessytem will have an incorrect file reference count.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>There may be some other ones.  Please, report them to the author.</P>
+<P><A NAME="lbAI">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>FUTURE IMPROVEMENTS</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Allow specification of multiple paths on the command line to be included in</P>
+<P>iso9660 filesystem.  Can be tricky - directory entries in the root directory</P>
+<P>need to be properly sorted.</P>
+<P><A NAME="lbAJ">&nbsp;</A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New"><P>AVAILABILITY</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<B><P>mkisofs</P>
+</B><P>&nbsp;</P>
+<P>is available for anonymous ftp from tsx-11.mit.edu in</P>
+<P>/pub/linux/packages/mkisofs and many other mirror sites.</P>
+<P>&nbsp;</P>
+<P><HR></P>
+<P>&nbsp;</P>
+<P><A NAME="index">&nbsp;</A></P>
+<FONT FACE="Courier New"><P>Index</P>
+</FONT><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><A HREF="#lbAB"><FONT FACE="Courier New" SIZE=2>NAME</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAC"><FONT FACE="Courier New" SIZE=2>SYNOPSIS</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAD"><FONT FACE="Courier New" SIZE=2>DESCRIPTION</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAE"><FONT FACE="Courier New" SIZE=2>OPTIONS</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAF"><FONT FACE="Courier New" SIZE=2>CONFIGURATION</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAG"><FONT FACE="Courier New" SIZE=2>AUTHOR</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAH"><FONT FACE="Courier New" SIZE=2>BUGS</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAI"><FONT FACE="Courier New" SIZE=2>FUTURE IMPROVEMENTS</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><A HREF="#lbAJ"><FONT FACE="Courier New" SIZE=2>AVAILABILITY</FONT></A></P>
+<P>&nbsp;</P>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><P>&nbsp;</P>
+<P><HR></P>
+<P>&nbsp;</P>
+<P>This document was created by</P>
+<P><A HREF="http:/cgi-bin/man2html">man2html</A>,</P>
+<P>using the manual pages.</P>
+<P>Time: 07:11:21 GMT, July 08, 1997</P>
+<PRE>
+</PRE></BODY>
+</HTML>

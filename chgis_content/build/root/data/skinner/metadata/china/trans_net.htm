@@ -1,0 +1,236 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>trans_net</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffe6cc">
+
+<H2 ALIGN="CENTER">Trans/Transnet</H2>
+<H3>I. Identification Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=735>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>A. Citation</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Title</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Transportation Network, China 1990</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Version / Date</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Completed, July 1998.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Originator</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>G.W. Skinner Research Team, Department of Anthropology, University of California, Davis</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Date and Place of Publication</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Davis, California, USA: 1998</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>B. Description</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Abstract </FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Coverage of arcs and nodes representing major transportation routes and destinations. Arcs include national, provincial, and local highways; railroads; and navigable rivers. Coded nodes represent central places. The coverage comprises an Arc/Info route system for network analysis using planimetric, equidistant projection, and surface distances.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Purpose</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Spatial framework for transportation analysis at 1:1,000,000 scale.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Procedures Used (overview)</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Source arcs were digitized by ACASIAN. At UCD, arcs in each source series (roads-pr, rails-pr, and hylp) were selected for inclusion in the transportation network, edited into a nationwide coverage, and coded. Nodes were added where arcs most closely approached each of 12,400+ points representing populated central places. Each arc was coded as to its length in an appropriate UTM projection, in which scale errors are minimized; arcs were also assigned their surface distance as calculated over a 1km-resolution digital elevation model.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Sources and related Data Sets</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>ACASIAN coverages used to assemble this coverage include the Roads-pr series, the Rails-pr series, the Hylp series, and the CPxx series.</P>
+<P>The 1km-resolution digital elevation model used to compute surface lengths was extracted from the GTOPO-30 product (U.S. Geological Survey, 1997).</P>
+<P>Navigable rivers were selected by UCD based on their appearance in the <I>Atlas of China</I> and other published sources.</P>
+<P>Nodes representing central places are coded with the T1 identifier used in the China-T Dataset.</TD>
+</TR>
+</TABLE>
+
+<H3>II. Data Quality Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="30%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Intended area of coverage</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Mainland China</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Completeness</FONT></TD>
+<TD VALIGN="TOP">
+<P>Complete.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Processing steps</FONT></TD>
+<TD VALIGN="TOP">
+<P>Source arcs (roads, railroads, and rivers) were digitized by ACASIAN. Some edgematching and other minor corrections were applied at UCD.</P>
+<P>At UCD, arcs in each source series (roads-pr, rails-pr, and hylp) were selected for inclusion in the transportation network. Each series was edited separately to edgematch continuous arcs across provincial or tile boundaries, and then appended into nationwide coverages (<B>roadnet</B>, <B>railnet</B>, and <B>navnet</B>).  From the Hylp series, only those arcs coded at UCD as navigable, per <I>Atlas of China</I>, were extracted and retained. </P>
+<P>To accommodate transportation across major lakes and in near-coastal waters, two additional transportation components was developed.  For lakes, all lakes and wide rivers from the hylp coverage which had at least one shoreline arc coded as navigable were extracted into a new coverage (<B>navpoly</B>).  An arbitrary, regularly defined 10x10 kilometer grid was then generated and clipped by navpoly to produce a coverage named <B>navmesh</B>.  Similarly for near-coastal waters, a twenty-kilometer buffer along China's coastline (as defined in the PONET county boundaries coverage) was created.  An arbitrary, regularly defined 20x20 kilometer grid was then generated an clipped by this buffer to produce a coverage named <B>coastwise</B>.</P>
+<P>The arc attribute tables for all of the components (<B>roadnet</B>, <B>railnet</B>, <B>navnet</B>, <B>navmesh</B>, and <B>coastwise</B>) were standardized, retaining only those items defined below.  Then these components were appended to create the arc coverage <B>transnet</B>, which was further modified as described here.</P>
+<P>Using <U>NearSplit.aml</U>, nodes were added where arcs most closely approached each of 12,000+ points representing populated central places (as shown in the CP<I>xx</I> series). The NAT file entry for each of these nodes was coded with the T1 identifier for its central place; other nodes are coded zero. Central places georeferenced within 350 meters of another central place may be omitted from the NAT.</P>
+<P>Using <U>SetEQlength.aml</U>, arcs were coded with their planimetric length in an equidistant projection and with their length over the topographic surface of the earth. The Universal Transverse Mercator (UTM) coordinate system was selected to provide the equidistant projection because it produces a scale error of not more than 0.1% within each UTM zone, and because it is more convenient to apply the well-known UTM zone system than to define other equidistant projection systems for every possible local study area in China. Arcs were first split at the boundaries of UTM zones (every sixth degree of longitude). Arcs within each UTM zone were then copied to a separate coverage and projected into the UTM projection for their zone. The length of each projected arc, as computed by the Arc/Info GIS, was then copied to the EQLENGTH item in the original AAT. In a separate operation, each arc's surface length, SLENGTH, was calculated by Arc/Info using CHDEM (a 1km-resolution digital elevation model); the surface length was then adjusted to offset the projection error by multiplying it by the ratio of EQLENGTH to LENGTH, producing SEQLENGTH.</P>
+<P>The <U>RCSdistance.aml</U> script is used to generate an Arc/Info Route system and compute network costs (distances multiplied by relative cost factors estimated for various modes of transportation) between nodes based on LENGTH, EQLENGTH, and SEQLENGTH.</TD>
+</TR>
+</TABLE>
+
+<H3>III. Spatial Reference Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Map Projection</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Albers projection, units=kilometers. Surface elevation units=0.25 meters.</P>
+<P>See prj.adf file.</TD>
+</TR>
+</TABLE>
+
+<H3>IV. Entity and Attribute Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=4 WIDTH=734>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Attribute Label</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Attribute Description</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Attribute Domain or Table</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>A. Arc Attribute Table (AAT)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>CLASS</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Classification of Transport Routes</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=1><P>See Modecodes.Dat</P>
+<B><P>Rivers</P>
+</B><P>01 = River, not navigable</P>
+<P>04 = River, navigable by steamships (per <I>Atlas of China</I>)</P>
+<P>05 = Lake, navigable</P>
+<P>06 = Coastwise transport corridor</P>
+<P>30 = River, navigable by other (JTT)</P>
+<P>200 = River, navigable by other (TMC)</P>
+<P>230 = River, navigable by other (JTT+TMC)</P>
+<B><P>Roads</P>
+</B><P>11 = Superhighways (note: these were not present in 1990 and are excluded from analysis at UCD)</P>
+<P>21 = National highway, paved</P>
+<P>22 = National highway, unpaved</P>
+<P>31 = Provincial highway, paved</P>
+<P>32 = Provincial highway, unpaved</P>
+<P>41 = Local highway, paved</P>
+<P>42 = Local highway, unpaved</P>
+<P>99 = Road of unknown classification</P>
+<B><P>Railroads</P>
+</B><P>800-899 = Railroads (15 classifications)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>LENGTH</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Length of the arc</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>Planimetric length computed automatically by Arc/Info GIS. This is the length across the flat map surface in this coverage's Albers map projection.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>EQLENGTH</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Equidistant length</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>Planimetric length of the arc when projected into the UTM projection specified in UTMZONE. UTM projections produce a scale error of not more than 0.1% (<I>i.e.,</I> one meter per kilometer of length).</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>UTMZONE</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>UTM Zone in which this arc falls</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>1..60 (in China, 43..53)</P>
+<P>All arcs are split at UTM zone boundaries (every sixth degree of longitude).</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>SLENGTH</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Surface length</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>Length of the arc when draped across the 1km-resolution DEM (in Albers projection). Computed by SURFACELENGTH CHDEM Transnet 0.004 1.0.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP" HEIGHT=90>
+<P>SEQLENGTH</TD>
+<TD WIDTH="25%" VALIGN="TOP" HEIGHT=90>
+<P>Equidistant surface length</TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=90>
+<P>= SLENGTH * EQLENGTH / LENGTH</P>
+<P>Attempts to offset the scale error of the Albers projection in computing SLENGTH, but may not completely overcome a projection bias within the digital elevation model.</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>B. Node Attribute Table (NAT)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP" HEIGHT=90>
+<P>Transnet-ID</P>
+<P>(Alternate name: T1)</TD>
+<TD WIDTH="25%" VALIGN="TOP" HEIGHT=90>
+<P>ChinaT Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP" HEIGHT=90>
+<P>8-digit numeric identifer for each central place (city, town, or village) in China, as assigned in the China-T Dataset. Nodes have been added for 12,000+ central places. Other nodes (which are merely artifacts of GIS processing) are coded T1=0.</TD>
+</TR>
+</TABLE>
+
+<H3>V. Distribution Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Contact Person</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>At UCD: G. William Skinner, <A HREF="mailto:gwskinner@ucdavis.edu">gwskinner@ucdavis.edu</A> </P>
+<P>At ACASIAN: Larry Crissman, <A HREF="mailto:crissman@asian.gu.edu.au">crissman@asian.gu.edu.au</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Contact Address</FONT></TD>
+<TD VALIGN="TOP">
+<P>UCD: Department of Anthropology, Young Hall, University of California, Davis, Davis, CA 95616 USA. <A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A></P>
+<P>ACASIAN: Griffith University, Nathan (Brisbane), Queensland, AUSTRALIA. <A HREF="http://www.asian.gu.edu.au/">http://www.asian.gu.edu.au/</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Distribution Liability and Restrictions</FONT></TD>
+<TD VALIGN="TOP">
+<P>To the extent that this dataset constitutes a derived product based on copyrighted materials supplied by ACASIAN, it may not be redistributed by UCD. ACASIAN datasets are subject to international copyright laws and agreements. Further distribution is provided exclusively by ACASIAN.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>4. Distribution Format</FONT></TD>
+<TD VALIGN="TOP">
+<P>Arc/Info 7.1.2 export format (.e00)</TD>
+</TR>
+</TABLE>
+
+<H3>VI. Metadata Reference Section</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Metadata preparer</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>Mark Henderson, GIS Analyst, <A HREF="mailto:mhenderson94@post.harvard.edu">mhenderson94@post.harvard.edu</A></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Metadata address</FONT></TD>
+<TD VALIGN="TOP">
+<P>Department of Anthropology, Young Hall, </P>
+<P>University of California, Davis </P>
+<P>Davis, CA 95616 </P>
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Metadata format</FONT></TD>
+<TD VALIGN="TOP">
+<P>UCD GIS Metadata form, April 13, 1998</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P></BODY>
+</HTML>

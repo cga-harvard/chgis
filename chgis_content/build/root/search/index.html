@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf8">
+    <title>Search CHGIS Placenames</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Chinese geospatial data, historical GIS, chinese geographic information systems">
+        <meta name="author" content="CHGIS">
+        <!-- core JS -->
+        <script src="../assets/bootstrap/js/jquery.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>  
+        <!-- Bootstrap core CSS -->
+        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../assets/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <!-- chgis custom CSS must appear AFTER bootstrap-->
+        <link href="../assets/css/chgis_2016.css" type="text/css" rel="stylesheet">
+        <link href="../assets/css/q_form.css" type="text/css" rel="stylesheet"> </head>
+<body>
+<div class="main-scroll-top"><img src="../assets/graf/qinshuiroads_loc_sm.jpg"  title="Qing Map Scroll, src: LOC https://goo.gl/77fGNF" width=100%></div>
+<!-- navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand hidden-xs" href="../">China Historical GIS</a>
+         <a class="navbar-brand visible-xs" href="../">CHGIS</a>
+      </div>
+      <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+
+           <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="../pages/intro">Intro</a></li>
+                <li><a href="../pages/history">Project History</a></li>
+                <li><a href="../pages/members">Team Members</a></li>
+                <li><a href="../pages/meetings">Meetings and Workshops</a></li>
+                <li><a href="../pages/database">Database Design</a></li>
+                <li><a href="../pages/howto">How To Use</a></li>
+              </ul>
+            </li>
+            <li><a href="../pages/contact">Contact</a></li> 
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="../data/chgis">CHGIS</a></li>
+                <li><a href="../data/hartwell">Hartwell</a></li>
+                <li><a href="../data/japan">Japan</a></li>
+                <li><a href="../data/russian_maps">Russian Maps</a></li>
+                <li><a href="../data/skinner">Skinner</a></li>
+                <li><a href="../data/other">Other datasets</a></li>
+              </ul>
+            </li>
+            <li><a href="../gazetteer/">Gazetteers</a></li>
+            <li><a href="../maps/">Maps</a></li>
+            <li><a href="../papers/">Papers</a></li>
+            <li><a href="../tools/">Tools</a></li>
+         </ul>
+      </div>
+      <!--/.navbar-collapse -->
+   </div>
+</div> 
+<!-- /navbar --> <div id="wrap">
+   <article>
+    <div class="chunk">
+Try this simple query form, or use the <a href="http://maps.cga.harvard.edu/tgaz/" target="_new">API</a>  for advanced searches and formats<br>
+
+<!-- form by Danny Markov http://demo.tutorialzine.com/2015/07/7-clean-and-responsive-forms -->
+ <form class="form-labels-on-top" method="get" action="http://maps.cga.harvard.edu/tgaz/placename?" target="_blank">
+
+  <div class="form-title-row">
+      <img src="http://maps.cga.harvard.edu/tgaz/graf/TGAZ_API_icon.png"> <h3>Search Placename 地名查询</h3>
+  </div>
+
+
+  <div class="form-row">
+      <label>
+          <span>name  地名</span>
+          <input type=hidden name=fmt value='html'>
+          <input type="text" name="n">
+      </label>
+  </div>
+
+  <div class="form-row">
+      <label>
+          <span>year  年份</span>
+          <input type="text" name="yr">
+      </label>
+  </div>
+
+  <div class="form-row">
+      <label>
+          <span>type 分类</span>
+          <input type="text" name="ftyp">
+      </label>
+  </div>
+
+  <div class="form-row">
+      <label>
+          <span>data source  数据来源</span>
+             <select name="src">
+                 <option value='' selected>any</option>
+                 <option value='CHGIS'>CHGIS  中国历史地理信息系统</option>
+                 <option value='TBRC'>Tibetan Buddhist Resource Center</option>
+                 <option value='HGR'>Historical Gazettteer of Russia</option>
+             </select>
+      </label>
+  </div>
+
+  <div class="form-row">
+      <button type="submit">Submit</button>
+  </div>
+
+<p> </form></p>
+<p></div></p>
+
+   </article>
+ </div>
+
+        <div class="footer navbar-fixed-bottom">
+           <div class="text-center"><font size=-1>
+             <p>&copy; CHGIS 2001 - <script>document.write(new Date().getFullYear())</script>
+             &nbsp; &nbsp;  design: <a href="https://github.com/vajlex/chgis-fas-website" target="_new">Lex Berman</a></font>
+             </p>
+           </div>
+        </div>
+  </body>
+</html>

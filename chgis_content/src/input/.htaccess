@@ -1,0 +1,60 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine on
+
+RewriteBase /~chgis/
+#for Production change to  RewriteBase /~chgis/
+
+
+RewriteRule ^modern$ data/modern/ [R=301]
+
+RewriteRule ^japan/archive$ japan/ [L,R=301]
+RewriteRule ^japan/archive/(.*)$ japan/ [L,R=301]
+
+RewriteRule ^skinner$ data/skinner/ [L,R=301]
+RewriteRule ^skinner/(.*)$ data/skinner/ [L,R=301]
+
+RewriteRule ^work/coding$ http://maps.cga.harvard.edu/chgis/xwalk [R=301]
+RewriteRule ^work/coding/(.*)$ http://maps.cga.harvard.edu/chgis/xwalk [L,R=301]
+
+RewriteRule ^work/design$ pages/database/ [R=301]
+RewriteRule ^work/design/(.*)$ pages/database/ [L,R=301]
+
+RewriteRule ^work/downloads$ data/other/ [R=301]
+RewriteRule ^work/downloads/(.*)$ data/other/ [L,R=301]
+
+RewriteRule ^work/downloads/faqs$ data/other/ [R=301]
+RewriteRule ^work/downloads/faqs/(.*)$ data/other/ [L,R=301]
+
+RewriteRule ^meetings/papers/faqs$ papers/ [R=301]
+RewriteRule ^meetings/papers/(.*)$ work/docs/papers/ [L,R=301]
+
+RewriteRule ^modern$ data/modern/ [R=301]
+
+RewriteRule ^data/chgis/downloads/v1$ data/chgis/v1/ [R=301]
+RewriteRule ^data/chgis/downloads/v1/(.*)$ data/chgis/v1/ [L,R=301]
+RewriteRule ^data/chgis/downloads/v1/datasets$ data/chgis/v1/ [R=301]
+RewriteRule ^data/chgis/downloads/v1/datasets/(.*)$ data/chgis/v1/ [L,R=301]
+
+RewriteRule ^data/chgis/downloads/v2$ data/chgis/v2/ [R=301]
+RewriteRule ^data/chgis/downloads/v2/(.*)$ data/chgis/v2/ [L,R=301]
+RewriteRule ^data/chgis/downloads/v2/datasets$ data/chgis/v2/ [R=301]
+RewriteRule ^data/chgis/downloads/v2/datasets/(.*)$ data/chgis/v2/ [L,R=301]
+
+RewriteRule ^data/chgis/downloads/v3$ data/chgis/v3/ [R=301]
+RewriteRule ^data/chgis/downloads/v3/(.*)$ data/chgis/v3/ [L,R=301]
+RewriteRule ^data/chgis/downloads/v3/datasets$ data/chgis/v3/ [R=301]
+RewriteRule ^data/chgis/downloads/v3/datasets/(.*)$ data/chgis/v3/ [L,R=301]
+
+RewriteRule ^data/chgis/downloads/v4$ data/chgis/v4/ [R=301]
+RewriteRule ^data/chgis/downloads/v4/(.*)$ data/chgis/v4/ [L,R=301]
+RewriteRule ^data/chgis/downloads/v4/datasets$ data/chgis/v4/ [R=301]
+RewriteRule ^data/chgis/downloads/v4/datasets/(.*)$ data/chgis/v4/ [L,R=301]
+
+RewriteRule ^data/chgis/downloads/v5$ data/chgis/v5/ [R=301]
+RewriteRule ^data/chgis/downloads/v5/(.*)$ data/chgis/v5/ [L,R=301]
+RewriteRule ^data/chgis/downloads/v5/datasets$ data/chgis/v5/ [R=301]
+RewriteRule ^data/chgis/downloads/v5/datasets/(.*)$ data/chgis/v5/ [L,R=301]
+
+ErrorDocument 404 http://www.fas.harvard.edu/~chgis/
+

@@ -1,0 +1,246 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>proc_rcst1</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffe6cc">
+
+<H2 ALIGN="CENTER">Central Places Assignment and Verification Files</H2>
+<H3>I. Identification Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=735>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>A. Citation</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Title</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Assignment of Central Places to Regional City Systems and Macroregions, China, 1990 (supplemental to the ChinaT Dataset):</P>
+<P>RCST1.DAT -- listing of assignments</P>
+<P>NOTINGIS.DAT  -- listing of places not georeferenced</P>
+<P>NOTINSAS.DAT -- listing of georeferenced places not in ChinaT</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Version / Date</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>May 1998</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Originator</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>G.W. Skinner Research Team, Department of Anthropology, University of California, Davis</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Date and Place of Publication</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Davis, California, USA: 1998</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>B. Description</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Abstract </FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>A listing of records from the ChinaT Dataset, representing over 12,000 cities and towns in China,  which have been assigned to Regional City Systems and Macroregions.  ChinaT towns which have not been georeferenced (n=60<FONT FACE="WP MathA">&#34;</FONT>
+) are assigned probabilistically.  An accompanying list shows towns which have been georeferenced but which are not included in ChinaT (n=60<FONT FACE="WP MathA">&#34;</FONT>
+).</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Purpose</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Results of a macroregional analysis at 1:1,000,000 scale for use as a spatial component in further analysis of demographic and economic data.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Procedures Used (overview)</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>GIS data for <A HREF="cp_cpxx.htm">central places</A> were verified against a listing from the ChinaT dataset, then used in an overlay analysis with a GIS file defining <A HREF="hrs_rcs.htm">regional city systems and macroregions</A>.  See II.3 below.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Sources and related Data Sets</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Central places georeferenced by ACASIAN, Griffiths University, Australia (q.v.). </P>
+<P>China-T Dataset and Regional City Systems coverage produced at the University of California, Davis.</TD>
+</TR>
+</TABLE>
+
+<H3>II. Data Quality Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="30%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Intended area of coverage</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Mainland China</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Completeness</FONT></TD>
+<TD VALIGN="TOP">
+<P>Complete.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Processing steps</FONT></TD>
+<TD VALIGN="TOP">
+<P>1. A listing of all entries in the ChinaT dataset (excluding t9=0 satellite towns) is exported from SAS as a .dbf database file and imported as an INFO table, ChinaT.Dat.  This table includes the variables t1, t3, t5, t6, t9, t109, and t702.  A RELATE is established based on the t1 variable.</P>
+<P>2. GetAllCP.aml generates a coverage containing all central place points which have related entries in ChinaT.Dat:</P>
+<PRE>&amp;r getallcp cp-all chinat//t702 0 999</PRE>
+<P>3. GetCPmismatch generates a coverage containing all central place points which do <I>not</I> have related entries in ChinaT.Dat, and summarizes the results of this process in NOTINSAS.DAT.</P>
+<P>4. AssignRCS2T1.aml overlays matched central place points with the Regional City Systems coverage to produce the assignment of T1 to RCS-T1 (see the format below for RCST1.DAT).</P>
+<P>5. NotInGIS.aml generates a list of records in ChinaT which lack georeferenced points, and attempts to assign these records to systems based on the assignments of other records in the same county.   The results are summarized in NOTINGIS.DAT and RCST1.DAT.</TD>
+</TR>
+</TABLE>
+
+<H3>III. Spatial Reference Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Map Projection</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Not applicable:  not a spatial data set.</TD>
+</TR>
+</TABLE>
+
+<H3>IV. Entity and Attribute Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=4 WIDTH=734>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Attribute Label</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Attribute Description</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Attribute Domain or Table</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>A. RCST1.DAT (produced by AssignRCS2T1.aml using output from GetAllCP.aml)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>ChinaT Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>8-digit identifier for central places used in China-T Dataset. Based on China's National Standard (<I>guobiao</I>) codes for early 1990, with significant changes made at UCD for analytical purposes.  <B><I>Note: in this file, there is one entry for each combination of T1 and RCS-T1.  Thus, the T1 identifiers for Janus-faced towns which are assigned to multiple regions appear more than once in this file.</B></I></FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>RCS-T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Regional City System Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>China-T Datafile ID number (T1) of the Regional City of each regional city system. For systems with two Regional Cities, the northwesternmost city's T1 is used.</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>EXTENDED</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Supplemental RCS Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Indicates whether the central place falls in an ordinary RCS or the extended portion of an extended RCS</P>
+<P>0 = ordinary</P>
+<P>1 = extended</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>SYSTEM</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Macroregional Subsystem Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Two-digit macroregional system designation. (First digit is MR {0..9}; second digit is SUB.)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>FOUNDinGIS</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>GIS method for assigning town to systems</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>0 = this point is not georeferenced and falls in a county which is divided among systems; it was could not be assigned to a system</P>
+<P>1 = this point is georeferenced and was assigned to a single system using GIS overlay analysis</P>
+<P>2 = this point is georeferenced and was assigned to multiple systems using GIS overlay analysis (indicates a Janus-faced city)</P>
+<P>3 = this point is not georeferenced but was assigned to the system to which the other towns in the same county were assigned</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>B. NotInGIS.DAT</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>ChinaT Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>8-digit identifier for central places used in ChinaT Dataset. Based on China's National Standard (<I>guobiao</I>) codes for early 1990, with significant changes made at UCD for analytical purposes.</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>T3</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Name</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Place name from ChinaT Dataset.</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>C. NotInSAS.DAT (produced by GetCPmismatch.aml)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>CITY_TOWN_CODE</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>ACASIAN Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>8-digit identifier used by ACASIAN. Based closely on <I>guobiao</I> codes for late 1990.  Set to zero for points not georeferenced by ACASIAN.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>NAME</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Place name in Pinyin</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>Derived from ACASIAN's PINYIN_NAME attribute and verified against ChinaT Dataset's T3 field.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>China-T Identifier&nbsp;</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<P>8-digit identifier used in ChinaT Dataset. Based on China's National Standard (<I>guobiao</I>) codes for early 1990, with significant changes made at UCD for analytical purposes.  For points georeferenced by ACASIAN, T1 will be the same value as CITY_TOWN_CODE unless that value is used by a different town listed in ChinaT; in such cases, T1 will be set to zero.</TD>
+</TR>
+</TABLE>
+
+<H3>V. Distribution Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Contact Person</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>G. William Skinner, <A HREF="mailto:gwskinner@ucdavis.edu">gwskinner@ucdavis.edu</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Contact Address</FONT></TD>
+<TD VALIGN="TOP">
+<P>Department of Anthropology, Young Hall, </P>
+<P>University of California, Davis </P>
+<P>Davis, CA 95616 </P>
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Distribution Liability and Restrictions</FONT></TD>
+<TD VALIGN="TOP">
+<P>Users assume all liability for the use of this data set. This data set is distributed for noncommercial research use only.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>4. Distribution Format</FONT></TD>
+<TD VALIGN="TOP">
+<P>Arc/Info 7.1.2 export format (.e00)</TD>
+</TR>
+</TABLE>
+
+<H3>VI. Metadata Reference Section</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Metadata preparer</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>Mark Henderson, GIS Analyst, <A HREF="mailto:mhenderson94@post.harvard.edu">mhenderson94@post.harvard.edu</A></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Metadata address</FONT></TD>
+<TD VALIGN="TOP">
+<P>Department of Anthropology, Young Hall, </P>
+<P>University of California, Davis </P>
+<P>Davis, CA 95616 </P>
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Metadata format</FONT></TD>
+<TD VALIGN="TOP">
+<P>UCD GIS Metadata form, April 13, 1998</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+</P></BODY>
+</HTML>

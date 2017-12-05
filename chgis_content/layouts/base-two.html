@@ -1,0 +1,29 @@
+<html>
+ <head>
+  <meta charset="utf8">
+    <title>{{ title }}</title>
+    {{> meta2 }}
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.hover-link').mouseenter(function() {
+          $('img.hover-image').remove();
+          $(this).append('<img class="hover-image" src="' + $(this).attr('data-hover-image') + '"/>')
+        }).mouseleave(function() {
+          $('img.hover-image').remove();
+        })
+      })
+    </script>
+ </head>
+<body>
+   {{> navbar_localhost2 }}
+   {{> header2 }}
+ <div id="wrap">
+    <article>
+    {{{contents}}}
+    </article>
+ </div>
+
+{{> footer }}
+</body>
+</html>

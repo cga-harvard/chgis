@@ -1,0 +1,854 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>AMLs</TITLE>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#c0c0c0">
+
+
+<B><FONT FACE="Arial" SIZE=4><P>GIS Support Materials: 
+Procedures and Arc/Info AML Scripts</P></B>
+
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5
+WIDTH="100%">
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>Procedures</H3></TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="procchoro.gif">Choropleth Mapping</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>From data file to map</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="procscan.htm">Scanning and Vectorizing</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>From tracing paper to Arc/Info coverage</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="procqu.htm">Qu Centers</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Program for adding Qu Center points</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="mapaccuracy.htm">Map Accuracy Table</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Ground accuracy standards for various map scales</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="procnotes.htm">Data Development</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Take note! Recordkeeping requirements</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="hp650c.htm">HP Plotter</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Instructions for setting up the Vis Lab's plotter</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="mkisofs.htm">mkisofs CD-R</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Instructions for using mkisofs to make backup files, which can be written to Qing's CD-R drive</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="mcmergers.htm">MC Mergers</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Managing mergers and splits of county-level units (MQ, MC, and XT) in the China-A political boundaries coverage</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="a4074.htm">CPZ (a4074)</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>Spatial analysis tools for assigning core-periphery zones to counties</TD>
+</TR>
+<TR><TD WIDTH="19%" VALIGN="TOP" COLSPAN=2>
+<P><A HREF="rcsprocedures.html">RCS (t990-994)</A></TD>
+<TD WIDTH="81%" VALIGN="TOP">  
+<P>Spatial analysis tools for assigning towns and counties to Regional
+City Systems and Macroregions </TD>
+</TR>
+
+<TR><TD WIDTH="19%"
+VALIGN="TOP" COLSPAN=2>
+<P><A HREF=""> </A></TD>
+<TD WIDTH="81%" VALIGN="TOP">
+<P>  </TD>
+</TR>
+
+</TABLE>
+</FONT>
+
+<A NAME="top"></A>
+<P>Commonly used Arc/Info AML macro scripts are documented here. 
+Most AMLs are stored in subdirectories of the atool directory:</P>
+
+<DIR><DIR>
+<UL>
+<LI><A HREF="#arc">arc</A> </LI>
+<LI><A HREF="#arcplot">arcplot</A> </LI>
+<LI><A HREF="#arcedit">arcedit</A> </LI>
+<LI><A HREF="#chinatool">chinatool</A> </LI>
+<LI><A HREF="#edittool">edittool</A> </LI>
+<LI><A HREF="#makemaps">makemaps</A></LI></UL>
+</DIR></DIR>
+
+<P>AMLs for cartographic output, such as Regmap/Pagemap Theme and Key AMLs are stored in various data directories. </P>
+<P><HR></P>
+<FONT SIZE=5><P><A NAME="arc"></A>Arc subdirectory</P></FONT>
+<P>AMLs for use at the Arc prompt.</P>
+<FONT FACE="Courier New" SIZE=2><B><P>Ap_or_eps.aml</P></B>
+<P>Send output to Arcplot canvas if started by Arcplot 
+or to .eps (Postscript) file if started by Arc</P>
+<P>Usage: ap_or_eps &lt;output file name&gt;</P>
+
+<B><P>ApOr1040.aml</P>
+</B><P>Send output to Arcplot canvas if started by Arcplot 
+or to .gra file if started by Arc</P>
+
+<B><P>arcbatch.aml</P>
+</B><P>Prepares and runs another AML (called by arcat script)</P>
+
+<B><P>eps2jpg.aml</B> (also named <B>jpeg.aml</B>)</P>
+<P>convert Postscript file to .JPG (for HTML use)</P>
+
+<B><P>imageline.aml</P>
+</B><P>converts raster images to arcs in a batch process</P>
+<P>using a consistant name that ends in incrimental numbers</P>
+
+<B><P>infoRM.aml</P>
+</B><P>removes info files if they have no associated coverage</P>
+<P>expects input from $DBF/infodir -l command</P>
+
+<B><P>nettic.aml</P>
+</B><P>add tics at each node (for use in registering map sheets)</P>
+<P>Usage: nettic &lt;input line coverage&gt;</P>
+<P>(Input coverage can be created with GENERATE/FISHNET LABEL)</P>
+
+<B><P>psfix.aml</P>
+</B><P>runs psfix script, which fixes Postscript header for HP650C plotters</P>
+
+<B><P>rtlplot.aml</P>
+</B><P>create an RTL file from an EPS file</P>
+<P>Optionally, delete .eps file and/or print .rtl file immediately.</P>
+
+<B><P>runmacro.aml</P>
+</B><P>Runs the specified AML for each record in the specified list</P>
+<P>Usage: RUNMACRO &lt;AML_macro_filename&gt; &lt;parameter_list_filename&gt; {constants}</P>
+
+<B><P>transappend.aml</P>
+</B><P>appends a series of tiles, keeping all attributes. </P>
+<P>The first tile MUST have all of the relevant attribute items</P>
+
+</FONT>
+<P>&nbsp;<A HREF="##top">Return to top</A></P>
+
+<P><HR></P>
+
+<FONT SIZE=5><P><A NAME="arcplot"></A>Arcplot subdirectory</P></FONT>
+<FONT SIZE=2><P>AMLs for use in Arcplot.</P></FONT>
+<FONT FACE="Courier New" SIZE=2>
+
+<b><P>ailayer.aml</P></B>
+<P>Begin a new Adobe Illustrator file within the current Arcplot session (but only if current output is *not* to the screen, i.e. DISP 9999).  
+Useful for placing different "layers" into Freehand for later editing—Commonly used within Pagemap themes.</P>
+<P>Usage: AILAYER &lt;layername&gt; {BOX | NOBOX}</P>
+<P>Begins a new Adobe Illustrator file &lt;layername&gt;.ai.</P>
+<P>{BOX} specifies that a box around the current maplimits will be drawn.</P>
+
+<B><P>comma000.aml</P>
+</B><P>Inserts commas into long numbers (1000s or 10000s place) 
+for output in any Arc/Info module</P>
+<P>Usage: comma000 &lt;number&gt; {3 | 4}</P>
+<P>Use 3 option (default) for English, 4 for Chinese</P>
+
+<B><I><P>Note: each of the following CREATE___.aml scripts create or invoke a customized Arc/Info shadeset, lineset, or markerset.</P>
+</I></b>
+
+<b><P>create5pastels.aml</P>
+</B><P>creates five-pastel shadeset, syspoly.shd</P>
+
+<B><P>createbgr.aml</P>
+</B><P>creates Blue-Grey-Red shadeset (for bipolar choropleth mapping), bgr.shd</P>
+
+<B><P>createbr.aml</P>
+</B><P>Sets up BROWNS.SHD as 8-symbol brown-tone shadeset 
+Note: this shadeset cannot be used with RTLPLOT. Plot as .eps file only.</P>
+
+<B><P>createbr2.aml</P>
+</B><P>Sets up BROWNS2.SHD as 7-symbol brown-tone shadeset</P>
+<P>(differs from BROWNS.SHD: boosts intensity of each symbol by 1 level) 
+Note: this shadeset cannot be used with RTLPLOT. Plot as .eps file only.</P>
+
+<B><P>createbrowngreen.aml</P>
+</B><P>Sets up BROWNgreen.SHD as 12-symbol brown-to-green shadeset</P>
+
+<B><P>createbrowns.aml</P>
+</B><P>Sets up BROWNS-lohi.SHD as 8-symbol brown-tone shadeset 
+based on CreateBr.aml but with shades 1..7 from low to high, not high to low</P>
+
+<B><P>createce.aml</P>
+</B><P>Create CENTRALPL.MRK markerset for central place points (5 classes)</P>
+
+<B><P>CreateElevShd.aml</P>
+</B><P>create shadeset of 8 elevation tints</P>
+
+<B><P>creategr.aml</P>
+</B><P>Sets up GREY8.SHD as 8-symbol grey-tone shadeset</P>
+
+<B><P>createri.aml</P>
+</B><P>Sets up RIVERS.LIN as 5-symbol lineset + 2 canal linesymbols</P>
+
+<B><P>createrivers-ck.aml</P>
+</B><P>Sets up RIVERS.LIN as 5-symbol lineset + 2 canal linesymbols; 
+ck (Checkplot) version allows different halftones of strange colors</P>
+
+<B><P>createrivnav.aml</P>
+</B><P>Sets up RIVNAV.LIN as 5-symbol lineset + 2 canal linesymbols, 
+based on CREATERI.AML but distinguishes navigable rivers by color</P>
+
+<B><P>createshaderange.aml</P>
+</B><P>Sets 6 intensifying shade symbols (1..6) based on 5-digit binary input.  
+(First digit ignored; remaining digits = CMYK); 
+random chance variation added to make colors more interesting</P>
+<P>Usage: createshaderange &lt;binaryinput&gt;</P>
+<P>try 00110 red, 01010 green, 01100 blue, 01000 cyan, 00100 magenta, 00010 yellow</P>
+
+<B><P>createsolidcp.aml</P>
+</B><P>Create SOLIDCP-&lt;color&gt;.MRK markerset for central place points (9 classes)</P>
+
+<B><P>CreateSubSysShade.aml</P>
+</B><P>create shadeset of pastels for all of the China macroregional subsystems</P>
+
+<B><P>CreateSyspolyShd.aml</P>
+</B><P>create shadeset of 4 pastels</P>
+
+<B><P>createtrans.aml</P>
+</B><P>Initializes Transport linesymbols (for roads, rails, and navigable waterways)</P>
+<P>Based on plottrans.aml and $CHINA/trans/modecodes.dat</P>
+
+<B><P>datemark.aml</P>
+</B><P>stamps current date: DD Month YYYY, User name, UCD Visualization Lab</P>
+
+<B><P>dmstext.aml</P>
+</B><P>place text for degrees-minutes-seconds</P>
+
+<B><P>grey.aml</P>
+</B><P>Sets up GREY%number%.SHD as %number%-symbol grey-tone shadeset</P>
+<P>%number% is typically the number of zones plus 1 (for black)</P>
+<I><P>see also <B>greys.aml</B>, <B>greysets.aml</b></P></I>
+
+<b><P>mapedge.aml</P>
+</B><P>adjust maplimits inward so as to avoid printing text on map edges 
+or adjust maplimits outward after text has been drawn</P>
+<P>Usage: mapedge &lt;distance&gt;</P>
+<P>negative &lt;distance&gt; adjusts maplimits inward.</P>
+<P>positive &lt;distance&gt; adjust maplimits outward.</P>
+
+<B><P>movectr.aml</P>
+</B><P>move Arcplot cursor to center of box defined by x1,y1,x2,y2</P>
+
+<B><I><P>Note: each of the following PLOT___.aml scripts draws some combination of features, usually from our China data coverages. These scripts are often called by Regmap/Pagemap Themes.</P>
+</I></b>
+
+<b><P>plotbase.aml</P>
+</B><P>plots base map features: PHYSIO, RCS, DCW RIVERS, RR, ROADS</P>
+
+<B><P>plotcity.aml</P>
+</B><P>Plots low-resolution central places according to specifications in .PAT.</P>
+
+<B><P>plotcp-prov.aml</P>
+</B><P>Plot ACASIAN Central Places coverage for a single province</P>
+<P>Usage: plotcp-prov &lt;province-ID&gt; &lt;# | pointmarker_lookup_table&gt; {labeltext_item|&lt;CP//&gt;ChinaT_item}</P>
+
+<B><P>plotcp.aml</P>
+</B><P>Plot ACASIAN Central Places coverage, labelled with only one item</P>
+<P>Usage: plotcp &lt;# | pointmarker_lookup_table&gt; {labeltext_item|&lt;CP//&gt;ChinaT_item}</P>
+
+<B><P>plotrivers.aml</P>
+</B><P>Plots all the rivers in China from ACASIAN HYLP coverages</P>
+<P>Specify ARC and/or POLY features, or specify NAV rather than ARC to distinguish navigable arcs (TCODE > 1).  Optional features ANNO (DCW river names) and FOREIGN (CHrivers outside of China).</P>
+
+<B><P>plottrans.aml</P>
+</B><P>Plot ACASIAN China roads &amp; rails coverages for any &amp; all provinces in mapextent</P>
+
+<B><P>POarcs.aml</P>
+</B><P>Plot arcs for China Political Boundaries (specified subclass MQ, MC, etc)</P>
+
+<B><P>prjtext.aml</B></p>
+<p>prints map projection info at current text position &amp; specifications</P>
+
+<B><P>r4map.aml</P>
+</B><P>Page layout for maps of the Upper Yangzi macroregional system
+as prepared by Jian Dai, 1996. Retained for historical purposes.</P>
+<I><P>See also <B>r4mrzon.aml</b></i></p>
+
+<B><P>roadback.aml</P>
+</B><P>colors lines for a background from old road coverage that is being replaced</P>
+
+<B><P>roundmapscale.aml</P>
+</B><P>rounds map scale to a reasonable number of zeroes</P>
+
+<B><P>SCALEBAR.AML</P></B>
+<p>This is a tool for drawing a scalebar that best fits the space allowed. 
+Requires mapunits = meters or feet, not kilometers.  
+Adapted from coding by Randy Deardorff, EPA Region 10, Seattle.</P>
+
+<B><P>selpoly.aml</P>
+</B><P>interactively select a polygon, then change its value (for a specified PAT item)</P>
+<I><P>See also <B>selpolymany</B> and <B>selpolypoly</B>. For regions, see <B>selregmany</B></I>.</P>
+
+</FONT><P><A HREF="##top">Return to top</A>&nbsp;</P>
+<P><HR></P>
+
+<FONT SIZE=5><P><A NAME="arcedit"></A>Arcedit subdirectory</P>
+</FONT><FONT SIZE=2><P>AMLs for use in Arcedit. (See D. Messenger.)</P>
+
+</FONT><P><A HREF="##top">Return to top</A></P>
+<P><HR></P>
+
+<FONT SIZE=5><P><A NAME="chinatool"></A>Chinatool subdirectory</P>
+</FONT><FONT SIZE=2><P>AMLs specifically for use with China data--may be adapted for use with other datasets. (See </FONT><A HREF="maito:mhenderson94@post.harvard.edu"><FONT SIZE=2>M. Henderson</FONT></A><FONT SIZE=2>.)  </FONT><FONT SIZE=2 COLOR="#008080">Highlighted AMLs</FONT><FONT SIZE=2> are particularly important for macroregional analysis and data management procedures.</P>
+</FONT>
+<FONT FACE="Courier New" SIZE=2>
+<P><B>a1match.aml</B></P>
+<p>Verify that all records in an INFO table have a corresponding MC or MQ unit 
+in the China-A political boundaries coverage (related by A1 value)</P>
+<p>Usage: A1MATCH.AML  &lt;.DAT table&gt;  {MC|MQ}.DAT table must have A1 item.</P>
+
+<B><P>addone.aml</P>
+</B><P>Interactively adds a record to an INFO table (in Arcedit) 
+and populate two items (A1XT and Z1XT) 
+(Used to maintain the GISAZXT.DAT table which links ChinaZ and ChinaA Ids.</P>
+
+<B><P>addsource-trans.aml</P>
+</B><P>add SOURCE item to AAT and populate with coverage name 
+(intended for use with roads and rails coverages of provinces) 
+also adds CLASS item with standard field definition (2 2 I)</P>
+
+<B><P>addsource.aml</P>
+</B><P>add SOURCE item to AAT and populate with coverage name 
+(intended for use with map tile coverages) 
+also replaces BTYPE item with standard field definition (3 3 I)</P>
+
+<B><P>addzhen.aml</P>
+</B><P>interactive program to add central place points to the CPQU coverage 
+and give them names and numbers.  
+Note: aggregated CP coverages such as CP-ALL must be regenerated if any more central places are added.</P>
+
+<FONT COLOR="#008080"><P><B>apportioncounties.aml</B></P>
+<P>process China MQ|MC units and Macroregions to determine 
+proportion of each county in each regional subsystem 
+(Uses cantonzones.aml and cantonzoneanno.aml in $CHINA/po) 
+Calls DividedCounties.aml.  
+Uses $CHINA/po/china-a and $CHINA/hrs/rcs coverages as sources for county units and macroregions.</P>
+</FONT>
+
+<FONT COLOR="#008080"><B><P>assignRCS2t1.aml</P>
+</B><P>Determines in which RCS polygon(s) a Central Place point resides 
+and outputs a list of CP-T1 and RCS-T1 pairs. 
+Janus-faced Central Places are recorded as being in multiple RCS polygons 
+(and appear multiple times in the output listing).</P>
+<P>Usage: assignRCS2t1.aml &lt;CP_cover&gt; &lt;RCS_cover&gt; &lt;out_INFO_table&gt; {select_for_janus}</P>
+<P>If {select_for_janus} is specified, only points which match the selection statement will be evaluated for possible inclusion in multiple regional city systems.  (Used to exclude lower-order towns from consideration.)</P>
+</FONT>
+
+<B><P>buildl2r.aml</P>
+</B><P>Create a table listing each Left-to-Right and Right-to-Left adjacency.</P>
+<P>Called by SELADJAC.AML (part of the adjacency suite)</P>
+
+<B><P>cantonzoneanno.aml</P></B>
+<P>Creates an N1 file listing the percentages of each canton in each zone (or of each county in each region, etc.) and summarizing the results in a single text item, 
+ZONETEXT, which may be used to label polygons on maps. </p>
+<P>Usage: cantonzoneanno &lt;APPfile&gt; {zoneitem CP_ZONE|CP_VALUE|SYSTEM} {unitsitem MMCID|A1}</P>
+<P>&lt;APPfile&gt; is INFO table produced by CantonZones.AML</P>
+<P>(&lt;APPfile&gt; may first be modified by DividedCounties.aml, which removes extra entries for counties which should not be divided.)</P>
+<P>Specify the Unit ID item (e.g., A1, N1, MMCID) and ZONE item</P>
+
+<B><P>cantonzonerules.aml</P>
+</B><P>take results of cantonzoneanno.aml (.N1 file) and repair handling of cases set by special rules (&gt;90% in one zone, SPLIT=9)</P>
+<P>Usage: cantonzonerules &lt;N1file&gt; &lt;LZfile&gt;</P>
+<P>&lt;N1file&gt; has one record per canton/county, with SPLIT and ZONETEXT items</P>
+<P>&lt;LZfile&gt; has one record per zone/region (listed in its 3rd item)</P>
+
+<B><P>cantonzones.aml</P>
+</B><P>Determine proportion of MC in a zone.  
+Output .APP file may be used as input to DividedCounties.aml and CantonZoneAnno.aml. 
+(Alternative approach cf. cantonreg.aml, which only indicates presence in a zone).  
+This can be run on Regions (CP_ZONE) /or/ Core-Periph Zones (CP_VALUE).  
+This can be run on France (MMCID) or China (A1)</P>
+<P>Usage: CANTONZONES &lt;cantoncov&gt; &lt;zonecov&gt; {zoneitem CP_ZONE|CP_VALUE} {mcitem A1|MMCID}{Overwrite | Saveold}</P>
+
+<B><P>ChangeA1.aml</P>
+</B><P>Interactively change A1 assignments 
+for MQ, MC, and XT units in China-A. 
+(Effects changes to GISMQMC.DAT and GISMCXT.DAT)</P>
+
+<B><P>chi-indexmap.aml</P>
+</B><P>index map using standard China-centered Albers perspective</P>
+
+<B><P>chindex.aml</P>
+</B><P>Perspective Index Map of China, highlighting a specific region</P>
+
+<B><I><P>Note: the following scripts prefixed with </B>cp-<B> were used to process China Central Places coverages.</P>
+</B></I>
+
+<B><P>cp-chengguan.aml</P>
+</B><P>Where CPxx.PAT's CHARACTER_NAME = '³&Ccedil;¹&Oslash;&Otilde;&ograve;' (Chengguan), replace with value of ADMIN_UNIT_CHARA from CPxx.CTC</P>
+
+<B><P>cp-hanzi.aml</P>
+</B><P>replace original (scrambled) Hanzi in .PAC table (.PAT from ACASIAN) with a new INFO table (.CTC) imported from new ACASIAN .csv files</P>
+
+<B><P>cutin.aml</P>
+</B><P>generates &lt;VARIABLE&gt;.CUT and &lt;VARIABLE&gt;.PLUT files from text list of cutpoints (alternative to MAKECUTS.AML, which scans actual values in &lt;VARIABLE&gt; datafile)</P>
+
+<B><P>de-zhen-zi.aml</P>
+</B><P>removes Zhen, Shi, and Xian characters (zi) from CPxx.PAT CHARACTER_NAME field</P>
+
+<B><P>deleteme.aml</P>
+</B><P>kills an INFO table</P>
+<P>Usage: deleteme &lt;DF&gt; &lt;INFO_Table&gt;.  
+Use this AML with RUNMACRO.AML and a list from INFO's DIR command.</P>
+
+<B><P>DividedCounties.aml</P>
+</B><P>Determines whether counties should be considered divided among macroregions when CANTONZONES reports less than 15 percent in one macroregion, based on whether a town is found in the sliver portion of the county. Run this macro after CantonZones, but before CantonZoneAnno.aml, in order to exclude slivers without polygons from being counted as divided counties. </p>
+<p>Usage: DividedCounties &lt;ZON coverage&gt; &lt;Towns coverage&gt; &lt;county item (A1MC)&gt; &lt;region item (SYSTEM)&gt;</P>
+<P>&lt;ZON coverage&gt; is left in TEMP directory after running CantonZones.aml--it contains both county boundaries and macroregion boundaries.</P>
+<P>&lt;Towns coverage&gt; contains points to be tested against polygons in &lt;ZON coverage&gt;.</P>
+<P>&lt;county item&gt; is the ID item for counties in the &lt;ZON coverage&gt;.</P>
+<P>&lt;region item&gt; is the ID item for macroregions in the &lt;ZON coverage&gt;.</P>
+
+<B><P>dodoclist.aml</P>
+</B><P>Make LUTs for many coverages and save results as text files, too. 
+Calls MAKELUT.AML</P>
+
+<B><P>dxfrails.aml</P>
+</B><P>convert ACASIAN Railroads DXF files to Arc/Info coverages 
+(includes unzipping source files &amp; joining ACODE to AAT).</P>
+
+<B><P>dxfroads.aml</P>
+</B><P>convert ACASIAN Roads DXF files to Arc/Info coverages 
+(includes unzipping source files &amp; joining ACODE to AAT).</P>
+
+<B><P>editRCS.aml</P>
+</B><P>set up Arcedit environment to stitch together RCS arcs from tracings</P>
+
+<B><P>elev16colors-even.aml</P>
+</B><P>sets up 16 shadesymbols  for displaying elevation data</P>
+
+<B><P>elev8lin.aml</P>
+</B><P>sets up 8 linesymbols  for displaying elevation data, </P>
+<P>based on elev16colors-even.aml 1-30-96\mgh</P>
+
+<B><P>elevtint.aml</P>
+</B><P>Make grid stack for display as shaded relief hypsotints, based on procedure in 1994 ESRI Conference Procedings, 
+optionally supply existing hillshade grid, rather than creating from input grid (which need not be elevation data)</P> 
+<P>Usage: ElevTint &lt;input_grid&gt; {COLORMAP.TXT | user_colormap_file} {5 | classes} {elevshade_grid} {hill_already_done?}</P>
+<P>&lt;input_grid&gt; may be an elevation DEM or some other type of data</P>
+<P>{elev_grid} should be specified if &lt;input_grid&gt; is not a DEM</P>
+<P>Specify {classes} = 0 if there is one COLORMAP entry for each value.</P>
+
+<B><P>filterp.aml</P>
+</B><P>For each record in a .DAT file, perform low-pass filter on VALUE by averaging values of adjacent polygons (proportional to length).  
+Uses SELADJAC.AML to pick adjacent polys (part of Adjacency suite).</P>
+<P>Usage: filter-poly &lt;coverage&gt; {.DAT table} {VALUE | valueitem} {AVG | averageitem}</P>
+
+<B><P>findisle.aml</P>
+</B><P>Performs low-pass filter to identify polys surrounded by "Lakes" which are then coded as "Islands". 
+Uses SELADJAC.AML to pick adjacent polys.</P>
+<P>Usage: findisle &lt;coverage&gt; {LAKE | valueitem}</P>
+
+<B><P>findunit.aml</P>
+</B><P>finds INFO or POLY records for a given MC or MQ &lt;unit&gt;; if no exact match, finds the entire prefecture</P>
+
+<B><P>fixarcs.aml</P>
+</B><P>interactive program to change an arc attribute in Arcedit 
+(analogous to <B>selpolymany.aml</B>)</P>
+
+<B><P>fixT1.aml</P>
+</B><P>Interactively correct CTC-T1 assignment in CPxx.PAT.</P>
+
+<B><P>fixval.aml</P>
+</B><P>Interactive program to change values in an info file. 
+For record with matching &lt;match&gt; item, change &lt;change&gt; item</P>
+
+<B><P>getallcp.aml</P>
+</B><P>Select and get CP points from provincial CP coverages based on a range of values in CHINAT.DAT, creating a new (aggregated) central place point coverage. </p>
+<P>Usage: GetAllCP &lt;new_coverage&gt; &lt;select_item&gt; &lt;select_min&gt; &lt;select_max&gt;</P>
+<P>Assumes &lt;select_item&gt; is in ChinaT.Dat, *not* in the CP coverages.</P>
+
+<B><P>getcpmismatch.aml</P>
+</B><P>Select and get CP points from provincial CP coverages that are *not* found in CHINAT.DAT (that is, georeferenced points that we will not use).</P>
+<P>Usage: GetCPmismatch &lt;new_coverage&gt;</P>
+
+<B><P>getnavarcs.aml</P>
+</B><P>Select and get Navigable arcs from @##hylp_9 tile coverages</P>
+<P>Usage: GetNavArcs &lt;new_coverage&gt; </P>
+
+<B><P>getnavarcs-loop.aml</P>
+</B><P>called by getnavarcs.aml</P>
+
+<B><P>getnavpoly.aml</P>
+</B><P>For all @##hylp_9 coverages, standardizes PAT/AAT attributes and extracts navigable polygons into a new coverage</P>
+<P>Usage: Getnavpoly &lt;output_coverage&gt;</P>
+<B>
+<P>getnavpoly-loop.aml</P>
+</B><P>called by getnavpoly.aml</P>
+
+<B><P>getregioncp.aml</P>
+</B><P>Select and get CP points from provincial CP coverages which have been assigned to a specific macroregion</P>
+<P>Usage: GetRegionCP &lt;region 0..9&gt; &lt;RCS-T1 assignment table&gt;</P>
+
+<B><P>getroads.aml</P>
+</B><P>get arcs from a provincial coverage into the current edit coverage</P>
+<P>(for use in Arcedit)</P>
+
+<B><P>HeadNodePoint.aml</P>
+</B><P>Construct a point coverage from the nodes representing heads (or tails) of navigation as shown in the Atlas of China. (Navigable river arcs are already coded TCODE&gt;1.)</P>
+
+<B><P>importRoadsZ.aml</P>
+</B><P>Import roads and rails coverages for a specifed province.  Expects to find compressed .E00 export files in %sourcedir%.  Retains the source file.  Puts imported coverages in %roaddir% and %raildir%.</P>
+
+<B><P>importZ.aml</P>
+</B><P>import a compressed .E00.Z export file, retaining the source file; customized for HYLP source and destination directories</P>
+<P>Usage: importZ &lt;input_e00.Z_file&gt;</P>
+
+<B><P>infoin-loop.aml</P>
+</B><P>Called by infoin.aml to process records in input file.</P>
+
+<B><P>infoin.aml</P>
+</B><P>Read variable-width columns into 4-item info file.  Assumes info file has 4 fields: A1, A3 (char), VALUE, and ZONE.  Uses infoin-loop.aml to process records in input file.</P>
+<P>Usage: infoin &lt;input text file&gt; &lt;output INFO table&gt; {APPEND | OVERWRITE}</P>
+
+<B><P>infoin-loop.aml</P>
+</B><P>Called by infoin.aml to process records in input file.</P>
+
+<B><I><P>Note: the following AML scripts with names beginning </B>le-<B> were written for the Labelerrors procedure, used for comparing GIS coverages of China counties for 1982-85 (ChinaZ) and 1990 (ChinaA).  The results of this procedure are stored in the INFO table $CHINA/po/gisazxt.dat.</P>
+</B></I>
+
+<B><P>le-check.aml</P>
+</B><P>Checkplot for LABELERRORS (Conflation from 90 to 82-85)</P>
+
+<B><P>le-process.aml</P>
+</B><P>Processes output from labelerrors command</P>
+<P>Usage: le-process.aml &lt;labelerrors output file&gt;</P>
+
+<B><P>le-xref.aml</P>
+</B><P>Crossreference ChinaA and ChinaZ MC units using Labelerrors output</P>
+<P>Usage: le-xref &lt;le_file&gt;</P>
+
+<B><P>list-le.aml</B><p>
+<p>Checklist for LABELERRORS (Conflation from 90 to 82-85).</P>
+
+<B><P>LinePAT.aml</P>
+</B><P>Find lines based on adjacent polygons' attributes</P>
+<P>Usage: LinePAT &lt;coverage&gt; &lt;PAT_item&gt; &lt;PAT_value&gt; {FORCE_new_PAL_file}</P>
+
+<B><P>LinePAT2.aml</P>
+</B><P>Find lines based on adjacent polygons' attributes. 
+This version (2) allows any selection statement.</P>
+<P>Usage: LinePAT &lt;coverage&gt; &lt;Selection_statement&gt;</P>
+
+<B><P>listitems.aml</P>
+</B><P>list AAT and PAT items for specified coverage, output to &lt;cover&gt;.PATITEMS text file; used for verifying content/format of ACASIAN HYLP hydro coverages.</P>
+
+<B><P>ListRCS-GC.aml</P>
+</B><P>Take output from AssignRCS2T1 T702IS5 NEWRCS TAKE5.DAT and make a list showing the Mean T109 (urban population) for all greater cities in each Regional City System.</P>
+
+<B><P>llgrat.aml</P>
+</B><P>draw and label graticule (e.g., latitude/longitude arcs)</P>
+<P>Usage:  cover   txtitem  lut placemnt offset pos   fr/to flip clip whicharcs</P>
+
+<B><P>makecoastbuffer.aml</P>
+</B><P>input: grid with offshore areas = NODATA</P>
+<P>output: polygon coverage of buffered zones around coastline</P>
+<P>Usage: makecoastbuffer {20000 | bufferwidth} {5 | numberofbuffers}</P>
+
+<B><P>makecuts.aml</P>
+</B><P>find value cutpoints between zones in a data file (assumes zones are numbered sequentially 1..numzones)</P>
+<P>Usage: MAKECUTS &lt;datafile&gt; &lt;zoneitem&gt; &lt;valueitem&gt;</P>
+<P>Output to &lt;datafile&gt;.CUT</P>
+
+<B><P>makehylut.aml</P>
+</B><P>Make Look-Up Table to document and symbolize AAT and PAT attribute fields</P>
+<P>HY version writes all output to HYLP.___ in HYDRO directory</P>
+
+<B><P>makeleg.aml</P>
+</B><P>makes legend coverage for 4-8 zones</P>
+
+<B><P>makelut.aml</P>
+</B><P>Make Look-Up Table to document and symbolize AAT and PAT attribute fields</P>
+<P>Usage: MakeLUT &lt;Info_table&gt; &lt;Info_item&gt;</P>
+<P>Creates a new Info_table with &lt;Info_item&gt;, SYMBOL, DESCRIPTION, and TEXT fields and records for each unique &lt;Info_item&gt; value in &lt;Info_table&gt;</P>
+
+<B><P>MakeMCCP.aml</P>
+</B><P>Creates a list of A1MC and MCCP-T1.  The MCCP for each MC (county) unit is the Central Place of the highest rank, administrative status, and urban population.  The MCCP point will be used to represent the MC polygon unit in certain point-based analyses, such as transport network modelling.</P>
+
+<B><P>makeR012.aml</P>
+</B><P>Sets R012 values for MC units (# of counties removed from Regional City).  Uses A1T1SEAT.DAT and CS-RCS.DAT to link counties to county seats to RCSes.</P>
+
+<FONT COLOR="#008080"><B><P>MakeRCSregions.aml </B>(formerly RebuildRCS.aml)</P>
+<P>Builds Region subclasses for the RCS coverage and sets .AAT item BTYPE along region boundaries:  BTYPE = 3 (RCS only), 4 (RCS+subsystem), 5 (RCS+macroregion), 6 (subsystem, not RCS), 7 (extended vs. ordinary RCS). 
+Does not overwrite BTYPE = 2 (underwater) or BTYPE &gt;= 10 (intl boundary). 
+Requires that SYSTEM (MR and SUB), RCS-T1, and EXTENDED poly values already be populated. </P>
+<P>Usage: MakeRCSregions &lt;backupcoverage&gt;</P>
+</FONT>
+
+<B><P>mczanno.aml</B> (formerly apportiontext.aml)</P>
+<P>Add &amp; populate a summary text item listing the percentage (of a county) in each region</P>
+<P>Usage: mczanno &lt;APPfile&gt; { &lt;datfile&gt; &lt;zoneitem&gt; }</P>
+<P>&lt;APPfile&gt; is INFO table produced by MCZONES.AML</P>
+<P>Optional datfile and zoneitem list zone assignments by MC units; if provided, assigned zone will be flagged in ZONETEXT.</P>
+
+<B><P>mergea981.aml</P>
+</B><P>Merge MC units based on a981 file values.  <I>(Note:  this procedure is no longer used for China data.  See RebuildChina-A.aml for current procedures.)</P>
+</I>
+
+<B><P>mergext.aml</P>
+</B><P>Merge XT units from MC units based on MASTER.MCXT file, then populate ChinaZ XT items in new XT Region subclass.</P>
+
+<B><P>moveme.aml</P>
+</B><P>move (copy and delete) a grid (for use with RUNMACRO)</P>
+
+<B><P>moveup.aml</P>
+</B><P>Move a coverage up one directory level</P>
+
+<B><P>MRdistance.aml</P>
+</B><P>Allocate central places in a macroregion to Metropolitan cities (or in fact any level of t702 hierarchy)</P>
+<P>Usage: MRdistance {&lt;linecoverage&gt; &lt;route&gt;} &lt;Macroregion 0..9&gt; &lt;t702&gt;</P>
+<P>&lt;linecoverage&gt; is a coverage with AAT items EQLENGTH and SEQLENGTH</P>
+<P>&lt;route&gt; is a route system name--will be created if not already present</P>
+<P>Centers will include cities of &lt;t702&gt; or higher (1=high,9=low).</P>
+<P>If anything is specified for {purge}, new Centers and Stops will be generated.</P>
+
+<FONT COLOR="#008080"><B><P>nearsplit.aml</P>
+</B><P>Split arcs where closest to points, and assign point# to new node#.</P>
+<P>Usage: Nearsplit &lt;line_cover&gt; &lt;point_cover&gt; &lt;PAT_item&gt; {process_step}</P>
+<P>Output is written to new coverages LNCOV and PTBAD in a new subdirectory called WORKDIR.  (Old WORKDIR files are overwritten.)</P>
+</FONT>
+
+<B><P>pathtocore.aml</P>
+</B><P>For all counties (MC units) in a macroregion or subsystem, determine the least-cost path from the MCCP to the region core and creates a route system named CORE&lt;mr&gt; with route systems for each county (numbered A1MC).</P>
+<P>Usage: PathToCore &lt;transport network coverage&gt; &lt;Macroregion 1..9|Subsystem 11..94&gt;</P>
+
+<B><P>PolyAAT.aml</B>Find polygons based on adjacent lines' attributesUsage: PolyAAT &lt;coverage&gt; &lt;AAT_item&gt; &lt;AAT_value&gt; {RETAIN_tempfiles}Warning: code modified especially for DCW Hydro data--changes may be required.</P>
+
+<B><P>projectme.aml</P>
+</B><P>copy projection file from $CHINA/po/china-a (political boundaries)</P>
+
+<B><P>railcodes.aml</P>
+</B><P>For each ACASIAN RAILS coverage, add &amp; populate a rail CLASS item (classes are listed in $CHINA/trans/railcodes.dat)</P>
+
+<B><P>rcs-ap.aml</P>
+</B><P>Arcedit background plotting for editing RCS boundaries from CP Analysis maps (invoked with Arcedit AP RCS-AP.AML command).</P>
+
+<B><P>rcs-ap2.aml</P>
+</B><P>Arcedit background plotting for editing RCS boundaries from CP Analysis maps; version 2 shows almost all features from CP Analysis maps.</P>
+
+<B><P>rcs-hiorder.aml</P>
+</B><P>Report numbers of higher-order cities for each class of RCS (1..27)</P>
+
+<B><P>rcsclass.aml</P>
+</B><P>Report distribution of populations of lower-order cities for each class of RCS (1..27)</P>
+
+<B><P>RCSdistance.aml</P>
+</B><P>Calculate distance to Regional Cities from all central places assigned to a Regional City System. 
+&lt;linecoverage&gt; should be output from SetEqLength.aml (i.e., $CHINA/trans/transnet)</P>
+<P>Usage: RCSdistance {&lt;linecoverage&gt; &lt;route&gt;} &lt;RCS-T1&gt; {purge}</P>
+<P>&lt;linecoverage&gt; is a coverage with AAT items EQLENGTH and SEQLENGTH</P>
+<P>&lt;route&gt; is a route system name--will be created if not already present</P>
+<P>&lt;RCS-T1&gt; is the T1 ID of a Regional City whose system will be examined.</P>
+<P>If anything is specified for {purge}, new Centers and Stops will be generated.</P>
+
+<FONT COLOR="#008080"><B><P>RebuildChina-A.aml</P>
+</B><P>Rebuilds region subclasses for China-A (MQ, MC, and XT units). Using A1MQ, A1MC, and A1XT items in .PAT plus GISxxyy.DAT tables</P>
+<P>Usage: RebuildChina-A &lt;backupcoverage&gt; {comment for log file}</P>
+<P>&lt;backupcoverage&gt; will be created BEFORE changes are made to CHINA-A coverage</P>
+<P>Warning: this will destroy the CHINA-A.PATxx region subclass tables in CHINA-A and rebuild them using the GISxxyy.DAT tables (GISMQMC, GISMCXT, and GISAZXT.DAT).</P>
+</FONT>
+
+<B><P>redwood.aml</P>
+</B><P>Draw 1:350,000 map of Redwood City area using specified theme.</P>
+<P>Usage: redwood &lt;theme.aml&gt; {'title'} {theme parameters}</P>
+
+<B><P>registerchina.aml</P>
+</B><P>transform a coverage using China tics ($CHINA/carto/mtix_r)</P>
+<P>Usage:   registerchina &lt;Coverage prefix&gt; &lt;Input version#&gt; &lt;Output version#&gt;</P>
+<P>Example: registerchina R23  2  3   ...looks for R23_2, saves as R23_3</P>
+
+<B><P>reorderitems.aml</P>
+</B><P>Rearranges PAT and AAT to conform to current community standards and populates new, politically correct items (fields) with data from old, misordered or maldefined items.</P>
+
+<B><P>ReportRCSdistance.aml</P>
+</B><P>Combine output from rcsdistance.aml into a single INFO file in which, of two duplicate T1 entries, that with the smaller distance is retained and that with the larger distance is deleted. Outputs .dbf file.</P>
+
+<B><P>ReportRCSdistance-loop.aml</P>
+</B><P>AML subroutine called by ReportRCSdistance.aml.</P>
+
+<B><P>roadcodes.aml</P>
+</B><P>for each ACASIAN ROADS coverage, add &amp; populate a road CLASS item; classes 1-8 are for superhighways, 9-16 are paved national, 17-24 are unpaved national, 25-32 are paved provincial, 33-40 are unpaved provincial, 41-48 are paved local, 49-56 are unpaved local, 55-63 are other, unknown, or who cares.</P>
+
+<B><P>rrfixprj.aml</P>
+</B><P>fix railroads projection (for ungeoreferenced SE China provinces) and remove provincial boundaries too</P>
+
+<B><P>rrnoborder.aml</P>
+</B><P>remove provincial border (for ungeoreferenced SE China provinces)</P>
+
+<B><P>run-ta.aml</P>
+</B><P>Runs TestAdjacent.aml for all data variables in a .dbf file (which is first converted to an INFO table)</P>
+
+<FONT COLOR="#008080"><B><P>RUNMACRO.AML</P>
+</B><P>Runs the specified AML for each record in the specified list</P>
+<P>Usage: RUNMACRO &lt;AML_macro_filename&gt; &lt;parameter_list_filename&gt; {constants}</P>
+<P>Expects that &lt;AML_macro&gt; contains the directive &amp;args &lt;params1..n&gt; {constants1..n}</P>
+</FONT>
+
+<B><P>seladjac.aml</P>
+</B><P>Selects polygons which are adjacent to the currently selected polygons.</P>
+
+<B><P>selinfo.aml</P>
+</B><P>interactive program to select records from an info file</P>
+
+<B><P>selme.aml</P>
+</B><P>interactive program to asel arcs in Arcedit</P>
+
+<B><P>setarcfrompoly.aml</P>
+</B><P>Set line attributes based on adjacent polygons' attributes (based on linepat.aml). 
+Arc will be set to the greatest value of its neighboring polygons.</P>
+<p>Usage: SetArcFromPoly &lt;coverage&gt; &lt;PAT_item&gt; &lt;AAT_item&gt; {FORCE_new_PAL}</P>
+
+<B><P>SetEQlength.aml</P>
+</B><P>For each arc in a coverage which is in China Albers Projection (units=km), determine a more accurate arc length by copying into a UTM projection and then saving the UTM length back into the original .AAT. 
+Requires coverage $CHINA/carto/utmzones-km and $AML/prj/ projection files. 
+Requires cost-distance multiplier for each TCODE in $CHINA/trans/modecodes.dat table.</P>
+
+<B><P>setprj.aml</P>
+</B><P>check whether projection is set; if not, copy one</P>
+
+<B><P>setregionpal.aml</P>
+</B><P>Make sure a PAL file (sorted by ARC) exists for a Region subclass.</P>
+<P>Usage: setregionpal &lt;coverage&gt; &lt;region_subclass&gt;</P>
+<P>Creates &lt;coverage&gt;.PAL&lt;region_subclass&gt; sorted by ARC if table does not exist.</P>
+
+<B><P>settol.aml</P>
+</B><P>Sets conservative tolerances for 1:1m coverages (based on 1/10 of the accuracy standard for that scale)</P>
+
+<B><P>setzones-rcs.aml</P>
+</B><P>Start with selected polys (for which zoneitem will be %startzone%) and set concentric polys as zones 2..n until all are set.</P>
+
+<B><P>setzones.aml</P>
+</B><P>Start with selected polys (for which zoneitem will be %startzone%) and set concentric polys as zones 2..n until all are set.</P>
+<P>Usage: setzones &lt;coverage&gt; {ZONE | zoneitem} {1 | startzone} {8 | maxzone} </P>
+
+<B><P>snapon.aml</P>
+</B><P>Set Arcedit snapping environment</P>
+
+<B><P>StandardAAT.aml</P>
+</B><P>Creates standardized AAT items from road, rail, or mesh coverages and populates these items from whatever configuration of nonstandard items currently exist in the coverage, as received from ACASIAN. This is necessary so that the coverages can be APPENDed into Transnet. Item definitions based on StandardHYLP.aml. Note: run ROADCODES.AML or RAILCODES.AML first to populate CLASS item.</P>
+
+<B><P>Standardhylp.aml</P>
+</B><P>Creates standardized PAT and AAT items from @##hylp hydrography coverages  and populates these items from whatever configuration of nonstandard items currently exist in the coverage, as received from ACASIAN. This is necessary so that the coverages can be APPENDed. Some code taken from ReorderItems.aml</P>
+
+<B><P>superleg.aml</P>
+</B><P>Draw &quot;superlegend&quot; key including arrow, zones, keyboxes, and values</P>
+<P>Usage: superlegend &lt;cutpoints_table&gt; &lt;keyarea (x,y,x,y)&gt;</P>
+
+<FONT COLOR="#008080"><b><P>testadjacent.aml</P>
+</B><P>Tests the sequencing of a data variable's values across adjacent counties (which share a transport connection). Uses output from TransAdjacent.aml.</P>
+</FONT>
+
+<B><P>testadjacentanno.aml</P>
+</B><P>Annotates the output from Testadjacent.aml:  populates a single text item which reports all non-1.0 SCORES.  This item can be used to draw a map summarizing the scores for up to 8 items.</P>
+<P>Usage: TestadjacentAnno.aml &lt;datatable&gt; &lt;Annoitem&gt; &lt;score1&gt; {{score2}..{score8}}</P>
+
+<B><P>testsequence.aml</P>
+</B><P>Tests the sequencing of a data variable's values along a route system (as from Core to Periphery). Requires .SEQ&lt;subclass&gt; generated by TransSequence.aml</P>
+<P>Usage:   TestSequence &lt;coverage&gt; &lt;subclass&gt; &lt;datatable&gt; &lt;dataitem&gt; {outtable} {NODISPLAY|DISPLAY}</P>
+<P>Example: TestSequence transnet core4 sasdata.dat a02138 a01238.test</P>
+
+<B><P>tidycp.aml</P>
+</B><P>Clean up CP coverages--remove obsolete INFO tables and PAT items.</P>
+
+<B><P>tilemap.aml</P>
+</B><P>Creates map of a 4x6 degree tile (used for ACASIAN HYLP rivers), calling a Regmap Theme AML.</P>
+<P>Usage:   tilemap &lt;tile&gt; &lt;theme&gt; {theme_parameters}</P>
+
+<B><P>transadjacent.aml</P>
+</B><P>Creates INFO tables listing China MC units (counties) which are immediately adjacent via transport connections (roads, rails, navigation).  Output can be used by TestAdjacent.AML, which tests whether data values for counties  progress from core to periphery.  This approach replaces the approach used by TransSequence and TestSequence.aml.  See $CHINA/po/xxmc.to and xxmc.from for examples of output</P>
+<P>Usage: TransAdjacent &lt;mc_polygon_coverage&gt; &lt;Transnet_arc_coverage&gt;</P>
+
+<B><P>TransferTCODE.aml</P>
+</B><P>Transfers values from version _1 hylp to version _2 hylp coverage (necessary since hylp coverages were updated by ACASIAN after some TCODE coding was done at UCD).</P>
+
+<B><P>transrivbuf.aml</P>
+</B><P>Transfer attributes from buffered rivers coverage to detailed hydro.  </P>
+<P>Source: 1:4m navigable rivers coverage from ACASIAN, buffered by type.</P>
+<P>Target: 1:1m LUMC rivers coverages (xHYLP)</P>
+<P>Usage: transrivbuf &lt;HYLP_coverage&gt;</P>
+
+<B><P>TransSequence.aml</P>
+</B><P>Generate a Sequence file listing Central Places and their predecessors and successors along Routes in a Route Subclass.  Designed for China Transnet coverage and CoreXX route subclasses.</P>
+<P>Usage: TransSequence &lt;Transnet coverage&gt; &lt;Route subclass&gt; {step}</P>
+<P>Generates Sequence INFO table &lt;coverage&gt;.SEQ&lt;subclass&gt;</P>
+
+<B><P>verifyrcst1.aml</P>
+</B><P>Check that the output of ASSIGNRCS2T1.AML contains all georeferenced points in the specified point coverage and .dat table.</P>
+<P>Usage: VerifyRCST1 &lt;rcst1.dat table&gt; {CP coverage} {ChinaT Data table}</P>
+<P>{CP coverage} defaults to $CHINA/cp/cp-all</P>
+<P>{ChinaT Data table} defaults to $CHINA/cp/chinat.dat&nbsp;</P>
+
+<P></FONT><A HREF="##top"><FONT SIZE=2>Return to top</FONT></A></P>
+<P><HR></P>
+
+<FONT SIZE=5><P><A NAME="edittool"></A>Edittool subdirectory</P>
+</FONT><FONT SIZE=2><P>AMLs for use in scanning, vectorizing, and editing GIS data. (See D. Messenger.)</P>
+
+</FONT><P><A HREF="##top">Return to top</A>&nbsp;</P>
+<P><HR></P>
+
+<FONT SIZE=5><P><A NAME="makemaps"></A>Makemaps subdirectory</P>
+</FONT><FONT SIZE=2><P>AMLs for use in generating standard map themes. For an overview of the standard mapping procedures, see the detailed documentation for </FONT><A HREF="regmap.htm"><FONT FACE="Courier New" SIZE=2>regmap.aml</FONT></A><FONT SIZE=2>.</P>
+</FONT>
+
+<FONT FACE="Courier New" SIZE=2><B><P>ChinaRegionSetup.aml</P>
+</B><P>Parses numeric Region arguments for Regmap.aml (Numeric regions indicate China Macroregions or Provinces.</P>
+<P>Called by RegSetup.aml</P>
+
+<B><P>getframe.aml</P>
+</B><P>Set mapextent and title for many map frames of China, Japan, France, etc. (called by regmap.aml if %region% is not numeric)</P>
+
+<B><P>Pagemap.aml</P>
+</B><P>Page layout for maps of macroregional systems (8x10" format); uses specified THEME AML to draw map.</P>
+<P>(Ignores KEY AML used by Regmap.AML; uses kp-&lt;theme&gt;.aml if found.)</P>
+<P>Usage: pagemap &lt;region (1..9|N,S,W,P|10..99)&gt; &lt;theme&gt; {theme_parameters}</P>
+<P>Output to p%region%%theme%.eps</P>
+
+<B><P>Pagemap40.aml</P>
+</B><P>Page layout for maps of macroregional systems (8x10" format); output to 1040 .GRA file.</P>
+
+<B><P>pagemap_ai.aml</P>
+</B><P>Page layout for maps of macroregional systems (8x10" format); output to %region%&lt;layer&gt;.ai Adobe Illustrator file.</P>
+
+<B><P>PageSetup.aml</P>
+</B><P>Sets up display output for PAGEMAP.AML.</P>
+
+<B><P>regionmape.aml</P>
+</B><P>mapextents and maplimits used for regional maps before 11/96</P>
+
+<P><A HREF="regmap.htm"><B>regmap.aml</B></A></P>
+<P>Page layout for maps of macroregional systems; uses specified THEME and KEY AML to draw map. 
+Accepts either THEME- or T- as theme macro prefix.</P>
+<P>Usage:   regionmap &lt;region (1..9|N,S,W,P|10..99)&gt; &lt;theme&gt; {theme_parameters}</P>
+
+<B><P>regmap40.aml</P>
+</B><P>Produces REGMAP output to small .jpg and .eps files for remote viewing.</P>
+
+<B><P>RegSetup.aml</P>
+</B><P>Sets up display output for REGMAP.AML and REGMAP40.AML.</P>
+
+<P></FONT><A HREF="##top"><FONT SIZE=2>Return to top</FONT></A></P>
+<P><HR></P>
+
+<p><I><FONT SIZE=-1><P>Revised July 28, 1998 (174 macros) by 
+<A HREF="mailto:mhenderson94@post.harvard.edu">Mark Henderson</A>
+</FONT></i>
+</P></BODY>
+</HTML>
+

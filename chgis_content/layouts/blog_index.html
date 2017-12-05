@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+    {{> meta1 }}
+</head>
+<body>
+{{> header1 }}
+{{> navbar_localhost }}
+
+<h2>{{title}}</h2>
+    <div class="main-wrapper">
+        {{#each collections.blog}}
+
+           <a href="../{{this.path}}/" class="pages"> {{title}} </a><br />
+
+        {{/each}}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Japan GIS Data</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffcccc">
+
+
+<B><FONT FACE="Arial" SIZE=4><P>Japan GIS Data</P>
+</B></FONT><P>In collaboration with colleagues in Japan, historical GIS data is being assembled for research at three spatial scales:</P>
+
+<UL>
+<B><LI>Nationwide</B> (1:500,000) -- based on MapInfo JDM (no documentation yet available)</LI>
+<B><LI>Nobi Region</B> (1:50,000) -- being digitized at UC Davis from Meiji-era paper maps (see documentation below)</LI>
+<B><LI>Owari District</B> (1:20,000) -- digitized at UC Davis from Meiji-era paper maps (incomplete documentation only)</LI></UL>
+
+<P>&nbsp;</P>
+<P ALIGN="CENTER"><HR></P>
+<P>&nbsp;</P>
+<B><P>Japan Nobi region</B> 1:50,000 maps made from 39 (33+6) original map sheets ("tiles"). Historical data circa 1890. </P>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=327>
+<TR><TD VALIGN="TOP">
+<P ALIGN="CENTER"><FONT SIZE=4>Five Data Layers</FONT> </P>
+
+<UL>
+<FONT SIZE=4><P ALIGN="CENTER"><LI>Roads</FONT> </LI></P>
+<FONT SIZE=4><P ALIGN="CENTER"><LI>Hydrology</FONT> </LI></P>
+<FONT SIZE=4><P ALIGN="CENTER"><LI>Administrative Boundaries</FONT> </LI></P>
+<FONT SIZE=4><P ALIGN="CENTER"><LI>Settlements</FONT> </LI></P>
+<FONT SIZE=4><P ALIGN="CENTER"><LI>Elevation Contours</FONT> </UL>
+</TD>
+</TR>
+</TABLE>
+
+<P><A NAME="ChinaA"></A><BR>
+</P>
+<FONT SIZE=4><STRONG><P>roadc Nobi road coverage, 1890, 1:50,000</STRONG> (July 96) </P>
+<DL>
+<DT>AAT: rd = 1 guo-dao &amp; xian-dao (first 2 levels on source</DT>
+<DT>map, shown in double solid lines);</DT>
+<DT>= 2 da-lu (level 3 on source map, narrow double</DT>
+<DT>solid lines);</DT>
+<DT>= 3 lian-lu (level 4 on source map, a solid line</DT>
+<DT>and a dash line)</DT>
+<DT>btype = 98 scale bar</DT>
+</DL>
+</FONT><P><HR></P>
+<P><BR>
+</P>
+<FONT SIZE=4><STRONG><P>riverc Nobi hydrology coverage, 1890, 1:50,000</STRONG> (July 96)</FONT> </P>
+<FONT SIZE=4><DL>
+<DT>AAT: btype = 0 rivers</DT>
+<DT>= 1 lake shorelines</DT>
+<DT>= 10 shorelines and river banks</DT>
+<DT>= 11 islands in rivers</DT>
+<DT>= 91 grid line boundary</DT>
+<DT>= 9 special lines created to form polygons (don't plot them)</DT>
+<DT>PAT: color = 5 for open water</DT>
+</DL>
+</FONT><P><HR></P>
+<P><BR>
+</P>
+<FONT SIZE=4><STRONG><P>admbndc Nobi administrative boundary coverage, 1890, 1:50,000</STRONG> (July 96)</FONT> </P>
+<FONT SIZE=4><DL>
+<DT>AAT: btype = 1 fu-xian &amp; guo (First 2 levels on source maps)</DT>
+<DT>= 2 jun-shi (level 3 on source map)</DT>
+<DT>= 3 cun &amp; qu (level 4 on source map)</DT>
+<DT>= 60 coast lines</DT>
+<DT>= 90 map outline (frame)</DT>
+<DT>= 98 scale bar</DT>
+<DT>PAT: A1 ID number for villages</DT>
+<DT>name name of the village</DT>
+<DT>note The IDs of the villages merged</DT>
+<DT>Note: Some of the villages have been coded.</DT>
+</DL>
+</FONT><P><HR></P>
+<FONT SIZE=4><STRONG><P>settc Nobi towns and villages (built-up areas) coverage, 1890,</STRONG> 1:50,000 (July 96)</FONT> </P>
+<FONT SIZE=4><DL>
+<DT>AAT : btype = 98 scale bar</DT>
+</DL>
+</FONT><P><HR></P>
+<FONT SIZE=4><STRONG><P>contc Nobi elevation coverage, 1890, 1:50,000 (July 96)</FONT></STRONG> </P>
+<FONT SIZE=4><DL>
+<DT>AAT: elev = 100,200,400,800, or 1600 in meters</DT>
+<DT>btype = 91 gridline boundary</DT>
+<DT>= 98 scale bar</DT>
+<DT>PAT: color = 0 open water</DT>
+<DT>1 &lt; 100m</DT>
+<DT>2 100 - 199</DT>
+<DT>3 200 - 399</DT>
+<DT>4 400 - 799</DT>
+<DT>5 800 - 1599</DT>
+<DT>6 &gt;= 1600m </DT>
+</DL>
+</FONT><P><HR></P>
+<P><BR>
+</P>
+<FONT SIZE=4><STRONG><P>contc2 Nobi contour polygon coverage with open water polygons built in. (July 96)</FONT></STRONG> </P>
+<FONT SIZE=4><DL>
+<DT>AAT: elev = 100,200,400,800, or 1600 in meters</DT>
+<DT>btype = 1 lake shorelines</DT>
+<DT>10 coast lines and river banks</DT>
+<DT>11 islands in rivers</DT>
+<DT>91 gridline boundary</DT>
+<DT>98 scale bar</DT>
+<DT>PAT: color = 1 &lt; 100m</DT>
+<DT>2 100 - 199</DT>
+<DT>3 200 - 399</DT>
+<DT>4 400 - 799</DT>
+<DT>5 800 - 1599</DT>
+<DT>6 &gt;= 1600m</DT>
+<DT>color = 0 lakes</DT>
+</DL>
+</FONT><P><HR></P>
+<P><BR>
+</P>
+<FONT SIZE=4><STRONG><P>shores Nobi open water coverage, 1890, 1:50,000 (July 96)</FONT></STRONG> <BR>
+</P>
+<FONT SIZE=4><DL>
+<DT>AAT: btype = 1 alke shores</DT>
+<DT>10 river banks</DT>
+<DT>11 islands</DT>
+<DT>91 gridline boundary</DT>
+<DT>PAT: color = 1 lakes</DT>
+<DT>5 sea, rivers</DT>
+</DL>
+</FONT><P><HR></P>
+<P><BR>
+</P>
+<FONT SIZE=4><STRONG><P>gline Nobi line coverage, 1890 (July 96) grid illustration of the 39 tiles</FONT></STRONG> <BR>
+</P>
+<FONT SIZE=4><DL>
+<DT>x (horizental) from 1 to 6</DT>
+<DT>y (vertical) from A to H</DT>
+<DT>AAT: btype = 90 gridline</DT>
+<DT>98 scale bar</DT>
+</DL>
+</FONT><P><BR>
+</P>
+<I><FONT SIZE=4><STRONG><P>All above coverages are registered to the source maps.</I></FONT></STRONG> </P>
+<P><HR></P>
+<P><BR>
+<BR>
+<BR>
+</P>
+<FONT SIZE=4><P>Raw files are in the subdirectory raw_box: </P>
+<P>(Created 8 Aug 96)</FONT> <BR>
+</P>
+<FONT SIZE=4><P>bound.tar.Z</FONT> </P>
+<FONT SIZE=4><P>contour.tar.Z </P>
+<P>hydro.tar.Z </P>
+<P>roads.tar.Z </P>
+<P>settle.tar.Z</FONT> </P>
+<FONT SIZE=4><P>arcfiles.tar</FONT> <BR>
+</P>
+<FONT SIZE=4><P>(Note: each *.tar.Z file will be expanded to a directory after uncompressing</FONT> </P>
+<FONT SIZE=4><P>and 'untar' the files.)</FONT> <BR>
+</P>
+<P><HR></P>
+<P><BR>
+</P>
+<H3>OwariJK subdirectory</H3>
+<P><BR>
+</P>
+<FONT SIZE=4><P>The OwariJK is a subdirectory in the Nobi directory, containing coverages</FONT> </P>
+<FONT SIZE=4><P>for OwariJ and OwariK.</FONT> <BR>
+</P>
+<FONT SIZE=4><P>The files in OwariJK were moved from the from_szsi_acct in the DEC files</FONT> </P>
+<FONT SIZE=4><P>system. The name was owari_villages.</FONT> <BR>
+</P>
+<FONT SIZE=4><P>All coverages here were dated 16 Nov 94.</FONT> <BR>
+<BR>
+<BR>
+</P>
+<FONT SIZE=4><P>ojcov - OwariJ, updated villages mergers, modifications 9-30-93.</FONT> <BR>
+</P>
+<FONT SIZE=4><P>ojcov2, ojcov3 (updated versions of ojcov?)</FONT> <BR>
+</P>
+<FONT SIZE=4><P>The ojcov* coverages have following attributes:</FONT> <BR>
+</P>
+<FONT SIZE=4><P>GUN, VILLNUM, VILLNAME, OBS, TRUNCNA, J121 to J205, etc.</FONT> <BR>
+<BR>
+<BR>
+</P>
+<FONT SIZE=4><P>ojgun OwariJ coverage without village boundaires</FONT> <BR>
+</P>
+<FONT SIZE=4><P>ojgun has following attributes:</FONT> <BR>
+</P>
+<FONT SIZE=4><P>GUN, VILLNUM, VILLNAME, OBS</FONT> <BR>
+</P>
+<FONT SIZE=4><P>kmocov OwariK</FONT> </P>
+<FONT SIZE=4><P>kmocov2 another version of kmocov?</FONT> </P>
+<FONT SIZE=4><P>kmogun kmocov without village boundaries </P>
+<P>mn Contains a number of arcs that would add to other covearges. </FONT><BR>
+<BR>
+<BR>
+</P>
+<FONT SIZE=4><P>OwariJK has a subdirectory OwariJK_aml_box for AML files.</FONT> <BR>
+</P>
+<FONT SIZE=4><P>ojmap.aml (AML for making a map of Owari 1820) dated 6 Oct 94 </P>
+<P>define.aml (AML for data input)</FONT> </P>
+<FONT SIZE=4><P>define2.aml (AML for data input)</FONT> </P>
+<FONT SIZE=4><P>definenew.aml (AML for data input)</FONT> </P>
+<FONT SIZE=4><P>definfo.aml (AML for data input)</FONT> </P>
+<FONT SIZE=4><P>defirr.aml (AML for data input)</FONT> <BR>
+</P>
+<FONT SIZE=4><P>junkvars.aml (AML for reading data)</FONT> </P>
+<FONT SIZE=4><P>kmomap.aml (AML for the map named OwariK 1672) dated 6 Oct 94 </P>
+<P>kmoinset.aml</FONT> </P>
+<FONT SIZE=4><P>ojmap.aml (AML for the map named OwariJ 1820) Dated 6 Oct 94</FONT> </P>
+<FONT SIZE=4><P>ojinset.aml</FONT> </P>
+<P><BR>
+<BR>
+</P></BODY>
+</HTML>

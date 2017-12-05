@@ -1,0 +1,20 @@
+<!doctype html>
+<html> 
+ <head>
+    <title>{{ title }}</title>
+    {{> meta1 }}
+ </head>
+<body>
+{{> header1 }}
+{{> navbar_localhost1 }}
+    <div class="wrap">
+      <div class="chunk">
+      <b>Sample maps made with CHGIS datasets:</b><p />
+        {{#each collections.maps}}
+           <a href="../{{this.path}}/" class="maps"> {{title}} </a><br />
+        {{/each}}
+      </div>
+    </div>
+{{> footer }}
+</body>
+</html>

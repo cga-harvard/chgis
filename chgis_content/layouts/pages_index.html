@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    {{> meta1 }}
+
+</head>
+<body>
+{{> navbar_localhost1 }}
+{{> header1 }}
+    <div id="wrap">
+        {{#each collections.pages}}
+           <a href="../{{this.path}}/" class="pages"> {{title}} </a><br />
+        {{/each}}
+    </div>
+{{> footer }}
+</body>
+</html>

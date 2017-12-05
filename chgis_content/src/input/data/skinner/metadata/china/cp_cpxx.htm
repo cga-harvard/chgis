@@ -1,0 +1,436 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; U) [Netscape]">
+   <TITLE>cp_cpxx</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFE6CC" LINK="#0000FF" VLINK="#800080">
+
+<CENTER>
+<H2>
+CP/CP<I>xx</I></H2></CENTER>
+
+<H3>
+I. Identification Information</H3>
+
+<TABLE BORDER CELLPADDING=5 WIDTH="735" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2">
+<H3>
+A. Citation</H3>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>1. Title</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Central Places of China (Provincial Series),
+1990</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>2. Version / Date</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">March 1997</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>3. Originator</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Australian Centre, Asian Spatial Information
+and Analysis Network (ACASIAN), Griffith University, Australia,
+
+<P>And
+
+<P>G.W. Skinner Research Team, Department of Anthropology, University of
+California, Davis (UCD), USA</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>4. Date and Place of Publication</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Davis, California: 1998</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2">
+<H3>
+B. Description</H3>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>1. Abstract&nbsp;</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Points indicating the location of central places
+(cities, towns, and villages) shown on the Land Use Map of China and other
+published sources; includes most of the 12,000+ places included in the
+China-T Dataset. This information is published in a series of Arc/Info
+coverages, with one coverage for each of China's provinces, autonomous
+regions, and independent municipalities. Coverages are named CP<I>xx</I>,
+where <I>xx</I> is the two-digit identifer for each province.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>2. Purpose</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Spatial framework for managing and analyzing
+tabular data compiled for central places at 1:1,000,000 scale.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>3. Procedures Used (overview)</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">ACASIAN digitized points from paper map sources
+and compiled data on each point. UCD received this series from ACASIAN
+and processed this data for use with the China-T Dataset, assigning each
+point a T1 identification number and verifying certain place names. Some
+places listed in the China-T Dataset, but not included in this series,
+are included in a supplemental coverage (CPQU).</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="15%"><FONT SIZE=-1>4. Sources and related Data Sets</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="85%">Source maps used by ACASIAN may include the
+Land Use Map of China and other publications.&nbsp;
+
+<P>Urban population and China-T identification numbers derived from the
+China-T Dataset, University of California, Davis.</TD>
+</TR>
+</TABLE>
+
+<H3>
+II. Data Quality Information</H3>
+
+<TABLE BORDER CELLPADDING=5 WIDTH="780" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="29%"><FONT SIZE=-1>1. Intended area of coverage</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="71%">Mainland China (separate Arc/Info coverages
+for each province)</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>2. Completeness</FONT></TD>
+
+<TD VALIGN=TOP>Includes points for over 12,000 cities, towns, and villages
+in all provinces of China. Some places listed in the China-T Dataset, but
+not included in this series, are included in a supplemental coverage (CPQU).</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>3. Processing steps</FONT></TD>
+
+<TD VALIGN=TOP><I>See .log files and the CP-.AML series for details.</I>
+
+<P>ACASIAN digitized points from paper map sources and compiled data on
+each point, including its name (in <I>hanzi</I> [Chinese characters] and
+pinyin [transliterated into Latin characters]), administrative identification
+number (CITY_TOWN_CODE), official population, and position in the administrative
+hierarchy. This product is distributed for a fee exclusively by ACASIAN.
+
+<P>UCD received this series from ACASIAN in March 1997 and processed this
+data for use with the China-T Dataset (tabular data on central places compiled
+from China's 1990 Census and other published sources).&nbsp;
+
+<P>Supplemental data attributes compiled by ACASIAN were moved from the
+.PAT file to a separate .CTC file keyed to the points' unique identifier,
+the CITY_TOWN_CODE. These attributes were not verified or edited by UCD.
+The CITY_TOWN_CODE was also retained in the .PAT as a unique identifier
+for use in retrieving data in the .CTC file or other data at ACASIAN.
+
+<P>UCD changed the pinyin names listed in the .PAT where the China-T Dataset
+used different names for the same cities; we also added <I>hanzi</I> names
+for certain higher-order cities whose <I>hanzi</I> names had been omitted
+from ACASIAN's product. We also removed the <I>shi</I>, <I>xian</I>, and
+<I>zhen</I> suffixes from both <I>hanzi</I> and pinyin names except when
+the remaining portion of the names would have only one syllable.
+
+<P>Next, UCD matched each point to a corresponding record in the China-T
+Dataset, using as guides the CITY_TOWN_CODE, the pinyin name, the name
+and ID number of the county in which the point is located, and the approximate
+population of the point as shown in both the .CTC file and the China-T
+Dataset. Each point was assigned a T1 identification number corresponding
+to a record in the China-T Dataset. In a majority of cases, the T1 identifier
+was the same as the CITY_TOWN_CODE. However, further processing was required
+to resolve over one thousand discrepancies.
+
+<P>This series included points some minor places which are not listed in
+the China-T Dataset. Likewise, some central places listed in the China-T
+Dataset were not included in this series; these included all urban <I>qu</I>
+centers. A supplemental coverage (CPQU, <I>q.v.</I>) was created to contain
+many of these points. All additions, corrections, and unresolved discrepancies
+noted at UCD are being provided to ACASIAN to assist in the further development
+of their commercial products.</TD>
+</TR>
+</TABLE>
+
+<H3>
+III. Spatial Reference Information</H3>
+
+<TABLE BORDER CELLPADDING=5 WIDTH="780" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="29%"><FONT SIZE=-1>1. Map Projection</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="70%">Albers projection, units=kilometers.&nbsp;
+
+<P>See prj.adf file.</TD>
+</TR>
+</TABLE>
+
+<H3>
+IV. Entity and Attribute Information</H3>
+
+<TABLE BORDER CELLPADDING=4 WIDTH="735" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="18%"><FONT SIZE=-1>1. Attribute Label</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=-1>2. Attribute Description</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="57%"><FONT SIZE=-1>3. Attribute Domain or Table</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">
+<H3>
+A. Arc Attribute Table (AAT)</H3>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">none.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">
+<H3>
+B. Point Attribute Table (PAT)</H3>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">CHARACTER_NAME</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Place name in Chinese characters (EUC encoding)</TD>
+
+<TD VALIGN=TOP WIDTH="57%"><I>Hanzi</I> (Chinese character) name.
+
+<P><FONT SIZE=-1>The 100 most frequently used characters are translated
+in <A HREF="chineseplacenames.htm">ChinesePlaceNames.htm</A>.</FONT><FONT SIZE=-1></FONT>
+
+<P><FONT SIZE=-1>Printing these Chinese character names in Arc/Info is
+possible with the installation of the East Asian Languages Support CD,
+available from ESRI. <I>Hanzi</I> names can be displayed or edited in a
+Telnet session from a PC which is also running TwinBridge software.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">CITY_TOWN_CODE</TD>
+
+<TD VALIGN=TOP WIDTH="25%">ACASIAN Identifier</TD>
+
+<TD VALIGN=TOP WIDTH="57%">This item is retained for consistency with the
+data attributes originally provided by ACASIAN, which have now been moved
+to the .CTC file.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">NAME</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Place name in Pinyin</TD>
+
+<TD VALIGN=TOP WIDTH="57%">Derived from ACASIAN's PINYIN_NAME attribute
+and verified against China-T Dataset's T3 field.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">T1</TD>
+
+<TD VALIGN=TOP WIDTH="25%">China-T Identifier&nbsp;</TD>
+
+<TD VALIGN=TOP WIDTH="57%">8-digit identifier used in China-T Dataset.
+Based on China's National Standard (<I>guobiao</I>) codes for early 1990,
+with significant changes made at UCD for analytical purposes.&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">T1_C</TD>
+
+<TD VALIGN=TOP WIDTH="25%">China-T Identifier (redefined as Character data
+type)</TD>
+
+<TD VALIGN=TOP WIDTH="57%">A redefined INFO item. Used when it is necessary
+to treat T1 as a character data type, such as when comparing with CITY_TOWN_CODE.&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">T1_6</TD>
+
+<TD VALIGN=TOP WIDTH="25%">China-T Identifier (redefined as Character,
+excluding first two digits)</TD>
+
+<TD VALIGN=TOP WIDTH="57%">A redefined INFO item: T1 without the first
+two digits (which indicate the province). Used on maps where the province
+number can be assumed. Defined as Character data type so that leading zeroes
+will be printed.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3"><FONT FACE="Arial">C. .CTC Table (Attributes
+provided by ACASIAN)</FONT>
+
+<P><I>These attributes will not be verified or edited by UCD. Tables for
+certain provinces contain additional attributes, often containing "old"
+values for standard attributes.</I></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">CITY_TOWN_CODE</TD>
+
+<TD VALIGN=TOP WIDTH="25%">ACASIAN Identifier</TD>
+
+<TD VALIGN=TOP WIDTH="57%">8-digit identifier used by ACASIAN. Based closely
+on <I>guobiao</I> codes for late 1990.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">CHARACTER_NAME</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Place name in Chinese characters (EUC encoding)</TD>
+
+<TD VALIGN=TOP WIDTH="57%"><I>Hanzi</I> place name, including <I>shi</I>,
+<I>xian</I>, or <I>zhen</I> suffix.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">PINYIN_NAME</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Transliterated place name</TD>
+
+<TD VALIGN=TOP WIDTH="57%">Pinyin place name, including <I>shi</I>, <I>xian</I>,
+or <I>zhen</I> suffix.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">SIX_DIGIT_POSTAL</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Postal Code</TD>
+
+<TD VALIGN=TOP WIDTH="57%">6-digit identifier used for postal delivery.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">COUNTY_LEVEL_CAP</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Capital of a county-level unit</TD>
+
+<TD VALIGN=TOP WIDTH="57%">YES | NO</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">OFFICIAL_STATUS</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Status in late 1990</TD>
+
+<TD VALIGN=TOP WIDTH="57%">CITY | TOWN | etc.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">CENSUS90_ORDER</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Numeric code</TD>
+
+<TD VALIGN=TOP WIDTH="57%">Undocumented</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">URBAN_RESIDENT_P</TD>
+
+<TD VALIGN=TOP WIDTH="25%">Population classified as urban (nonagricultural)</TD>
+
+<TD VALIGN=TOP WIDTH="57%">Comparable to T109 in the China-T Dataset.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="18%">Additional Administrative Position Codes</TD>
+
+<TD VALIGN=TOP WIDTH="25%">--&nbsp;</TD>
+
+<TD VALIGN=TOP WIDTH="57%">Identification numbers, <I>hanzi</I> names,
+and pinyin names of the administrative unit, county, and province to which
+each place is assigned.</TD>
+</TR>
+</TABLE>
+
+<H3>
+V. Distribution Information</H3>
+
+<TABLE BORDER CELLPADDING=5 WIDTH="780" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="29%"><FONT SIZE=-1>1. Contact Person</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="71%">At ACASIAN: Larry Crissman, <A HREF="mailto:crissman@asian.gu.edu.au">crissman@asian.gu.edu.au</A>&nbsp;
+
+<P>At UCD: G. William Skinner, <A HREF="mailto:gwskinner@ucdavis.edu">gwskinner@ucdavis.edu</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>2. Contact Address</FONT></TD>
+
+<TD VALIGN=TOP>ACASIAN
+
+<P>Griffith University, Nathan (Brisbane), Queensland
+
+<P>AUSTRALIA
+
+<P><A HREF="http://www.asian.gu.edu.au/">http://www.asian.gu.edu.au/</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>3. Distribution Liability and Restrictions</FONT></TD>
+
+<TD VALIGN=TOP>This dataset is subject to international copyright laws
+and agreements. Further distribution is provided exclusively by ACASIAN.</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>4. Distribution Format</FONT></TD>
+
+<TD VALIGN=TOP>Arc/Info 7.1.2 export format (.e00)</TD>
+</TR>
+</TABLE>
+
+<H3>
+VI. Metadata Reference Section</H3>
+
+<TABLE BORDER CELLPADDING=5 WIDTH="780" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="29%"><FONT SIZE=-1>1. Metadata preparer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="71%">Mark Henderson, GIS Analyst, <A HREF="mailto:mhenderson94@post.harvard.edu">mhenderson94@post.harvard.edu</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>2. Metadata address</FONT></TD>
+
+<TD VALIGN=TOP>Department of Anthropology, Young Hall,&nbsp;
+
+<P>University of California, Davis&nbsp;
+
+<P>Davis, CA 95616&nbsp;
+
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A>&nbsp;</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP><FONT SIZE=-1>3. Metadata format</FONT></TD>
+
+<TD VALIGN=TOP>UCD GIS Metadata form, April 13, 1998</TD>
+</TR>
+</TABLE>
+&nbsp;
+</BODY>
+</HTML>

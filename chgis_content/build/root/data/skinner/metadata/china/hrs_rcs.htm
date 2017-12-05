@@ -1,0 +1,292 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Hrs/Rcs </TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffe6cc">
+
+<H2 ALIGN="CENTER">Hrs/Rcs </H2>
+<H3>I. Identification Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=735>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>A. Citation</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Title</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Macroregions and Regional City Systems of China, 1990</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Version / Date</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>May 14, 1998</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Originator</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>G.W. Skinner Research Team, Department of Anthropology, University of California, Davis</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Date and Place of Publication</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Davis, California, USA: 1998</TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2>
+<H3>B. Description</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>1. Abstract </FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Polygons for China's regional city systems. Region subclasses define Macroregional systems and subsystems.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Purpose</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Spatial framework for macroregional analysis at 1:1,000,000 scale.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Procedures Used (overview)</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Regional city systems were delineated through a central place analysis on paper maps printed at approximately 1:1,000,000 scale. System boundaries were determined based on the location of categorized central places on the transportation network. Boundaries traced on acetate were scanned, vectorized, and edited from multiple, irregular map sheets to form a single coverage. See II.3 below.</TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<FONT SIZE=2><P>4. Sources and related Data Sets</FONT></TD>
+<TD WIDTH="82%" VALIGN="TOP">
+<P>Central places and transportation network georeferenced by ACASIAN, Griffiths University, Australia (q.v.). </P>
+<P>Hierarchical status of central places from China-T Dataset, University of California, Davis.</P>
+<P>Central place analysis procedures based on John Marshall (1989).</TD>
+</TR>
+</TABLE>
+
+<H3>II. Data Quality Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="30%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Intended area of coverage</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Mainland China</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Completeness</FONT></TD>
+<TD VALIGN="TOP">
+<P>Complete.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Processing steps</FONT></TD>
+<TD VALIGN="TOP">
+<P>Objective: compile a new Arc/Info coverage of new regional city system boundaries drawn based on a new central place analysis. Steps 1-8 work on separate coverages for each macroregion or map frame. Steps 9-16 work on a merged all-China coverage.  See the .log file for additional details.</P>
+<OL>
+
+<LI>Plot "Central Places Analysis Maps" using <U>Regmap.aml</U>. The appearance of these maps is defined in <U>$CHINA/cp/t-zhen.aml</U>, option t2, which contains numbered latitude and longitude lines, city names and type, provincial and international borders, roads (superhighways, national highways, unpaved national highways, provincial highways, and local roads), railroads, rivers (major and minor), the original macroregional boundaries, and the original shaded regional city system polygons. The map frames are defined in <U>$AML/getframe.aml</U>, which specifies the name, extent, scale, and orientation for maps of macroregional subsystems and other areas. (The scale of the maps will vary depending on the density of cities and roads, but should be approximately 1:1,000,000.) For example, to plot the map of Region 5.2, use "<U>&amp;r regmap r52 zhen t2</U>."</LI>
+<LI>Trace new regional city system and (where applicable) macroregional borders onto mylar or high quality tracing paper. Write the name of the map and the late in the lower right corner of each mylar. (G. William Skinner)</LI>
+<LI>Prepare mylar for scanning by marking tics at the intersections of longitude and latitude lines. Then number the tics with 5-digit number consisting of the latitude followed by the longitude. Use a pencil to go over any light markings or small gaps in the lines forming regional system borders. Check intersections and cities to make sure lines are not discontinuous. (Michele Ladenson w/ Mark Henderson).</LI>
+<LI>Scan each mylar, saving it into a .tif file labeled rXY or rX(Y)Z, where X is the macroregion number, Y is the subsystem, and Z is a compass point used to differentiate between coverages in the same macroregion or subsystem. Use<U> imageline.aml</U> to create a useable coverage of the same name. (Michele Ladenson, Mark Henderson, w/ Doug Messenger)</LI>
+<LI>Using the <U>Editing.aml</U> program, add the tics into the coverage, numbering them as marked. Add arcs in cases where the lines on the mylar were too light or thin for the scanner to pick them up and remove extraneous editing marks from saved coverage (select continuous, nonselect delete). Careful editing may be needed to remove small circles surrounding towns on the RCS borders generated by step 2 above. (Ladenson, programming by Messenger)</LI>
+<LI>Once coverages have been edited, georeference them by using <U>registerchina.aml</U>. (Henderson and Ladenson) </LI>
+<LI>Using either the <U>Editing</U> program or Arcedit commands and showing neighboring coverages as backcoverages, remove (select many, delete) overlapping or superceded lines at the edges of coverages, referring to the notes on the original mylars as needed. (Ladenson)</LI>
+<LI>Generate macroregion coverages (r#) from the multiple coverages for each macroregion using the ‘arcsnap’, ‘nodesnap’ and ‘put’ commands. Run <U>addsource.aml</U> to add a source code (the frame name) and set BTYPE = 3 (to denote a regional city system boundary). (Henderson and Ladenson)</LI>
+<LI>Begin working with an all-China coverage. Make a copy of $CHINA/hrs/rcs. Working one macroregion at a time, delete original arcs and replace them arcs with arcs from the macroregional coverage that has been created in steps 1-8. The new working version of the all-China coverage should be called rcs98new_1. If, during the editing process, it is necessary to print maps showing updated arcs, macros can be modified to refer to this new working version. (Henderson and Ladenson)</LI>
+<LI>Add offshore arcs so that coastal RCSes form closed polygons. Using $CHINA/hydro/coastline as a background and snap coverage, ensure that traced RCS arcs stop exactly at the coastline (these should be dangles at this point). Then add new arcs, extending arbitratily into the ocean and forming closed polygons. Code these new arcs BTYPE=2. Also check for arcs which cross major lakes as shown in $CHINA/hydro/polakes; split these arcs at the lake shores, and set the arc segments within the lakes to BTYPE=2. </LI>
+<LI>Begin the process of cleaning up the China-wide coverage. Run <U>settol.aml</U> to set tolerances, then <U>clean</U> the coverage to create polygon topology.</LI>
+<LI>Repair any dangles. In Arcedit, look for ordinary dangles (visible with DE NODE DANGLE) and cryptodangles (select arcs with LPOLY# = RPOLY#).</LI>
+<LI>Delete all of the labels in the coverage, then replace them with GET RCSCITY. (RCSCITY is a point coverage of regional cities produced by <U>getallcp.aml</U>.) Then build the coverage again, and check for label errors (visible with Arcplot's LABELERRORS command). No polygons should have more than one label, unless they define a regional city system with two "twin" regional cities; add arcs as necessary to separate other cities' systems. No polygons should be without labels; determine whether polygons lacking labels are slivers or other errors, and remove arcs as necessary. After making edits, BUILD the coverage again and inspect LABELERRORS again.</LI>
+<LI>Set the SYSTEM and COLOR polygon attributes using <U>selpoly.aml.</U> (Refer to previous version of the RCS coverage or the source manuscripts to determine these values for each polygon.) </LI>
+<LI>Run <U>makeRCSregions.aml</U> to create MR and SUB region subclasses (defining macroregions and subsystems) and code arcs along region boundaries (see BTYPE codes 2-7 below). Finally, replace the $CHINA/hrs/rcs coverage with the output from <U>makeRCSregions.</LI>
+</U><LI>Print "Central Places Analysis RCS Checkplots" using "<U>&amp;r regmap &lt;region 0..9&gt; zhen t4</U>." If changes are required, follow the procedures in steps 2-8, marking corrections or "fine-tuning" amendments on mylar and vectorize them to create an all-China coverage of arcs to be changed. Then use Arcedit commands to substitute the corrected arcs into the RCS coverage. Repeat steps 15-16 to verify the changes.</OL>
+</TD>
+</TR>
+</TABLE>
+
+<H3>III. Spatial Reference Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Map Projection</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<P>Albers projection, units=kilometers. </P>
+<P>See prj.adf file.</TD>
+</TR>
+</TABLE>
+
+<H3>IV. Entity and Attribute Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=4 WIDTH=734>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Attribute Label</FONT></TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<FONT SIZE=2><P>2. Attribute Description</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>3. Attribute Domain or Table</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>A. Arc Attribute Table (AAT)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>BTYPE</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Boundary Type</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=1><P>See RCS.ABTYPE</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>2 = Arbitrary Boundary under water (in ocean or major lakes)</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>3 = Regional City System Boundary</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>4 = RCS and Macroregional Subsystem Boundary</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>5 = RCS and Macroregional System Boundary</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>6 = System or Subsystem Boundary (but not RCS, because the regional city is Janus-faced, oriented to two macroregions).  Applies only to Linchuan, Jiangxi.</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>7 = System or Subsystem Boundary and boundary of an <I>ordinary</I> RCS which has also has an <I>extended</I> territory beyond this line in the adjacent macroregion.  Applies only along the border of the Mongolian Steppes subsystem.</FONT><FONT SIZE=2> </P>
+</FONT><FONT SIZE=1><P>50 = International Boundary (from Digital Chart of the World)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>SOURCE</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Source of Arc</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=1><P>Arcs vectorized at UC Davis: indicates year vectorized and acetate map sheet on which the arc was traced.  Map sheet codes beginning with the letter "r" are from the original central place analysis (February-March 1998); codes beginning with the letter "f" are "finetuning" adjustments (April-May 1998).</P>
+<P>Other arcs: indicates coverage from which arc was derived (applies primarily to international boundaries).</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>B. Polygon Attribute Table (PAT)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>SYSTEM</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Macroregional System+Subsystem</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Two-digit macroregional system designation. (First digit is MR {0..9}; second digit is SUB.)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>RCS-T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>China-T Datafile ID number (T1) of the Regional City of each system (polygon). For systems with two Regional Cities, the northwesternmost city's T1 is used.</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>EXTENDED</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Supplemental identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>0 = <I>ordinary</I> RCS polygon</P>
+<P>1 = polygon representing the <I>extension</I> of an RCS into the Mongolian Steppes subsystem.  This treatment accommodates cityless areas in that subsystem whose modern transport patterns appear to be oriented towards cities in adjacent regions.</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>COLOR</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Display color</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Arbitrary color number {1..5} assigned such that adjacent polygons have different colors.</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<FONT FACE="Arial"><P>C. EXTENDED region subclass (.PATEXTENDED)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>RCS-T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>China-T Datafile ID number (T1) of the Regional City of each system (polygon). For systems with two Regional Cities, the northwesternmost city's T1 is used.  Regions in this class encompass both the ordinary and extended portions of RCSes.</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>D. MR region subclass (.PATRCS)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>RCS-T1</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>China-T Datafile ID number (T1) of the Regional City of each system (polygon). For systems with two Regional Cities, the northwesternmost city's T1 is used.  The extended portions of RCSes along the border of the Mongolian Steppes subsystem are excluded from this subclass.</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>EXTENDED</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Supplemental identifier</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>0 = ordinary RCS polygon</P>
+<P>1 = polygon representing the extension of an RCS into the Mongolian Steppes subsystem</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<FONT FACE="Arial"><P>E. SYSTEM region subclass (.PATSYSTEM)</FONT></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>SYSTEM</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Macroregional Subsystems</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=2><P>Two-digit macroregional system designation. (First digit is MR {0..9}; second digit is SUB.)</FONT></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=3>
+<H3>F. MR region subclass (.PATMR)</H3></TD>
+</TR>
+<TR><TD WIDTH="18%" VALIGN="TOP">
+<P>MR</TD>
+<TD WIDTH="25%" VALIGN="TOP">
+<P>Macroregional System</TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT SIZE=1><P>One-digit macroregional system designation:</P>
+<OL START=0>
+
+<LI>Inner Asia</LI>
+<LI>Manchuria</LI>
+<LI>North China</LI>
+<LI>Northwest China</LI>
+<LI>Upper Yangzi</LI>
+<LI>Middle Yangzi</LI>
+<LI>Lower Yangzi</LI>
+<LI>Southeast Coast</LI>
+<LI>Lingnan</LI>
+<LI>Yungui</OL>
+</FONT></TD>
+</TR>
+</TABLE>
+
+<H3>V. Distribution Information</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Contact Person</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>G. William Skinner, <A HREF="mailto:gwskinner@ucdavis.edu">gwskinner@ucdavis.edu</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Contact Address</FONT></TD>
+<TD VALIGN="TOP">
+<P>Department of Anthropology, Young Hall, </P>
+<P>University of California, Davis </P>
+<P>Davis, CA 95616 </P>
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A></TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Distribution Liability and Restrictions</FONT></TD>
+<TD VALIGN="TOP">
+<P>Users assume all liability for the use of this data set. This data set is distributed for noncommercial research use only.</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>4. Distribution Format</FONT></TD>
+<TD VALIGN="TOP">
+<P>Arc/Info 7.1.2 export format (.e00)</TD>
+</TR>
+</TABLE>
+
+<H3>VI. Metadata Reference Section</H3>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=5 WIDTH=780>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<P><FONT SIZE=2>1. Metadata preparer</FONT></TD>
+<TD WIDTH="71%" VALIGN="TOP">
+<P>Mark Henderson, GIS Analyst, <A HREF="mailto:mhenderson94@post.harvard.edu">mhenderson94@post.harvard.edu</A></P>
+<P>Michele Ladenson, Graduate Researcher, <A HREF="mailto:msladenson@ucdavis.edu">msladenson@ucdavis.edu</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>2. Metadata address</FONT></TD>
+<TD VALIGN="TOP">
+<P>Department of Anthropology, Young Hall, </P>
+<P>University of California, Davis </P>
+<P>Davis, CA 95616 </P>
+<P><A HREF="http://qing.ucdavis.edu/">http://qing.ucdavis.edu/</A> </TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<FONT SIZE=2><P>3. Metadata format</FONT></TD>
+<TD VALIGN="TOP">
+<P>UCD GIS Metadata form, April 13, 1998</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+</P></BODY>
+</HTML>

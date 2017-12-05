@@ -1,0 +1,206 @@
+  @font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+@media(max-width:467px) {
+
+    .navbar .navbar-form {
+        width: 100%;
+        padding-left:0;
+        padding-right:0;
+    }
+    #wrap {
+        overflow-y:auto;
+        min-width: 147px;
+        margin: 8px auto -32px;
+        /* Pad bottom by footer height */
+        padding-left: 10px;
+        padding-right: 12px;
+        padding-bottom: 12px;
+        margin-bottom: 18px;  
+    }
+    .splash {
+        padding-left:20;
+        padding-right:20;
+    }
+     .chunk {
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 8px;
+    }
+
+     .sub-nav {
+        padding-top: 3px;
+        padding-left: 12px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+    }
+}
+@media(min-width:468px) {
+    .navbar .navbar-form {
+        width: 100%;
+    }
+    .breadcrumb {
+        float: left;
+        margin: 7px 10px 12px;
+    }
+    #wrap {
+        min-width: 147px; 
+        overflow-y:auto;
+        margin: 8px auto -32px;
+        /* Pad bottom by footer height   margin: 0 auto -32px;*/
+        /* padding-top: 8px; */
+        padding-bottom: 32px;
+        padding-left: 12px;
+        padding-right: 42px; 
+        margin-bottom: 18px;  
+    }
+
+    .chunk {
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 32px;
+        padding-bottom: 18px;
+    }
+     .sub-nav {
+        padding-top: 12px;
+        padding-left: 24px;
+        padding-right: 18px;
+        padding-bottom: 18px;
+    }
+}
+
+  .breadcrumb {
+    float: left;
+    margin: 0 7px 8px;
+}
+
+.navbar .navbar-form {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+body {
+  /* Margin bottom by footer height */
+  position: relative;
+  min-width: 147px;
+  margin-top: 38px;
+  margin-bottom: 0px;
+  background-color: #fff;
+}
+
+p.monkey {
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+span.eel {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 6px;
+  background-color: #ff9900;
+  font-style: italic;
+}
+
+span.moray {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px;
+  background-color:#ccff66; 
+  font-weight:700;
+}
+
+span.conger {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px;
+  background-color:#ccff66; 
+  font-weight:700;
+}
+
+span.anago {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 2px;
+  background-color:#ccff66; 
+  font-weight:700;
+}
+
+.maps img {
+display: block;
+max-width: 100%;
+height: auto;
+padding: 0px; 
+margin-top: 10px;
+border-style: solid;
+border-width: 1px;
+border-color: #051094;
+}
+
+.splash {
+    display: table;
+    width: 100%;
+    float: left;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    padding-left: 8px;
+    padding-right: 8px;  
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    display: table-cell;
+}
+
+.plain-text {
+  text-align: left;
+}
+
+.footer {
+
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 32px;
+  font-size:1.1em;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 6px;
+}
+
+.btn-group {
+  display: inline-block;
+}
+
+.vert img{
+   margin-top: 15px;
+}
+.horiz img{
+   margin-top: 18px;
+   width: 100%;
+}
+body > .main-scroll-top img{
+   margin-top: 18px;
+   width: 100%;
+}
+.skinner-horiz img{
+   display: block;
+   margin-left: auto;
+   margin-right: auto
+}
+
+img.hover-image{
+   position:absolute;
+   max-width: 200px;
+}

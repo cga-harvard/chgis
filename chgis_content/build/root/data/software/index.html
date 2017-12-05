@@ -1,0 +1,116 @@
+<html>
+ <head>
+  <meta charset="utf8">
+    <title>Software</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Chinese geospatial data, historical GIS, chinese geographic information systems">
+        <meta name="author" content="CHGIS">
+        <!-- core JS -->
+        <script src="../../assets/bootstrap/js/jquery.min.js"></script>
+        <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>    
+        <!-- Bootstrap core CSS -->
+        <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+        <!-- chgis custom CSS must appear AFTER bootstrap-->
+        <link href="../../assets/css/chgis_2016.css" type="text/css" rel="stylesheet">    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.hover-link').mouseenter(function() {
+          $('img.hover-image').remove();
+          $(this).append('<img class="hover-image" src="' + $(this).attr('data-hover-image') + '"/>')
+        }).mouseleave(function() {
+          $('img.hover-image').remove();
+        })
+      })
+    </script>
+ </head>
+<body>
+   <!-- navbar -->
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-xs" href="../../">China Historical GIS</a>
+            <a class="navbar-brand visible-xs" href="../../">CHGIS</a>
+         </div>
+         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+   
+   
+              <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="../../pages/intro">Intro</a></li>
+                   <li><a href="../../pages/history">Project History</a></li>
+                   <li><a href="../../pages/members">Team Members</a></li>
+                   <li><a href="../../pages/meetings">Meetings and Workshops</a></li>
+                   <li><a href="../../pages/database">Database Design</a></li>
+                   <li><a href="../../pages/howto">How To Use</a></li>
+                 </ul>
+               </li>
+               <li><a href="../../pages/contact">Contact</a></li> 
+               <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="../../data/chgis">CHGIS</a></li>
+                   <li><a href="../../data/hartwell">Hartwell</a></li>
+                   <li><a href="../../data/japan">Japan</a></li>
+                   <li><a href="../../data/russian_maps">Russian Maps</a></li>
+                   <li><a href="../../data/skinner">Skinner</a></li>
+                   <li><a href="../../data/other">Other datasets</a></li>
+                 </ul>
+               </li>
+               <li><a href="../../gazetteer/">Gazetteers</a></li>
+               <li><a href="../../maps/">Maps</a></li>
+               <li><a href="../../papers/">Papers</a></li>
+               <li><a href="../../tools/">Tools</a></li>
+            </ul>
+         </div>
+         <!--/.navbar-collapse -->
+      </div>
+   </div> 
+   <!-- /navbar -->   <div class="main-scroll-top"><img src="../../assets/graf/qinshuiroads_loc_sm.jpg"  title="Qing Map Scroll, src: LOC https://goo.gl/77fGNF" width=100%></div>
+ <div id="wrap">
+    <article>
+    <div class="chunk">
+<form method="get" style="display: inline;" action="http://qgis.org" target="_blank"><button class="button">Download QGIS Software</button></form>
+<p>
+<p>
+Geographic Information Systems refer to a combination of software, data, and users.   When we talk about <em>GIS Datasets</em> we are referring to specific data formats that can be opened and processed using GIS software.   Therefore <strong>you will have to install and launch a GIS software application</strong> to make any use of GIS datasets.
+<p>
+<hr>
+<p>
+<span class="moray">ArcGIS</span>
+<br>The leading commercial product for Desktop GIS, (the sort of application that a person could be expected to use themself on a single desktop computer) is the suite licensed from ESRI.   In addition to providing the main tools and functions for spatial analysis of all kinds, the Arc suite of extensions can scale up to enterprise level use cases.  Please refer to <a href="http://learn.arcgis.com/en/">ESRI training for an introduction to using ArcGIS</a> and it&#39;s related products.  [only runs on Windows]
+
+</p>
+
+<p>
+<span class="moray">QGIS</span>
+<br>As an alternative to ArcGIS, QGIS is a free, open-source GIS application.  A growing community of GIS users and professionals extend the core QGIS functionality with hundreds of advanced plug-ins. Learn more at the official <a href="http://www.qgis.org/en/docs/index.html">QGIS documentation pages</a>.   [runs on Windows, Mac, Linux]
+
+</p>
+
+
+
+
+</div>
+    </article>
+ </div>
+
+        <div class="footer navbar-fixed-bottom">
+           <div class="text-center"><font size=-1>
+             <p>&copy; CHGIS 2001 - <script>document.write(new Date().getFullYear())</script>
+             &nbsp; &nbsp;  design: <a href="https://github.com/vajlex/chgis-fas-website" target="_new">Lex Berman</a></font>
+             </p>
+           </div>
+        </div>
+  </body>
+</html>
